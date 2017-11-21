@@ -5,7 +5,8 @@ complex<double> omega[maxn + 1];
 void prefft() {
     for (int i = 0; i <= maxn; ++i) omega[i] = exp(i * 2 * pi / maxn * I);
 }
-void fft(vector<complex<double>>& a, int n, bool inv=false) {
+
+void fft(vector<complex<double>>& a, int n, bool inv = false) {
     int basic = maxn / n;
     int theta = basic;
     for (int m = n; m >= 2; m >>= 1) {
@@ -28,7 +29,3 @@ void fft(vector<complex<double>>& a, int n, bool inv=false) {
     }
     if (inv) for (int i = 0; i < n; ++i) a[i] /= (double)n;
 }
-void invfft(vector<complex<double>>& a, int n) {
-    fft(a, n, true);
-}
-
