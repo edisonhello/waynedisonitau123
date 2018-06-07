@@ -13,10 +13,10 @@ inline int gtx() {
 
 template <typename T>
 inline bool rit(T& x) {
-    char __c = 0; bool flag = false;
-    while (__c = getchar(), (__c < '0' && __c != '-') || __c > '9') if (__c == -1) return false;
-    __c == '-' ? (flag = true, x = 0) : (x = __c - '0');
-    while (__c = getchar(), __c >= '0' && __c <= '9') x = x * 10 + __c - '0';
+    char c = 0; bool flag = false;
+    while (c = getchar(), (c < '0' && c != '-') || c > '9') if (c == -1) return false;
+    c == '-' ? (flag = true, x = 0) : (x = c - '0');
+    while (c = getchar(), c >= '0' && c <= '9') x = x * 10 + c - '0';
     if (flag) x = -x;
     return true;
 }

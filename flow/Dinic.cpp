@@ -1,50 +1,49 @@
-struct Dinic {
-    int n, s, t;
-    vector<int> level;
-    struct Edge {
-        int to, rev, cap;
-        Edge() {}
-        Edge(int a, int b, int c): to(a), cap(b), rev(c) {}
+struct dinic {
+    static const int inf = 1e9;
+    struct edge {
+        int dest, cap, rev;
+        edge(int d, int c, int r): dest(d), cap(c), rev(r) {}
     };
-    vector<Edge> G[maxn];
-    bool bfs() {
-        level.assign(n, -1);
-        level[s] = 0; 
-        queue<int> que; que.push(s);
-        while (que.size()) {
-            int tmp = que.front(); que.pop();
-            for (auto e : G[tmp]) {
-                if (e.cap > 0 && level[e.to] == -1) {
-                    level[e.to] = level[tmp] + 1;
-                    que.push(e.to);
-                }
-            }
-        }
-        return level[t] != -1;
-    }
-    int flow(int now, int low) {
-        if (now == t) return low;
-        int ret = 0;
-        for (auto &e : G[now]) {
-            if (e.cap > 0 && level[e.to] == level[now] + 1) {
-                int tmp = flow(e.to, min(e.cap, low - ret));
-                e.cap -= tmp; G[e.to][e.rev].cap += tmp;
-                ret += tmp;
-            }
-        }
-        if (ret == 0) level[now] = -1;
-        return ret;
-    }
-    Dinic(int _n, int _s, int _t): n(_n), s(_s), t(_t) {
-        fill(G, G + maxn, vector<Edge>());
+    vector<edge> g[maxn];
+    int qu[maxn], ql, qr;
+    int lev[maxn];
+    void init() {
+        for (int i = 0; i < maxn; ++i)
+            g[i].clear();
     }
     void add_edge(int a, int b, int c) {
-        G[a].push_back(Edge(b, c, G[b].size()));
-        G[b].push_back(Edge(a, 0, G[a].size() - 1));
+        g[a].emplace_back(b, c, g[b].size() - 0);
+        g[b].emplace_back(a, 0, g[a].size() - 1);
     }
-    int maxflow() {
-        int ret = 0;
-        while (bfs()) ret += flow(s, inf);
-        return ret;
+    bool bfs(int s, int t) {
+        memset(lev, -1, sizeof(lev));
+        lev[s] = 0;
+        ql = qr = 0;
+        qu[qr++] = s;
+        while (ql < qr) {
+            int x = qu[ql++];
+            for (edge &e : g[x]) if (lev[e.dest] == -1 && e.cap > 0) {
+                lev[e.dest] = lev[x] + 1;
+                qu[qr++] = e.dest;
+            }
+        }
+        return lev[t] != -1;
+    }
+    int dfs(int x, int t, int flow) {
+        if (x == t) return flow;
+        int res = 0;
+        for (edge &e : g[x]) if (e.cap > 0 && lev[e.dest] == lev[x] + 1) {
+            int f = dfs(e.dest, t, min(e.cap, flow - res));
+            res += f;
+            e.cap -= f;
+            g[e.dest][e.rev].cap += f;
+        }
+        if (res == 0) lev[x] = -1;
+        return res;
+    }
+    int operator()(int s, int t) {
+        int flow = 0;
+        for (; bfs(s, t); flow += dfs(s, t, inf));
+        return flow;
     }
 };

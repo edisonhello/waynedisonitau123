@@ -1,7 +1,6 @@
 syn on
+colo desert
 se ai nu ru mouse=a
 se cin et ts=4 sw=4 sts=4
-so $VIMRUNTIME/mswin.vim
-colo desert
-se gfn=Monospace\ 15
-execute pathogen#infect()
+set backspace=indent,eol,start
+inoremap {<ENTER> {<ENTER>}<UP><END><ENTER>
