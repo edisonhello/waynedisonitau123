@@ -3,12 +3,12 @@ namespace SAIS {
     const int maxn = 1e5 + 5;
     int bkt[maxn], cnt[maxn], lptr[maxn], rptr[maxn], tptr[maxn];
     int rev[maxn];
-    void pre(const vector<int> &s) {
-        fill(bkt, bkt + maxn, -1);
-        fill(cnt, cnt + maxn, 0);
+    void pre(const vector<int> &s, int sigma) {
+        fill(bkt, bkt + s.size(), -1);
+        fill(cnt, cnt + sigma, 0);
         for (int i = 0; i < s.size(); ++i) ++cnt[s[i]];
         int last = 0;
-        for (int i = 0; i < maxn; ++i) {
+        for (int i = 0; i < sigma; ++i) {
             lptr[i] = last;
             last += cnt[i];
             rptr[i] = tptr[i] = last - 1;
@@ -26,8 +26,8 @@ namespace SAIS {
         do { if (s[l] != s[r]) return false; ++l, ++r; } while (v[l] != LMS && v[r] != LMS);
         return s[l] == s[r];
     }
-    vector<int> radix_sort(const vector<int> &lms, const vector<int> &s, const vector<type> &v) {
-        pre(s); 
+    vector<int> radix_sort(const vector<int> &lms, const vector<int> &s, const vector<type> &v, int sigma) {
+        pre(s, sigma); 
         for (int i = 0; i < lms.size(); ++i) bkt[tptr[s[lms[i]]]--] = lms[i];
         induce(s, v);
         vector<int> rt(lms.size());
@@ -59,7 +59,7 @@ namespace SAIS {
         for (int i = 0; i < sa.size(); ++i) rev[i] = pos[sa[i]];
         return rev;
     }
-    vector<int> build(const vector<int> &s) {
+    vector<int> sais(const vector<int> &s, int sigma) {
         vector<type> v(s.size());
         v[s.size() - 1] = S;
         for (int i = s.size() - 2; i >= 0; --i) {
@@ -71,24 +71,22 @@ namespace SAIS {
         }
         vector<int> lms;
         for (int i = 0; i < s.size(); ++i) if (v[i] == LMS) lms.push_back(i);
-        vector<int> r = radix_sort(lms, s, v);
+        vector<int> r = radix_sort(lms, s, v, sigma);
         vector<int> sa;
         if (*max_element(r.begin(), r.end()) == r.size() - 1) sa = counting_sort(r);
-        else sa = build(r);
+        else sa = sais(r, *max_element(r.begin(), r.end()) + 1);
         sa = reconstruct(sa, s, v);
-        pre(s);
+        pre(s, sigma);
         for (int i = sa.size() - 1; i >= 0; --i) bkt[tptr[s[sa[i]]]--] = sa[i];
         induce(s, v);
         return vector<int>(bkt, bkt + s.size());
     }
-    vector<int> suffix_array(const string &s) {
+    vector<int> build(const string &s) {
         vector<int> v(s.size() + 1);
         for (int i = 0; i < s.size(); ++i) v[i] = s[i];
         v[v.size() - 1] = 0;
-        vector<int> sa = build(v);
-        vector<int> trim;
-        for (int i = 1; i < sa.size(); ++i) trim.push_back(sa[i]);
-        return trim;
+        vector<int> sa = sais(v, 256);
+        return vector<int>(sa.begin() + 1, sa.end());
     }
 }
 
