@@ -1,12 +1,23 @@
 // n < 4759123141     chk = [2, 7, 61]
 // n < 1122004669633  chk = [2, 13, 23, 1662803]
 // n < 2^64           chk = [2, 325, 9375, 28178, 450775, 9780504, 1795265022]
+//
+vector<long long> chk = { 2, 325, 9375, 28178, 450775, 9780504, 1795265022 };
+
+long long fmul(long long a, long long n, long long mod) {
+    long long ret = 0;
+    for (; n; n >>= 1) {
+        if (n & 1) (ret += a) %= mod;
+        (a += a) %= mod;
+    }
+    return ret;
+}
 
 long long fpow(long long a, long long n, long long mod) {
     long long ret = 1LL;
     for (; n; n >>= 1) {
-        if (n & 1) ret = (__int128)ret * (__int128)a % mod;
-        a = (__int128)a * (__int128)a % mod;
+        if (n & 1) ret = fmul(ret, a, mod);
+        a = fmul(a, a, mod);
     }
     return ret;
 }
@@ -15,7 +26,7 @@ bool check(long long a, long long u, long long n, int t) {
     if (a == 0) return true;
     if (a == 1 || a == n - 1) return true;
     for (int i = 0; i < t; ++i) {
-        a = (__int128)a * (__int128)a % n;
+        a = fmul(a, a, n);
         if (a == 1) return false;
         if (a == n - 1) return true;
     }
