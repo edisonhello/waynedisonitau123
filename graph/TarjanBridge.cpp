@@ -16,14 +16,14 @@ void dfs(int x, int p) {
         }
         dfs(u.first, x);
         low[x] = min(low[x], low[u.first]);
-        if (low[u.first] == tin[u.first]) {
-            br[u.second] = true;
-            ++sz;
-            while (true) {
-                int z = st.top(); st.pop();
-                bcc[z] = sz;
-                if (z == u.first) break;
-            }
+        if (low[u.first] == tin[u.first]) br[u.second] = true;
+    }
+    if (tin[x] == low[x]) {
+        ++sz;
+        while (st.size()) {
+            int u = st.top(); st.pop();
+            bcc[u] = sz;
+            if (u == x) break;
         }
     }
 }
