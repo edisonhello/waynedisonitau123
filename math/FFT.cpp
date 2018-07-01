@@ -40,15 +40,17 @@ void ifft(vector<cplx> &a, int n) {
     for (int i = 0; i < n; ++i) a[i] /= n;
 }
 
-vector<int> multiply(vector<int> &a, vector<int> &b, int n) {
-    vector<cplx> ca(n << 1), cb(n << 1);
-    for (int i = 0; i < n; ++i) ca[i] = cplx(a[i], 0);
-    for (int i = 0; i < n; ++i) cb[i] = cplx(b[i], 0);
-    fft(ca, n << 1); fft(cb, n << 1);
-    vector<cplx> cc(n << 1);
-    for (int i = 0; i < n << 1; ++i) cc[i] = ca[i] * cb[i];
-    ifft(cc, n << 1);
-    vector<int> c(n << 1);
-    for (int i = 0; i < n << 1; ++i) c[i] = (int)(cc[i].real() + 0.5);
-    return c;
+vector<int> multiply(const vector<int> &a, const vector<int> &b, bool trim = false) {
+    int d = 1;
+    while (d < max(a.size(), b.size())) d <<= 1; d <<= 1;
+    vector<cplx> pa(d), pb(d);
+    for (int i = 0; i < a.size(); ++i) pa[i] = cplx(a[i], 0);
+    for (int i = 0; i < b.size(); ++i) pb[i] = cplx(b[i], 0);
+    fft(pa, d); fft(pb, d);
+    for (int i = 0; i < d; ++i) pa[i] *= pb[i];
+    ifft(pa, d);
+    vector<int> r(d);
+    for (int i = 0; i < d; ++i) r[i] = round(pa[i].real());
+    if (trim) while (r.size() && r.back() == 0) r.pop_back();
+    return r;
 }
