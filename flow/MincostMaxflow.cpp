@@ -1,59 +1,55 @@
-struct MincostMaxflow {
-    struct Edge {
-        int to, rev, cap, w;
-        Edge() {}
-        Edge(int a, int b, int c, int d): to(a), cap(b), w(c), rev(d) {}
+struct mincost {
+    struct edge {
+        int dest, cap, w, rev;
+        edge(int a, int b, int c, int d): dest(a), cap(b), w(c), rev(d) {}
     };
-    int n, s, t, p[maxn], id[maxn];
-    int d[maxn];
-    bool inque[maxn];
-    vector<Edge> G[maxn];
-    pair<int, int> spfa() {
-        memset(p, -1, sizeof(-1));
-        fill(d, d + maxn, inf);
-        memset(id, -1, sizeof(id));
-        d[s] = 0; p[s] = s;
-        queue<int> que; que.push(s); inque[s] = true;
-        while (que.size()) {
-            int tmp = que.front(); que.pop();
-            inque[tmp] = false;
-            int i = 0;
-            for (auto e : G[tmp]) {
-                if (e.cap > 0 && d[e.to] > d[tmp] + e.w) {
-                    d[e.to] = d[tmp] + e.w;
-                    p[e.to] = tmp;
-                    id[e.to] = i;
-                    if (!inque[e.to]) que.push(e.to), inque[e.to] = true;
+    vector<edge> g[maxn];
+    int d[maxn], p[maxn], ed[maxn];
+    bool inq[maxn];
+    void init() {
+        for (int i = 0; i < maxn; ++i) g[i].clear();
+    }
+    void add_edge(int a, int b, int c, int d) {
+        g[a].emplace_back(b, c, +d, g[b].size() - 0);
+        g[b].emplace_back(a, 0, -d, g[a].size() - 1);
+    }
+    bool spfa(int s, int t, int &f, int &c) {
+        for (int i = 0; i < maxn; ++i) {
+            d[i] = inf;
+            p[i] = ed[i] = -1;
+            inq[i] = false;
+        }
+        d[s] = 0;
+        queue<int> q;
+        q.push(s);
+        while (q.size()) {
+            int x = q.front(); q.pop();
+            inq[x] = false;
+            for (int i = 0; i < g[x].size(); ++i) {
+                edge &e = g[x][i];
+                if (e.cap > 0 && d[e.dest] > d[x] + e.w) {
+                    d[e.dest] = d[x] + e.w;
+                    p[e.dest] = x;
+                    ed[e.dest] = i;
+                    if (!inq[e.dest]) q.push(e.dest), inq[e.dest] = true;
                 }
-                ++i;
             }
         }
-        if (d[t] == inf) return make_pair(-1, -1);
-        int a = inf;
-        for (int i = t; i != s; i = p[i]) {
-            a = min(a, G[p[i]][id[i]].cap);
+        if (d[t] == inf) return false;
+        int dlt = inf;
+        for (int x = t; x != s; x = p[x]) dlt = min(dlt, g[p[x]][ed[x]].cap);
+        for (int x = t; x != s; x = p[x]) {
+            edge &e = g[p[x]][ed[x]];
+            e.cap -= dlt;
+            g[e.dest][e.rev].cap += dlt;
         }
-        for (int i = t; i != s; i = p[i]) {
-            Edge &e = G[p[i]][id[i]];
-            e.cap -= a; G[e.to][e.rev].cap += a;
-        }
-        return make_pair(a, d[t]);
+        f += dlt; c += d[t] * dlt;
+        return true;
     }
-    MincostMaxflow(int _n, int _s, int _t): n(_n), s(_s), t(_t) {
-        fill(G, G + maxn, vector<Edge>());
-    }
-    void add_edge(int a, int b, int cap, int w) {
-        G[a].push_back(Edge(b, cap, w, (int)G[b].size()));
-        G[b].push_back(Edge(a, 0, -w, (int)G[a].size() - 1));
-    }
-    pair<int, int> maxflow() {
-        int mxf = 0, mnc = 0;
-        while (true) {
-            pair<int, int> res = spfa();
-            if (res.first == -1) break;
-            mxf += res.first; mnc += res.first * res.second;
-        }
-        return make_pair(mxf, mnc);
+    pair<int, int> operator()(int s, int t) {
+        int f = 0, c = 0;
+        while (spfa(s, t, f, c));
+        return make_pair(f, c);
     }
 };
 
