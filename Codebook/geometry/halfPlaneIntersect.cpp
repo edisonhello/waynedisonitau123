@@ -9,6 +9,7 @@ bool cmp(const Line &a,const Line &b){
 }
 
 // availble area for Line l is (l.pb-l.pa)^(p-l.pa)>0
+// if solution is a line gives no solution
 vector<Point> HPI(vector<Line> &ls){
     sort(ls.begin(),ls.end(),cmp);
     vector<Line> pls(1,ls[0]); 
