@@ -16,11 +16,11 @@ void solve() {
         while (deq.size() && deq.front().r < i + 1) deq.pop_front();
         deq.front().l = i + 1;
         segment seg = segment(i, i + 1, n);
-        while (deq.size() && df(i, deq.back().l) < df(deq.back().i, deq.back().l)) deq.pop_back();
+        while (deq.size() && f(i, deq.back().l) < f(deq.back().i, deq.back().l)) deq.pop_back();
         if (deq.size()) {
             int d = 1048576, c = deq.back().l;
             while (d >>= 1) if (c + d <= deq.back().r) {
-                if (df(i, c + d) > df(deq.back().i, c + d)) c += d;
+                if (f(i, c + d) > f(deq.back().i, c + d)) c += d;
             }
             deq.back().r = c; seg.l = c + 1;
         }

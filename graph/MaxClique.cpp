@@ -3,8 +3,10 @@ struct MaxClique {
     bitset<maxn> adj[maxn];
     vector<pair<int, int>> edge;
     void init(int _n) {
-        _n = n;
+        n = _n;
         for (int i = 0; i < n; ++i) adj[i].reset();
+        for (int i = 0; i < n; ++i) deg[i] = 0;
+        edge.clear();
     }
     void add_edge(int a, int b) {
         edge.emplace_back(a, b);
@@ -22,18 +24,18 @@ struct MaxClique {
         }
         bitset<maxn> r, p;
         for (int i = 0; i < n; ++i) p[i] = true;
+        ans = 0;
         dfs(r, p);
         return ans;
     }
-    void go(bitset<maxn> r, bitset<maxn> p) {
-        if (1.0 * clock() / CLOCKS_PER_SEC >= time_limit) return;
+    void dfs(bitset<maxn> r, bitset<maxn> p) {
         if (p.count() == 0) return ans = max(ans, (int)r.count()), void();
         if ((r | p).count() <= ans) return;
         int now = p._Find_first();
         bitset<maxn> cur = p & ~adj[now];
         for (now = cur._Find_first(); now < n; now = cur._Find_next(now)) {
             r[now] = true;
-            go(r, p & adj[now]);
+            dfs(r, p & adj[now]);
             r[now] = false;
             p[now] = false;
         }
