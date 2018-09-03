@@ -1,18 +1,15 @@
-int Graham(Point p[], int n, int res[]) {
-    int len, top;
-    top = 1;
-	sort(p, p + n, [](const Point &a, const Point &b) { return a.y == b.y ? a.x < b.x : a.y < b.y; }
-    // QSort(p,0,n-1);
-    for (int i = 0; i < 3; i++) res[i] = i;
-    for (int i = 2; i < n; i++) {
-        while (top && epssgn(Cross(p[i], p[res[top]], p[res[top - 1]])) >= 0) top--;
-        res[++top] = i;
+vector<point> convex(vector<point> p) {
+    sort(p.begin(), p.end());
+    vector<point> ch;
+    for (int i = 0; i < n; ++i) {
+        while (ch.size() >= 2 && ((p[i] - ch[ch.size() - 2]) ^ (ch[ch.size() - 1] - ch[ch.size() - 2])) >= 0) ch.pop_back();
+        ch.push_back(p[i]);
     }
-    len = top;
-    res[++top] = n - 2;
-    for (int i = n-3; i>=0; i--) {
-        while (top != len && epssgn(Cross(p[i], p[res[top]], p[res[top - 1]])) >= 0) top--;
-        res[++top] = i;
+    int t = ch.size();
+    for (int i = n - 2; i >= 0; --i) {
+        while (ch.size() > t && ((p[i] - ch[ch.size() - 2]) ^ (ch[ch.size() - 1] - ch[ch.size() - 2])) >= 0) ch.pop_back();
+        ch.push_back(p[i]);
     }
-    return top;
+    ch.pop_back();
+    return ch;
 }
