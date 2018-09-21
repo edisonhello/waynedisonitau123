@@ -1,15 +1,23 @@
-vector<point> convex(vector<point> p) {
+typedef pt pair<double, double>
+#define first x
+#define second y
+
+double cross(const pt& o, const pt& a, const pt& b) {
+    return (a.x - o.x) * (b.y - o.y) - (a.y - o.y) * (b.x - o.x);
+}
+
+vector<pt> convex_hull(const vector<pt>& p) {
     sort(p.begin(), p.end());
-    vector<point> ch;
-    for (int i = 0; i < n; ++i) {
-        while (ch.size() >= 2 && ((p[i] - ch[ch.size() - 2]) ^ (ch[ch.size() - 1] - ch[ch.size() - 2])) >= 0) ch.pop_back();
-        ch.push_back(p[i]);
+    int m = 0;
+    vector<pt> ret(2 * p.size());
+    for (int i = 0; i < p.size(); ++i) {
+        while (m >= 2 && cross(ret[m - 2], ret[m - 1], p[i]) < 0) --m;
+        ret[m++] = p[i];
     }
-    int t = ch.size();
-    for (int i = n - 2; i >= 0; --i) {
-        while (ch.size() > t && ((p[i] - ch[ch.size() - 2]) ^ (ch[ch.size() - 1] - ch[ch.size() - 2])) >= 0) ch.pop_back();
-        ch.push_back(p[i]);
+    for (int i = p.size() - 2, t = m + 1; i >= 0; --i) {
+        while (m >= t && cross(ret[m - 2], ret[m - 1], p[i]) < 0) --m;
+        ret[m++] = p[i];
     }
-    ch.pop_back();
-    return ch;
+    ret.resize(m - 1);
+    return ret;
 }
