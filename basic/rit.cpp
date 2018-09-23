@@ -1,7 +1,7 @@
 #define getchar gtx
 
 inline int gtx() {
-    const int N = 1048576;
+    const int N = 4096;
     static char buffer[N];
     static char *p = buffer, *end = buffer;
     if (p == end) {
