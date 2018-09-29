@@ -1,5 +1,4 @@
 #define getchar gtx
-
 inline int gtx() {
     const int N = 4096;
     static char buffer[N];
@@ -10,7 +9,6 @@ inline int gtx() {
     }
     return *p++;
 }
-
 template <typename T>
 inline bool rit(T& x) {
     char c = 0; bool flag = false;
@@ -20,6 +18,5 @@ inline bool rit(T& x) {
     if (flag) x = -x;
     return true;
 }
-
 template <typename T, typename ...Args>
 inline bool rit(T& x, Args& ...args) { return rit(x) && rit(args...); }
