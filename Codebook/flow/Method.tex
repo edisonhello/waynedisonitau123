@@ -1,3 +1,4 @@
+\normalsize
 \begin{itemize}
     \item Maximum flow with lower/upper bound from $s$ to $t$
     \begin{enumerate}
@@ -24,5 +25,14 @@
         \item For each vertex $v$ with deg[v]$> 0$, connect $S \rightarrow v$ with $(cost, cap) = (0, $deg[v]$)$
         \item For each vertex $v$ with deg[v]$< 0$, connect $v \rightarrow t$ with $(cost, cap) = (0, -$deg[v]$)$
         \item Flow $S$ to $T$, the answer is the cost of the flow add `tmp`
+    \end{enumerate}
+    \item Maximum density induced subgraph
+    \begin{enumerate}
+        \item Binary search on answer, suppose we're checking answer $T$
+        \item Construct a max flow model, let $K$ be the sum of all weights
+        \item Connect source $s \rightarrow v$, $v \in G$ with capacity $K$
+        \item For each edge $(u, v, w)$ in $G$, connect $u \rightarrow v$ and $v \rightarrow u$ with capacity $w$
+        \item For $v \in G$, connect it with sink $v \rightarrow t$ with capacity $K + 2T - (\sum_{e \in E(v)}{w(e)}) - 2w(v)$
+        \item $T$ is a valid answer if the maximum flow $f < T \lvert V \rvert$
     \end{enumerate}
 \end{itemize}
