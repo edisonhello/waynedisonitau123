@@ -2,7 +2,7 @@
     \item Maximum flow with lower/upper bound from $s$ to $t$
     \begin{enumerate}
         \item Construct super source $S$ and sink $T$
-        \item For each edge $(u, v, l, u)$, connect $u \rightarrow v$ with capacity $u - l$
+        \item For each edge $(x, y, l, u)$, connect $x \rightarrow y$ with capacity $u - l$
         \item For each vertex $v$, denote $in(v)$ as the difference between the sum of incoming lower bounds and the sum of outgoing lower bounds
         \item If $in(v) > 0$, connect $S \rightarrow v$ with capacity $in(v)$, otherwise, connect $v \rightarrow T$ with capacity $-in(v)$
         \item Denote $f$ as the maximum flow of the current graph from $S$ to $T$
@@ -15,5 +15,14 @@
         \item DFS from unmatched vertex in $X$ using unused edges
         \item $x \in X$ is chosen iff $x$ is unvisited
         \item $y \in Y$ is chosen iff $y$ is visited
+    \end{enumerate}
+    \item Minimum cost cyclic flow
+    \begin{enumerate}
+        \item Consruct super source $S$ and sink $T$
+        \item For each edge $(x, y, c)$, connect $x \rightarrow y$ with $(cost, cap) = (c, 1)$ if $c > 0$, otherwise connect $y \rightarrow x$ with $(cost, cap) = (-c, 1)$
+        \item For each edge with $c < 0$, sum these cost as `tmp`, then ++deg[y], --deg[x]
+        \item For each vertex $v$ with deg[v]$> 0$, connect $S \rightarrow v$ with $(cost, cap) = (0, $deg[v]$)$
+        \item For each vertex $v$ with deg[v]$< 0$, connect $v \rightarrow t$ with $(cost, cap) = (0, -$deg[v]$)$
+        \item Flow $S$ to $T$, the answer is the cost of the flow add `tmp`
     \end{enumerate}
 \end{itemize}
