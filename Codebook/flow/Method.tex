@@ -1,3 +1,4 @@
+\normalsize
 \begin{itemize}
     \item Maximum flow with lower/upper bound from $s$ to $t$
     \begin{enumerate}
@@ -15,5 +16,14 @@
         \item DFS from unmatched vertex in $X$ using unused edges
         \item $x \in X$ is chosen iff $x$ is unvisited
         \item $y \in Y$ is chosen iff $y$ is visited
+    \end{enumerate}
+    \item Maximum density induced subgraph
+    \begin{enumerate}
+        \item Binary search on answer, suppose we're checking answer $T$
+        \item Construct a max flow model, let $K$ be the sum of all weights
+        \item Connect source $s \rightarrow v$, $v \in G$ with capacity $K$
+        \item For each edge $(u, v, w)$ in $G$, connect $u \rightarrow v$ and $v \rightarrow u$ with capacity $w$
+        \item For $v \in G$, connect it with sink $v \rightarrow t$ with capacity $K + 2T - (\sum_{e \in E(v)}{w(e)}) - 2w(v)$
+        \item $T$ is a valid answer if the maximum flow $f < T \lvert V \rvert$
     \end{enumerate}
 \end{itemize}
