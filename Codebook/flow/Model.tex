@@ -21,9 +21,9 @@
     \begin{enumerate}
         \item Consruct super source $S$ and sink $T$
         \item For each edge $(x, y, c)$, connect $x \rightarrow y$ with $(cost, cap) = (c, 1)$ if $c > 0$, otherwise connect $y \rightarrow x$ with $(cost, cap) = (-c, 1)$
-        \item For each edge with $c < 0$, sum these cost as $K$, then increase $deg[y]$ by 1, decrease $deg[x]$ by 1
-        \item For each vertex $v$ with $deg[v] > 0$, connect $S \rightarrow v$ with $(cost, cap) = (0, deg[v])$
-        \item For each vertex $v$ with $deg[v] < 0$, connect $v \rightarrow T$ with $(cost, cap) = (0, -deg[v])$
+        \item For each edge with $c < 0$, sum these cost as $K$, then increase $d(y)$ by 1, decrease $d(x)$ by 1
+        \item For each vertex $v$ with $d(v) > 0$, connect $S \rightarrow v$ with $(cost, cap) = (0, d(v))$
+        \item For each vertex $v$ with $d(v) < 0$, connect $v \rightarrow T$ with $(cost, cap) = (0, -d(v))$
         \item Flow from $S$ to $T$, the answer is the cost of the flow $C + K$
     \end{enumerate}
     \item Maximum density induced subgraph

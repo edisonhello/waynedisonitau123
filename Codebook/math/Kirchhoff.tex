@@ -1,0 +1,6 @@
+\normalsize
+Denote $L$ be a $n \times n$ matrix as the Laplacian matrix of graph $G$, where $L_{ii} = d(i)$, $L_{ij} = -c$ where $c$ is the number of edge $(i, j)$ in $G$.
+\begin{itemize}
+    \item The number of undirected spanning in $G$ is $\lvert \det(L^{*}) \rvert$, where $L^{*}$ is the $(n - 1)\times (n - 1)$ matrix by removing row $x$ and column $x$ for some arbitrary $x$ in $L$
+    \item The number of directed spanning tree rooted at $r$ in $G$ is $\lvert \det(L_r) \rvert$, where $L_r$ is the $(n - 1)\times (n - 1)$ matrix by removing row $r$ and column $r$ in $L$
+\end{itemize}
