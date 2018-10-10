@@ -4,5 +4,4 @@ colo desert
 se ai nu ru mouse=a
 se cin et ts=4 sw=4 sts=4
 set backspace=indent,eol,start
-set number relativenumber
 inoremap {<ENTER> {<ENTER>}<UP><END><ENTER>
