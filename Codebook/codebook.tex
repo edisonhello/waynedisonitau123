@@ -103,7 +103,7 @@ literate={\ \ }{{\ }}1
 \lstinputlisting{basic/check.sh}
 \subsection{Fast Integer Input}
 \lstinputlisting{basic/rit.cpp}
-\subsection{IncStack}
+\subsection{Increase stack size}
 \lstinputlisting{basic/IncStack.cpp}
 \subsection{Pragma optimization}
 \lstinputlisting{basic/Pragma.cpp}
@@ -118,11 +118,11 @@ literate={\ \ }{{\ }}1
 \lstinputlisting{flow/MincostMaxflow.cpp}
 \subsection{Gomory-Hu Tree}
 \lstinputlisting{flow/GomoryHu.cpp}
-\subsection{Stoer–Wagner minimum cut}
+\subsection{Stoer–Wagner Minimum Cut}
 \lstinputlisting{flow/SW.cpp}
-\subsection{Hungarian ($O(n^3)$)}
+\subsection{Kuhn–Munkres Algorithm ($O(n^3)$)}
 \lstinputlisting{flow/Hungarian_n3.cpp}
-\subsection{Hungarian ($O(n^4)$)}
+\subsection{Kuhn–Munkres Algorithm ($O(n^4)$)}
 \lstinputlisting{flow/Hungarian_n4.cpp}
 \subsection{Flow Model}
 \input{flow/Model.tex}
@@ -140,22 +140,28 @@ literate={\ \ }{{\ }}1
 \lstinputlisting{graph/HeavyLightDecomp.cpp}
 \subsection{Centroid Decomposition}
 \lstinputlisting{graph/CentroidDecomp.cpp}
-\subsection{Minimum mean cycle}
+\subsection{Minimum Mean Cycle}
 \lstinputlisting{graph/MinMeanWeightCycle.cpp}
 \subsection{Minimum Steiner Tree}
 \lstinputlisting{graph/MinimumSteinerTree.cpp}
+\subsection{Maximum Matching on General Graph}
+\lstinputlisting{graph/MaximumGeneralGraphMatching.cpp}
+\subsection{Maximum Weighted Matching on General Graph}
+\lstinputlisting{graph/MaximumWeightedMatching.cpp}
 \subsection{Maximum Clique}
 \lstinputlisting{graph/MaxClique.cpp}
-\subsection{Tarjan's articulation point}
+\subsection{Tarjan's Articulation Point}
 \lstinputlisting{graph/TarjanAP.cpp}
-\subsection{Tarjan's bridge}
+\subsection{Tarjan's Nridge}
 \lstinputlisting{graph/TarjanBridge.cpp}
+\subsection{Dominator Tree}
+\lstinputlisting{graph/DominatorTree.cpp}
 \section{String}
-\subsection{KMP}
+\subsection{Knuth–Morris–Pratt Algorithm}
 \lstinputlisting{string/KMP.cpp}
-\subsection{Z algorithm}
+\subsection{Z Algorithm}
 \lstinputlisting{string/Z.cpp}
-\subsection{Manacher's}
+\subsection{Manacher's Algorithm}
 \lstinputlisting{string/Manacher.cpp}
 \subsection{Aho-Corasick Automaton}
 \lstinputlisting{string/AhoCorasick.cpp}
@@ -167,24 +173,24 @@ literate={\ \ }{{\ }}1
 \lstinputlisting{string/SAIS.cpp}
 \subsection{DC3}
 \lstinputlisting{string/DC3.cpp}
-\subsection{Smallest Rotation}
+\subsection{Lexigraphically Smallest Rotation}
 \lstinputlisting{string/SmallestRotation.cpp}
 \section{Math}
-\subsection{Fast Fourier transform}
+\subsection{Fast Fourier Transform}
 \lstinputlisting{math/FFT2.cpp}
-\subsection{Number theoretic transform}
+\subsection{Number Theoretic Transform}
 \lstinputlisting{math/NTT.cpp}
 \subsubsection{NTT Prime List}
 \input{math/NTTprime.tex}
-\subsection{Fast Walsh-Hadamard transform}
+\subsection{Fast Walsh-Hadamard Transform}
 \lstinputlisting{math/FWT.cpp}
 \subsection{Lagrange Interpolation}
 \lstinputlisting{math/LagrangeInterpolation.cpp}
 \subsection{Miller Rabin}
 \lstinputlisting{math/MillerRabin.cpp}
-\subsection{Pollard's rho}
+\subsection{Pollard's Rho}
 \lstinputlisting{math/PollardRho.cpp}
-\subsection{Prime counting}
+\subsection{Meissel–Lehmer Algorithm}
 \lstinputlisting{math/PiCount.cpp}
 \subsection{Gaussian Elimination}
 \lstinputlisting{math/GaussElimination.cpp}
@@ -196,13 +202,13 @@ literate={\ \ }{{\ }}1
 \lstinputlisting{math/ReciprocalEnum.cpp}
 \subsection{Extended GCD}
 \lstinputlisting{math/extGcd.cpp}
-\subsection{Chinese remainder theorem}
+\subsection{Chinese Remainder Theorem}
 \input{math/ChineseRemainderTheorem.tex}
-\subsection{Lucas's theorem}
+\subsection{Lucas's Theorem}
 \input{math/LucasTheorem.tex}
-\subsection{Kirchhoff's theorem}
+\subsection{Kirchhoff's Theorem}
 \input{math/Kirchhoff.tex}
-\subsection{Tutte matrix}
+\subsection{Tutte Matrix}
 \input{math/Tutte.tex}
 \subsection{Primes}
 \input{math/Primes.tex}
@@ -220,7 +226,7 @@ literate={\ \ }{{\ }}1
 \lstinputlisting{geometry/_basic.cpp}
 \subsection{KD Tree}
 \lstinputlisting{geometry/KDTree.cpp}
-\subsection{Delaunay triangulation}
+\subsection{Delaunay Triangulation}
 \lstinputlisting{geometry/Triangulation.cpp}
 \subsection{Sector Area}
 \lstinputlisting{geometry/sectorArea.cpp}
@@ -255,12 +261,12 @@ literate={\ \ }{{\ }}1
 \subsection{Closest Pair}
 \lstinputlisting{geometry/ClosestPair.cpp}
 \section{Problems}
-\subsection{Manhattan distance minimum spanning tree}
+\subsection{Manhattan Distance Minimum Spanning Tree}
 \lstinputlisting{problem/ManhattanMST.cpp}
-\subsection{"Dynamic" kth element (parallel binary search)}
+\subsection{"Dynamic" Kth Element (parallel binary search)}
 \lstinputlisting{problem/DynamicKth_bs.cpp}
-\subsection{Dynamic kth element (persistent segment tree)}
+\subsection{Dynamic Kth Element (persistent segment tree)}
 \lstinputlisting{problem/DynamicKth_st.cpp}
-\subsection{Hilbert's curve (faster MO's algorithm)}
+\subsection{Hilbert's Curve (faster Mo's algorithm)}
 \lstinputlisting{problem/HilbertCurve.cpp}
 \end{document}
