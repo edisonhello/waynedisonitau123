@@ -18,5 +18,5 @@ codebook by waynetuinfor, WeaK, Tau
 | GCPC 2017                 | 2018/09/13    |  20  | A | B | C | D | E | F | G | . | I | . | K |
 | Vietnam 2017              | 2018/09/22    |   5  | . | B | C | . | E | F | . | H | I | J | . | . |
 | NCPC 2017                 | 2018/09/26    |   4  | A | B | C | D | E | F | . | H | I | . | . | . |
-| Japan 2017                | 2018/10/13    |   7  | A | B | C | . | . | F | G | . | I | . | . |
-| Korea 2015                | 2018/10/18    |   3  | A | . | C | . | E | F | G | H | I | J | K | L |
+| Tsukuba 2017                | 2018/10/13    |   7  | A | B | C | . | . | F | G | . | I | . | . |
+| Daejeon 2015                | 2018/10/18    |   3  | A | . | C | . | E | F | G | H | I | J | K | L |
