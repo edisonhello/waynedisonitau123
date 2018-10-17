@@ -11,7 +11,7 @@ codebook by waynetuinfor, WeaK, Tau
 | NCPC 2018                 | 2018/10/06    |   1  | A | B | C | D | E | F | G | H | I | J | . | . | M | . | O |
 
 
-#Virtual Practice
+# Virtual Practice
 | Contest                   | Date          | Rank |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | --------------------------|:-------------:|:----:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | ASC 23                    | 2018/09/08    |  50  | . | B | . | . | E | . | G | H | I | . |
