@@ -1,0 +1,13 @@
+\normalsize
+Standard form: maximize $\sum_{1 \leq i \leq n}{c_ix_i}$ such that for all $1 \leq j \leq m$, $\sum_{1 \leq i \leq n}{A_{ji}x_i} \leq b_j$.and $x_i \geq 0$ for all $1 \leq i \leq n$.
+
+\begin{enumerate}
+    \item In case of minimization, let $c^\prime_i = -c_i$
+    \item $\sum_{1 \leq i \leq n}{A_{ji}x_i} \geq b_j \rightarrow \sum_{1 \leq i \leq n}{-A_{ji}x_i} \leq -b_j$
+    \item $\sum_{1 \leq i \leq n}{A_{ji}x_i} = b_j$ 
+        \begin{itemize}
+            \item $\sum_{1 \leq i \leq n}{A_{ji}x_i} \leq b_j$
+            \item $\sum_{1 \leq i \leq n}{A_{ji}x_i} \geq b_j$
+        \end{itemize}
+    \item If $x_i$ has no lower bound, replace $x_i$ with $x_i - x_i^\prime$
+\end{enumerate}
