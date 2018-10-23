@@ -11,9 +11,10 @@
         \item If $f \neq \sum_{v \in V, in(v) > 0}{in(v)}$, there's no solution
         \item Otherwise, the solution of each edge $e$ is $l_e + f_e$, where $f_e$ corresponds to the flow on the graph
     \end{enumerate}
-    \item Construct minimum vertex cover from maximum matching on bipartite graph $(X, Y)$
+    \item Construct minimum vertex cover from maximum matching $M$ on bipartite graph $(X, Y)$
     \begin{enumerate}
-        \item DFS from unmatched vertex in $X$ using unused edges
+        \item Redirect every edge ($y \rightarrow x$ if $(x, y) \in M$, $x \rightarrow y$ otherwise)
+        \item DFS from unmatched vertices in $X$ 
         \item $x \in X$ is chosen iff $x$ is unvisited
         \item $y \in Y$ is chosen iff $y$ is visited
     \end{enumerate}
