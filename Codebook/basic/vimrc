@@ -1,7 +1,7 @@
-set number relativenumber
+se nu rnu
 syn on
 colo desert
 se ai nu ru mouse=a
 se cin et ts=4 sw=4 sts=4
-set backspace=indent,eol,start
+se bs=2
 inoremap {<ENTER> {<ENTER>}<UP><END><ENTER>
