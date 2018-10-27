@@ -22,3 +22,4 @@ codebook by waynetuinfor, WeaK, Tau
 | Tsukuba 2017              | 2018/10/13    |   7  | A | B | C | . | . | F | G | . | I | . | . |
 | Daejeon 2015              | 2018/10/18    |   3  | A | . | C | . | E | F | G | H | I | J | K | L |
 | NEERC Southern 2018       | 2018/10/24    |   3  | A | B | C | D | E | F | G | H | . | . | K | . | . |
+| Daejeon 2011              | 2018/10/27    |   3  | A | B | C | D | E | F | G | H | I | J | . | L |
