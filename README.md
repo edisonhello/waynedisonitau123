@@ -3,7 +3,7 @@ waynedisonitau123
 
 codebook by waynetuinfor, WeaK, Tau
 
-# Onsite Contest
+## Onsite Contest
 | Contest                   | Date          | Rank |   |   |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | --------------------------|:-------------:|:----:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | TOPC 2018                 | 2018/09/15    |   4  | A | B | C | D | E | F | . | . | . |
@@ -12,7 +12,7 @@ codebook by waynetuinfor, WeaK, Tau
 | NTU Wild Card 2018        | 2018/10/20    |   4  | A | . | C | . | E | F | . | H | . | J |
 
 
-# Virtual Practice
+## Virtual Practice
 | Contest                   | Date          | Rank |   |   |   |   |   |   |   |   |   |   |   |   |   |
 | --------------------------|:-------------:|:----:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | ASC 23                    | 2018/09/08    |  50  | . | B | . | . | E | . | G | H | I | . |
