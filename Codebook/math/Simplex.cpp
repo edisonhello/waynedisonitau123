@@ -24,7 +24,7 @@ namespace simplex {
         while (true) {
             int s = -1;
             for (int i = 0; i <= n; ++i) {
-                if (!z || q[i] == -1) continue;
+                if (!z && q[i] == -1) continue;
                 if (s == -1 || d[x][i] < d[x][s]) s = i;
             }
             if (d[x][s] > -eps) return true;
