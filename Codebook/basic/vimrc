@@ -1,7 +1,5 @@
 se nu rnu
 syn on
 colo desert
-se ai nu ru mouse=a
-se cin et ts=4 sw=4 sts=4
-se bs=2
-inoremap {<ENTER> {<ENTER>}<UP><END><ENTER>
+se ai nu ru mouse=a cin et ts=4 sw=4 sts=4 bs=2
+inoremap {<CR>  {<CR>}<Esc>O<TAB>
