@@ -4,23 +4,6 @@
 //
 vector<long long> chk = { 2, 325, 9375, 28178, 450775, 9780504, 1795265022 };
 
-long long fmul(long long a, long long n, long long mod) {
-    long long ret = 0;
-    for (; n; n >>= 1) {
-        if (n & 1) (ret += a) %= mod;
-        (a += a) %= mod;
-    }
-    return ret;
-}
-
-long long fpow(long long a, long long n, long long mod) {
-    long long ret = 1LL;
-    for (; n; n >>= 1) {
-        if (n & 1) ret = fmul(ret, a, mod);
-        a = fmul(a, a, mod);
-    }
-    return ret;
-}
 bool check(long long a, long long u, long long n, int t) {
     a = fpow(a, u, n);
     if (a == 0) return true;
@@ -32,6 +15,7 @@ bool check(long long a, long long u, long long n, int t) {
     }
     return false;
 }
+
 bool is_prime(long long n) {
     if (n < 2) return false;
     if (n % 2 == 0) return n == 2;
