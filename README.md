@@ -10,6 +10,7 @@ codebook by waynetuinfor, WeaK, Tau
 | NTU NCPC 2018             | 2018/09/29    |   2  | A | B | C | . | . | F | G | . | I | . | 
 | NCPC 2018                 | 2018/10/06    |   1  | A | B | C | D | E | F | G | H | I | J | . | . | M | . | O |
 | NTU Wild Card 2018        | 2018/10/20    |   4  | A | . | C | . | E | F | . | H | . | J |
+| Seoul 2018                | 2018/11/03    |   5  | A | B | C | D | E | F | G | . | . | J | K | L |
 
 
 ## Virtual Practice
