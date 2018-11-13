@@ -81,7 +81,7 @@ int main(){
     memset(sccval,-1,sizeof(sccval));
     for(int i:tp){
         if(v[i])continue;
-        if(sccval[bel[i]]==-1)continue;
+        if(sccval[bel[i]]!=-1)continue;
         if(sccval[bel[i^1]]!=-1){
             sccval[bel[i]]=sccval[bel[i^1]]^1;
         }

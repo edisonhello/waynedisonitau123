@@ -27,7 +27,7 @@ int main(){
         else if(z==n){
             pos[n]=n-1;
             int ll=2,rr=n-1;
-            for(int x=n-1;x>=1;--x){
+            for(int x=n-2;x>=1;--x){
                 pos[ll++]=x--;
                 if(x<1)break;
                 pos[rr--]=x;
@@ -87,7 +87,7 @@ int main(){
 #define sq(x) ((x)*(x))
         for(int i=2;i<=n;++i){
             // cout<<"sq of "<<sqrtr[x[i-1]]<<" - "<<sqrtr[x[i]]<<endl;
-            cur=sq(sqrtr[x[i-1]]-sqrtr[x[i]]);
+            cur+=sq(sqrtr[x[i-1]]-sqrtr[x[i]]);
         }
         mx=max(mx,cur);
     }

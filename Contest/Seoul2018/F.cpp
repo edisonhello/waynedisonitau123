@@ -101,11 +101,11 @@ int main(){
             cout<<"error"<<endl;
             exit(0);
         }
-        if(s[i]=='(' && s[i-1]=='+'){
+        if(s[i-1]=='(' && s[i]=='+'){
             cout<<"error"<<endl;
             exit(0);
         }
-        if(s[i]=='+' && s[i-1]==')'){
+        if(s[i-1]=='+' && s[i]==')'){
             cout<<"error"<<endl;
             exit(0);
         }
