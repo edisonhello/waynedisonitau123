@@ -45,7 +45,7 @@ int32_t main() {
         if (x < mx) continue;
         if (check(x)) ans = x;
     }
-    printf("%lld\n", ans / 2);
+    printf("%lld", ans / 2);
     if (ans & 1) puts(".5");
     else puts(".0");
     return 0;
