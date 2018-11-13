@@ -5,7 +5,7 @@ int main() {
     int t; cin >> t;
     while (t--) {
         string s; cin >> s;
-        char c = s.back();
+        char c = s.back(); s.pop_back();
         if (c == 'a') s += "as";
         else if (c == 'i' || c == 'y') s += "ios";
         else if (c == 'l') s += "les";
