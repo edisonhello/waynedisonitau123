@@ -27,3 +27,4 @@ codebook by waynetuinfor, WeaK, Tau
 | Daejeon 2011              | 2018/10/27    |   3  | A | B | C | D | E | F | G | H | I | J | . | L |
 | NEERC Northern 2018       | 2018/11/01    |   3  | A | B | C | . | E | F | . | H | I | . | K | L |
 | Nordic 2018               | 2018/11/07    |   4  | . | B | C | D | E | . | . | H | I | J | K |
+| Tokyo 2014                | 2018/11/14    |   5  | A | B | C | D | E | F | G | . | . | . | . |
