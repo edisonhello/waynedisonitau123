@@ -30,3 +30,4 @@ codebook by waynetuinfor, WeaK, Tau
 | NEERC Northern 2018       | 2018/11/01    |   3  |     9/12     |   743   | A | B | C | . | E | F | . | H | I | . | K | L |
 | Nordic 2018               | 2018/11/07    |   4  |     8/11     |   718   | . | B | C | D | E | . | . | H | I | J | K |
 | Tokyo 2014                | 2018/11/14    |   5  |     7/11     |   604   | A | B | C | D | E | F | G | . | . | . | . |
+| Hong Kong 2016            | 2018/11/17    |   4  |     4/11     |   369   | . | B | C | D | . | . | . | . | . | . | K |
