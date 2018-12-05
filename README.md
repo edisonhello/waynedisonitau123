@@ -34,3 +34,4 @@ codebook by waynetuinfor, WeaK, Tau
 | SEERC 2018                | 2018/11/21    |   1  |     7/11     |   1025  | . | B | C | D | E | . | . | . | I | J | K |
 | Jakarta 2018              | 2018/11/28    |   2  |    10/12     |   1156  | A | . | C | D | . | F | G | H | I | J | K | L |
 | NEERC 2017                | 2018/12/01    |  26  |     6/12     |   863   | A | B | C | D | E | . | . | . | . | . | . | L |
+| NEERC Northern 2006       | 2018/12/05    |   4  |     8/11     |   1206  | . | B | C | D | . | F | G | H | . | J | K |
