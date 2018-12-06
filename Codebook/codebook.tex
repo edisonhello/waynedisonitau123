@@ -88,9 +88,13 @@ literate={\ \ }{{\ }}1
 \renewcommand{\contentsname}{Contents} 
 
 \scriptsize
+\begingroup
+\let\clearpage\relax
 \tableofcontents
+\endgroup
+% \tableofcontents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
+% \newpage
 %\section{Data Structure}
 %\subsection{Treap}
 %\lstinputlisting{/vimrc}
@@ -107,8 +111,8 @@ literate={\ \ }{{\ }}1
 \lstinputlisting{basic/IncStack.cpp}
 \subsection{Pragma optimization}
 \lstinputlisting{basic/Pragma.cpp}
-\subsection{Java}
-\lstinputlisting{basic/filename.java}
+% \subsection{Java}
+% \lstinputlisting{basic/filename.java}
 \section{Flow}
 \subsection{Dinic}
 \lstinputlisting{flow/Dinic.cpp}
@@ -272,13 +276,22 @@ literate={\ \ }{{\ }}1
 \lstinputlisting{geometry/MinimumEnclosingCircle.cpp}
 \subsection{Closest Pair}
 \lstinputlisting{geometry/ClosestPair.cpp}
-\section{Problems}
-\subsection{Manhattan Distance Minimum Spanning Tree}
-\lstinputlisting{problem/ManhattanMST.cpp}
-\subsection{"Dynamic" Kth Element (parallel binary search)}
-\lstinputlisting{problem/DynamicKth_bs.cpp}
-\subsection{Dynamic Kth Element (persistent segment tree)}
-\lstinputlisting{problem/DynamicKth_st.cpp}
+\section{Miscellaneous / Problems}
+\subsection{Bitwise Hack}
+\lstinputlisting{misc/Bitwise.cpp}
 \subsection{Hilbert's Curve (faster Mo's algorithm)}
-\lstinputlisting{problem/HilbertCurve.cpp}
+\lstinputlisting{misc/HilbertCurve.cpp}
+\subsection{Java}
+\lstinputlisting{misc/filename.java}
+\subsection{Offline Dynamic MST}
+\lstinputlisting{misc/DynamicMST.cpp}
+\subsection{Manhattan Distance MST}
+\lstinputlisting{misc/ManhattanMST.cpp}
+\subsection{"Dynamic" Kth Element (parallel binary search)}
+\lstinputlisting{misc/DynamicKth_bs.cpp}
+\subsection{Dynamic Kth Element (persistent segment tree)}
+\lstinputlisting{misc/DynamicKth_st.cpp}
+% \section{Problems}
+% \subsection{Hilbert's Curve (faster Mo's algorithm)}
+% \lstinputlisting{problem/HilbertCurve.cpp}
 \end{document}

@@ -5,15 +5,12 @@ const int maxn = 1e5 + 5;
 int a[maxn], ans[maxn], tmp[maxn];
 
 struct query { int op, l, r, k, qid; };
-
-struct fenwick {
-    int dat[maxn];
-    void init() { memset(dat, 0, sizeof(dat)); }
-    void add(int p, int v) { for (; p < maxn; p += p & -p) dat[p] += v; }
-    int qry(int p, int v = 0) { for (; p; p -= p & -p) v += dat[p]; return v; }
-} bit;
+// op = 1: insertion (l = pos, r = val)
+// op = 2: deletion (l = pos, r = val)
+// op = 3: query
 
 void bs(vector<query> &qry, int l, int r) {
+    // answer to queries in qry are from l to r
     if (l == r) {
         for (int i = 0; i < qry.size(); ++i) {
             if (qry[i].op == 3) ans[qry[i].qid] = l;
