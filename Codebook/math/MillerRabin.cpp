@@ -20,7 +20,7 @@ bool is_prime(long long n) {
     if (n < 2) return false;
     if (n % 2 == 0) return n == 2;
     long long u = n - 1; int t = 0;
-    for (; u & 1; u >>= 1, ++t);
+    for (; !(u & 1); u >>= 1, ++t);
     for (long long i : chk) {
         if (!check(i, u, n, t)) return false;
     }
