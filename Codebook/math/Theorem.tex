@@ -1,0 +1,17 @@
+\subsubsection{Chinese Remainder Theorem}
+% \normalsize
+Given $x \equiv a_i \mod n_i \forall 1 \leq i \leq k$, where $n_i$ are pairwise coprime, find x. \\
+Let $N = \prod_{i = 1}^{k}{n_i}$ and $N_i = N / n_i$, there exist integer $M_i$ and $m_i$ such that $M_iN_i + m_in_i = 1$. \\
+A solution to the system of congruence is $x = \sum_{i = 1}^{k}{a_iM_iN_i}$. 
+
+\subsubsection{Kirchhoff's Theorem}
+% \normalsize
+Denote $L$ be a $n \times n$ matrix as the Laplacian matrix of graph $G$, where $L_{ii} = d(i)$, $L_{ij} = -c$ where $c$ is the number of edge $(i, j)$ in $G$.
+\begin{itemize}
+    \item The number of undirected spanning in $G$ is $\lvert \det(\tilde{L}_{11}) \rvert$.
+    \item The number of directed spanning tree rooted at $r$ in $G$ is $\lvert \det(\tilde{L}_{rr}) \rvert$.
+\end{itemize}
+
+\subsubsection{Tutte's Matrix}
+% \normalsize
+Let $D$ be a $n \times n$ matrix, where $d_{ij} = x_{ij}$ ($x_{ij}$ is chosen uniform randomly) if $i < j$ and $(i, j) \in E$, otherwise $d_{ij} = -d_{ji}$. $\frac{rank(D)}{2}$ is the maximum matching on $G$.

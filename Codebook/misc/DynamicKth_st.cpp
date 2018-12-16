@@ -34,29 +34,10 @@ int dfs(int l, int r, vector<int> lz, vector<int> rz, int k) {
     }
 }
 
-int main() {
-    int n, q; scanf("%d %d", &n, &q);
-    for (int i = 1; i <= n; ++i) scanf("%d", &a[i]), ds.push_back(a[i]);
-    for (int i = 0; i < q; ++i) {
-        int a, b, c; scanf("%d %d %d", &a, &b, &c);
-        vector<int> v = { a, b, c };
-        if (a == 1) {
-            int d; scanf("%d", &d);
-            v.push_back(d);
-        }
-        qr.push_back(v);
-    }
-    for (int i = 0; i < q; ++i) if (qr[i][0] == 2) ds.push_back(qr[i][2]);
-    sort(ds.begin(), ds.end()), ds.resize(unique(ds.begin(), ds.end()) - ds.begin());
-    for (int i = 1; i <= n; ++i) a[i] = lower_bound(ds.begin(), ds.end(), a[i]) - ds.begin();
-    for (int i = 0; i < q; ++i) if (qr[i][0] == 2) qr[i][2] = lower_bound(ds.begin(), ds.end(), qr[i][2]) - ds.begin();
+void solve() {
     init(n);
     for (int i = 1; i <= n; ++i) add(i, n, a[i], 1);
     for (int i = 0; i < q; ++i) {
-        if (qr[i][0] == 3) {
-            puts("7122");
-            continue;
-        }
         if (qr[i][0] == 1) {
             vector<int> lz = query(qr[i][1] - 1);
             vector<int> rz = query(qr[i][2]);
@@ -68,5 +49,4 @@ int main() {
             a[qr[i][1]] = qr[i][2];
         }
     }
-    return 0;
 }
