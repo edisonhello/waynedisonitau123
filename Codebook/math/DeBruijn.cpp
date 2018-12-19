@@ -1,10 +1,9 @@
 int res[maxn], aux[maxn], a[maxn], sz;
 
 void db(int t, int p, int n, int k) {
-    if (sz >= tg) return;
     if (t > n) {
         if (n % p == 0) {
-            for (int i = 1; i <= p && sz < tg; ++i) res[sz++] = aux[i];
+            for (int i = 1; i <= p; ++i) res[sz++] = aux[i];
         }
     } else {
         aux[t] = aux[t - p];
