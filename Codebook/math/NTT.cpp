@@ -21,7 +21,7 @@ struct NTT {
         int z = __builtin_ctz(n) - 1;
         for (int i = 0; i < n; ++i) {
             int x = 0;
-            for (int j = 0; j <= z; ++j) x ^= ((i >> j & 1) << (z - j));
+            for (int j = 0; j <= z; ++j) x ^= (i >> j & 1) << (z - j);
             if (x > i) swap(v[x], v[i]);
         }
     }
