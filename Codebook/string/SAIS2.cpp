@@ -6,9 +6,9 @@ namespace sfxarray {
     // hi[i]: longest common prefix of suffix sa[i] and suffix sa[i - 1].
     void pre(int *sa, int *c, int n, int z) {
         memset(sa, 0, sizeof(int) * n);
-        memset(x, c, sizeof(int) * z);
+        memcpy(x, c, sizeof(int) * z);
     }
-    void induce(int *sa, int *c, bool *t, int n, int z) {
+    void induce(int *sa, int *c, int *s, bool *t, int n, int z) {
         memcpy(x + 1, c, sizeof(int) * (z - 1));
         for (int i = 0; i < n; ++i) if (sa[i] && !t[sa[i] - 1]) sa[x[s[sa[i] - 1]]++] = sa[i] - 1;
         memcpy(x, c, sizeof(int) * z);
@@ -27,7 +27,7 @@ namespace sfxarray {
         for (int i = n - 2; i >= 0; --i) t[i] = (s[i] == s[i + 1] ? t[i + 1] : s[i] < s[i + 1]);
         pre(sa, c, n, z);
         for (int i = 1; i <= n - 1; ++i) if (t[i] && !t[i - 1]) sa[--x[s[i]]] = p[q[i] = nn++] = i;
-        induce(sa, c, t, n, z);
+        induce(sa, c, s, t, n, z);
         for (int i = 0; i < n; ++i) if (sa[i] && t[sa[i]] && !t[sa[i] - 1]) {
             bool neq = last < 0 || memcmp(s + sa[i], s + last, (p[q[sa[i]] + 1] - sa[i]) * sizeof(int));
             ns[q[last = sa[i]]] = nmxz += neq;
@@ -35,7 +35,7 @@ namespace sfxarray {
         sais(ns, nsa, p + nn, q + n, t + n, c + z, nn, nmxz + 1);
         pre(sa, c, n, z);
         for (int i = nn - 1; i >= 0; --i) sa[--x[s[p[nsa[i]]]]] = p[nsa[i]];
-        induce(sa, c, t, n, z);
+        induce(sa, c, s, t, n, z);
     }
     void build(const string &s) {
         for (int i = 0; i < (int)s.size(); ++i) _s[i] = s[i];
