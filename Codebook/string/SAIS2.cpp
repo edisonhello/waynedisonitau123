@@ -39,16 +39,17 @@ namespace sfxarray {
     }
     void build(const string &s) {
         for (int i = 0; i < (int)s.size(); ++i) _s[i] = s[i];
+        _s[(int)s.size()] = 0; // s shouldn't contain 0
         sais(_s, sa, p, q, t, c, (int)s.size() + 1, 256);
         for (int i = 0; i < (int)s.size(); ++i) sa[i] = sa[i + 1];
-        for (int i = 0; i < s.size(); ++i) rev[sa[i]] = i;
+        for (int i = 0; i < (int)s.size(); ++i) rev[sa[i]] = i;
         int ind = 0; hi[0] = 0;
-        for (int i = 0; i < s.size(); ++i) {
+        for (int i = 0; i < (int)s.size(); ++i) {
             if (!rev[i]) { 
                 ind = 0; 
                 continue; 
             }
-            while (i + ind < s.size() && s[i + ind] == s[sa[rev[i] - 1] + ind]) ++ind;
+            while (i + ind < (int)s.size() && s[i + ind] == s[sa[rev[i] - 1] + ind]) ++ind;
             hi[rev[i]] = ind ? ind-- : 0;
         }
     }
