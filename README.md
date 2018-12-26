@@ -40,3 +40,4 @@ codebook by waynetuinfor, WeaK, Tau
 | Singapore 2018           | 2018/12/13    |   4  |    10/12     |   1241  | A | B | C | D | . | F | G | H | . | J | K | L |
 | Nanjing 2018             | 2018/12/16    |   8  |     8/13     |   865   | A | B | . | D | . | . | G | . | I | J | K | . | M |
 | NAIPC 2016               | 2018/12/19    |   4  |     8/11     |   1244  | . | . | C | D | E | F | G | . | I | J | K |
+| Jiaozuo 2018             | 2018/12/26    |  19  |     6/12     |   530   | A | . | . | D | E | F | . | H | I | . | . | . |
