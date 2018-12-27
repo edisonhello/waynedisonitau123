@@ -59,7 +59,7 @@ namespace simplex {
         }
         if (!phase(0)) return vector<double>(n, inf);
         vector<double> x(n);
-        for (int i = 0; i < n; ++i) if (p[i] < n) x[p[i]] = d[i][n + 1];
+        for (int i = 0; i < m; ++i) if (p[i] < n) x[p[i]] = d[i][n + 1];
         return x;
     }
 }
