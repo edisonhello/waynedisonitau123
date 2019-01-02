@@ -11,7 +11,7 @@ template <typename T> struct DMST {
     void addedge(int u, int v, T w) {
         g[u][v] = min(g[u][v], w);
     }
-    double operator()(int root, int _n) {
+    T operator()(int root, int _n) {
         n = _n;
         if (dfs(root) != n) return -1;
         T ans = 0;
