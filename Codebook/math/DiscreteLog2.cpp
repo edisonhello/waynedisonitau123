@@ -1,3 +1,8 @@
+// to solve discrete x for x^a = b (mod p) with p is prime
+// let c = primitive root of p
+// find k such that c^k = b (mod p) by bsgs
+// solve fa = k (mod p - 1) by euclidean algorithm
+// x = c^f
 int bsgs(int a, int b, int p) {
     // return L such that a^L = b (mod p)
     if (p == 1) {
@@ -33,7 +38,7 @@ int bsgs(int a, int b, int p) {
     }
     for (int i = 0; i < m; ++i) {
         // can be modified to fpow if p is prime
-        int r, x, y; tie(r, x, y) = extgcd(d, p, x, y);
+        int r, x, y; tie(r, x, y) = extgcd(d, p);
         x = (1ll * x * b % p + p) % p;
         if (mp.find(x) != mp.end()) return i * m + mp[x] + num;
         d = 1ll * d * base % p;
