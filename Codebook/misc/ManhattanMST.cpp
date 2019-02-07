@@ -6,23 +6,6 @@ int x[maxn], y[maxn], fa[maxn];
 pair<int, int> bit[maxn];
 vector<tuple<int, int, int>> ed;
 
-void init() {
-    for (int i = 0; i < maxn; ++i) 
-        bit[i] = make_pair(1e9, -1);
-}
-
-void add(int p, pair<int, int> v) {
-    for (; p < maxn; p += p & -p)
-        bit[p] = min(bit[p], v);
-}
-
-pair<int, int> query(int p) {
-    pair<int, int> res = make_pair(1e9, -1);
-    for (; p; p -= p & -p)
-        res = min(res, bit[p]);
-    return res;
-}
-
 void add_edge(int u, int v) {
     ed.emplace_back(u, v, abs(x[u] - x[v]) + abs(y[u] - y[v]));
 }
@@ -41,6 +24,7 @@ void solve(int n) {
     for (int i = 0; i < n; ++i) {
         int p = lower_bound(ds.begin(), ds.end(), x[v[i]] - y[v[i]]) - ds.begin() + 1;
         pair<int, int> q = query(p);
+        // query return prefix minimum
         if (~q.second) add_edge(v[i], q.second);
         add(p, make_pair(x[v[i]] + y[v[i]], v[i]));
     }
