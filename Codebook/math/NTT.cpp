@@ -58,7 +58,7 @@ struct NTT {
     }
 };
 
-vector<long long> conv(vector<long long> a, vector<long long> b) {
+vector<long long> convolution(vector<long long> a, vector<long long> b) {
     NTT<mod1, root1> conv1;
     NTT<mod2, root2> conv2;
     vector<long long> pa(a.size()), pb(b.size());

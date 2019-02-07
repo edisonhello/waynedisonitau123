@@ -28,7 +28,7 @@ vector<int> divide(const vector<int> &a, const vector<int> &b) {
     for (int i = 0; i < min(n, k); ++i) ra[i] = a[n - i - 1];
     for (int i = 0; i < min(m, k); ++i) rb[i] = b[m - i - 1];
     vector<int> rbi = inverse(rb, k);
-    vector<int> res = conv(rbi, ra);
+    vector<int> res = convolution(rbi, ra);
     res.resize(n - m + 1);
     reverse(res.begin(), res.end());
     return res;
