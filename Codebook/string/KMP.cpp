@@ -1,7 +1,7 @@
 vector<int> kmp(const string &s) {
     vector<int> f(s.size(), 0);
     // f[i] = length of the longest prefix (excluding s[0:i]) such that it coincides with the suffix of s[0:i] of the same length
-    // i - f[i] is the length of the smallest recurring period of s[0:i]
+    // i + 1 - f[i] is the length of the smallest recurring period of s[0:i]
     int k = 0;
     for (int i = 1; i < (int)s.size(); ++i) {
         while (k > 0 && s[i] != s[k]) k = f[k - 1];
