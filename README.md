@@ -51,3 +51,4 @@ codebook by waynetuinfor, WeaK, Tau
 | KAIST Run Spring 2018    | 2019/02/17    |   8  |     9/11     |   1473  | P | Q | R | S | T | . | V | W | . | Y | Z |
 | ASC 45                   | 2019/02/20    |  11  |     7/11     |   1281  | A | B | C | D | E | F | . | . | . | . | K |
 | CERC 2016                | 2019/02/27    |   3  |     9/12     |   1782  | A | B | C | . | E | F | . | H | . | J | K | L |
+| Xuzhou 2018              | 2019/03/06    |   5  |     5/13     |   996   | A | . | C | . | . | . | G | H | . | . | . | . | M |
