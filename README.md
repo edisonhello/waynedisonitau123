@@ -52,3 +52,4 @@ codebook by waynetuinfor, WeaK, Tau
 | ASC 45                   | 2019/02/20    |  11  |     7/11     |   1281  | A | B | C | D | E | F | . | . | . | . | K |
 | CERC 2016                | 2019/02/27    |   3  |     9/12     |   1782  | A | B | C | . | E | F | . | H | . | J | K | L |
 | Xuzhou 2018              | 2019/03/06    |   5  |     5/13     |   996   | A | . | C | . | . | . | G | H | . | . | . | . | M |
+| PetrSummerCamp Kyiv 2011 | 2019/03/10    |   4  |     7/11     |   954   | A | . | C | . | E | F | . | H | I | . | K |
