@@ -53,3 +53,4 @@ codebook by waynetuinfor, WeaK, Tau
 | CERC 2016                | 2019/02/27    |   3  |     9/12     |   1782  | A | B | C | . | E | F | . | H | . | J | K | L |
 | Xuzhou 2018              | 2019/03/06    |   5  |     5/13     |   996   | A | . | C | . | . | . | G | H | . | . | . | . | M |
 | PetrSummerCamp Kyiv 2011 | 2019/03/10    |   4  |     7/11     |   954   | A | . | C | . | E | F | . | H | I | . | K |
+| CERC 2011                | 2019/03/17    |  23  |     5/10     |   490   | . | . | C | D | E | . | . | . | I | J | 
