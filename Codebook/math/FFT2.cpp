@@ -1,3 +1,5 @@
+namespace fft {
+
 struct cplx {
     double re, im;
     cplx(): re(0), im(0) {}
@@ -11,6 +13,7 @@ struct cplx {
 const int maxn = 262144;
 const double pi = acos(-1);
 cplx omega[maxn + 1];
+bool init
 
 void prefft() {
     for (int i = 0; i <= maxn; ++i)
@@ -27,6 +30,10 @@ void bitrev(vector<cplx> &v, int n) {
 }
 
 void fft(vector<cplx> &v, int n) {
+    if (!init) {
+        init = true;
+        prefft();
+    }
     bitrev(v, n);
     for (int s = 2; s <= n; s <<= 1) {
         int z = s >> 1;
@@ -110,4 +117,5 @@ vector<int> convolution_mod(const vector<int> &a, const vector<int> &b, int p) {
         res[i] = (a + ((b % p) << 15) + ((c % p) << 30)) % p;
     }
     return res;
+}
 }
