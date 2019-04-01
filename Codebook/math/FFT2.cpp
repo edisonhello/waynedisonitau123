@@ -13,7 +13,7 @@ struct cplx {
 const int maxn = 262144;
 const double pi = acos(-1);
 cplx omega[maxn + 1];
-bool init
+bool init;
 
 void prefft() {
     for (int i = 0; i <= maxn; ++i)
