@@ -18,8 +18,8 @@ codebook by waynetuinfor, WeaK, Tau
 ## Training
 (Ranking is calculated based on onsite contestants)
 
-| Contest                  | Date          | Rank | Solved/Total | Penalty | A | B | C | D | E | F | G | H | I | J | K | L | M |
-|--------------------------|:-------------:|:----:|:------------:|:-------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| Contest                     | Date          | Rank | Solved/Total | Penalty | A | B | C | D | E | F | G | H | I | J | K | L | M |
+|-----------------------------|:-------------:|:----:|:------------:|:-------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 | ASC 23                      | 2018/09/08    |  19  |     5/10     |   623   | . | B | . | . | E | . | G | H | I | . |
 | GCPC 2017                   | 2018/09/13    |  20  |     9/11     |   769   | A | B | C | D | E | F | G | . | I | . | K |
 | Vietnam 2017                | 2018/09/22    |   5  |     7/12     |   1254  | . | B | C | . | E | F | . | H | I | J | . | . |
@@ -56,3 +56,4 @@ codebook by waynetuinfor, WeaK, Tau
 | CERC 2011                   | 2019/03/17    |  23  |     5/10     |   490   | . | . | C | D | E | . | . | . | I | J | 
 | PetrWinterCamp Saratov 2011 | 2019/03/20    |  22  |     4/11     |   516   | . | . | . | . | E | . | . | H | I | J | . |
 | NWERC 2015                  | 2019/03/23    |   2  |     9/11     |   895   | A | . | C | D | E | F | G | . | I | J | K |
+| PetrWinterCamp Yandex 2018  | 2019/04/03    |   8  |     8/11     |   1525  | A | . | C | D | . | F | G | H | I | . | K |
