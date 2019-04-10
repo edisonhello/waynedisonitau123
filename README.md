@@ -58,3 +58,4 @@ codebook by waynetuinfor, WeaK, Tau
 | NWERC 2015                  | 2019/03/23    |   2  |     9/11     |   895   | A | . | C | D | E | F | G | . | I | J | K |
 | PetrWinterCamp Yandex 2018  | 2019/04/03    |   8  |     8/11     |   1525  | A | . | C | D | . | F | G | H | I | . | K |
 | BSUIR Final 2016            | 2019/04/07    |   4  |     7/10     |   653   | A | B | C | . | E | F | G | . | I | . |
+| ASC 47                      | 2019/04/10    |  11  |     5/10     |   826   | . | B | . | D | E | F | G | . | . | . |
