@@ -47,7 +47,7 @@ codebook by waynetuinfor, WeaK, Tau
 | ASC 43                      | 2019/01/10    |  19  |     7/12     |   1174  | . | B | . | . | E | . | . | H | I | J | K | L |
 | EC Final 2018               | 2019/01/12    |  17  |     5/12     |   394   | . | . | . | D | . | F | . | . | I | J | . | L |
 | ASC 44                      | 2019/01/19    |  22  |     5/10     |   934   | . | B | C | . | E | . | . | H | I | . |
-| GP of Korea 2018            | 2019/01/26    |  14  |     10/13    |   1281  | A | . | . | D | E | F | G | H | I | J | . | L | M |
+| XIX Open Cup GP of Korea    | 2019/01/26    |  14  |     10/13    |   1281  | A | . | . | D | E | F | G | H | I | J | . | L | M |
 | KAIST Run Spring 2018       | 2019/02/17    |   8  |     9/11     |   1473  | P | Q | R | S | T | . | V | W | . | Y | Z |
 | ASC 45                      | 2019/02/20    |  11  |     7/11     |   1281  | A | B | C | D | E | F | . | . | . | . | K |
 | CERC 2016                   | 2019/02/27    |   3  |     9/12     |   1782  | A | B | C | . | E | F | . | H | . | J | K | L |
@@ -60,3 +60,4 @@ codebook by waynetuinfor, WeaK, Tau
 | BSUIR Final 2016            | 2019/04/07    |   4  |     7/10     |   653   | A | B | C | . | E | F | G | . | I | . |
 | ASC 47                      | 2019/04/10    |  11  |     5/10     |   826   | . | B | . | D | E | F | G | . | . | . |
 | CCPC Final 2018             | 2019/04/24    |  14  |     6/12     |   570   | A | B | . | . | . | . | G | . | I | . | K | L |
+| XVI Open Cup GP of SPB      | 2019/04/28    |  31  |     8/12     |   1223  | A | . | . | D | E | . | G | H | I | J | K | . |
