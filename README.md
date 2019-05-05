@@ -61,3 +61,4 @@ codebook by waynetuinfor, WeaK, Tau
 | ASC 47                      | 2019/04/10    |  11  |     5/10     |   826   | . | B | . | D | E | F | G | . | . | . |
 | CCPC Final 2018             | 2019/04/24    |  14  |     6/12     |   570   | A | B | . | . | . | . | G | . | I | . | K | L |
 | XVI Open Cup GP of SPB      | 2019/04/28    |  31  |     8/12     |   1223  | A | . | . | D | E | . | G | H | I | J | K | . |
+| Multi-Univ Nanjing 2018     | 2019/05/05    |  12  |     7/12     |   986   | A | B | C | D | E | . | G | . | . | J | . | . |
