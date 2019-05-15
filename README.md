@@ -62,4 +62,5 @@ codebook by waynetuinfor, WeaK, Tau
 | CCPC Final 2018                | 2019/04/24    |  14  |     6/12     |   570   | A | B | . | . | . | . | G | . | I | . | K | L |
 | XVI Open Cup GP of SPB         | 2019/04/28    |  31  |     8/12     |   1223  | A | . | . | D | E | . | G | H | I | J | K | . |
 | Multi-Univ Nanjing 2018        | 2019/05/05    |  12  |     7/12     |   986   | A | B | C | D | E | . | G | . | . | J | . | . |
-| XVI Open Cup GP of Ekaterinburg| 2019/05/05    |  32  |     8/11     |   910   | . | B | C | D | E | F | G | . | . | J | K |
+| XVI Open Cup GP of Ekaterinburg| 2019/05/12    |  32  |     8/11     |   910   | . | B | C | D | E | F | G | . | . | J | K |
+| XVI Open Cup GP of Ukraine     | 2019/05/15    |  18  |     11/13    |   1187  | A | B | C | D | E | F | G | . | . | J | K | L | M |
