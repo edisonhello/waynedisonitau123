@@ -64,3 +64,4 @@ codebook by waynetuinfor, WeaK, Tau
 | Multi-Univ Nanjing 2018        | 2019/05/05    |  12  |     7/12     |   986   | A | B | C | D | E | . | G | . | . | J | . | . |
 | XVI Open Cup GP of Ekaterinburg| 2019/05/12    |  32  |     8/11     |   910   | . | B | C | D | E | F | G | . | . | J | K |
 | XVI Open Cup GP of Ukraine     | 2019/05/15    |  18  |     11/13    |   1187  | A | B | C | D | E | F | G | . | . | J | K | L | M |
+| ANZAC 2019 Contest 3           | 2019/05/18    |   1  |     10/10    |   668   | A | B | C | D | E | F | G | H | I | J |
