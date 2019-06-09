@@ -69,3 +69,4 @@ codebook by waynetuinfor, WeaK, Tau
 | XV Open Cup GP of Central Europe | 2019/05/26    |   5  |     10/11    |   1188  | A | B | C | D | E | F | G | . | I | J | K |
 | NEERC Southern 2013              | 2019/05/29    |   3  |     9/13     |   1148  | A | B | C | D | . | F | . | H | I | . | K | L | . |
 | China Multi-Provincial 2018      | 2019/06/05    |   1  |     11/13    |   1424  | A | B | C | D | E | F | G | H | I | . | K | . | M |
+| XIV Open Cup GP of Kharkiv       | 2019/06/09    |  15  |     8/12     |   1782  | A | B | C | . | E | F | G | H | I | . | . | . |
