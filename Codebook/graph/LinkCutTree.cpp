@@ -79,31 +79,30 @@ struct node {
 };
 
 namespace lct {
-    node *sp[maxn];
-    void make(int u, int v) {
-        // create node with id u and value v
-        sp[u] = new node(v, u);
-    }
-    void link(int u, int v) {
-        // u become v's parent
-        sp[v]->evert();
-        sp[v]->pfa = sp[u];
-    }
-    void cut(int u, int v) {
-        // u was v's parent
-        sp[u]->evert();
-        sp[v]->access(), sp[v]->splay(), sp[v]->push();
-        sp[v]->ch[0]->fa = nullptr;
-        sp[v]->ch[0] = nullptr;
-        sp[v]->pull();
-    }
-    void modify(int u, int v) {
-        sp[u]->splay();
-        sp[u]->v = v;
-        sp[u]->pull();
-    }
-    int query(int u, int v) {
-        sp[u]->evert(), sp[v]->access(), sp[v]->splay();
-        return sp[v]->query();
-    }
-} 
+node *sp[maxn];
+void make(int u, int v) {
+    // create node with id u and value v
+    sp[u] = new node(v, u);
+}
+void link(int u, int v) {
+    // u become v's parent
+    sp[v]->evert();
+    sp[v]->pfa = sp[u];
+}
+void cut(int u, int v) {
+    // u was v's parent
+    sp[u]->evert();
+    sp[v]->access(), sp[v]->splay(), sp[v]->push();
+    sp[v]->ch[0]->fa = nullptr;
+    sp[v]->ch[0] = nullptr;
+    sp[v]->pull();
+}
+void modify(int u, int v) {
+    sp[u]->splay();
+    sp[u]->v = v;
+    sp[u]->pull();
+}
+int query(int u, int v) {
+    sp[u]->evert(), sp[v]->access(), sp[v]->splay();
+    return sp[v]->query();
+}} 
