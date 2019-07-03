@@ -71,3 +71,4 @@ codebook by waynetuinfor, WeaK, Tau
 | China Multi-Provincial 2018      | 2019/06/05    |   1  |     11/13    |   1424  | A | B | C | D | E | F | G | H | I | . | K | . | M |
 | XIV Open Cup GP of Kharkiv       | 2019/06/09    |  15  |     8/12     |   1782  | A | B | C | . | E | F | G | H | I | . | . | . |
 | PetrWinterCamp Saratov 2017      | 2019/06/28    |  41  |     6/12     |   1225  | A | . | C | D | . | . | G | . | . | J | . | . |
+| Moscow PreFinal 2019, KAIST      | 2019/07/03    |  33  |     3/10     |   539   | A | . | . | . | . | F | . | H | . | . |
