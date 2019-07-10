@@ -73,3 +73,4 @@ codebook by waynetuinfor, WeaK, Tau
 | PetrWinterCamp Saratov 2017      | 2019/06/28    |  41  |     6/12     |   1225  | A | . | C | D | . | . | G | . | . | J | . | . |
 | Moscow PreFinal 2019, KAIST      | 2019/07/03    |  33  |     3/10     |   539   | A | . | . | . | . | F | . | H | . | . |
 | Multi-Univ Beihang 2017          | 2019/07/04    |   5  |     8/12     |   987   | A | B | C | . | . | F | . | H | I | . | K | L |
+| XIV Open Cup GP of Tatarstan     | 2019/07/10    |  29  |     8/12     |   1124  | A | B | C | . | E | F | G | . | . | . | K | L |
