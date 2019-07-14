@@ -74,3 +74,4 @@ codebook by waynetuinfor, WeaK, Tau
 | Moscow PreFinal 2019, KAIST      | 2019/07/03    |  33  |     3/10     |   539   | A | . | . | . | . | F | . | H | . | . |
 | Multi-Univ Beihang 2017          | 2019/07/04    |   5  |     8/12     |   987   | A | B | C | . | . | F | . | H | I | . | K | L |
 | XIV Open Cup GP of Tatarstan     | 2019/07/10    |  29  |     8/12     |   1124  | A | B | C | . | E | F | G | . | . | . | K | L |
+| NEERC 2014                       | 2019/07/14    |   5  |     7/11     |   685   | A | B | C | . | . | F | . | . | I | J | K |
