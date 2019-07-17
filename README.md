@@ -75,3 +75,4 @@ codebook by waynetuinfor, WeaK, Tau
 | Multi-Univ Beihang 2017          | 2019/07/04    |   5  |     8/12     |   987   | A | B | C | . | . | F | . | H | I | . | K | L |
 | XIV Open Cup GP of Tatarstan     | 2019/07/10    |  29  |     8/12     |   1124  | A | B | C | . | E | F | G | . | . | . | K | L |
 | NEERC 2014                       | 2019/07/14    |   5  |     7/11     |   685   | A | B | C | . | . | F | . | . | I | J | K |
+| NEERC 2015, Moscow Subregional   | 2019/07/17    |   2  |     8/12     |   543   | A | . | C | D | E | . | G | H | I | . | K | . |
