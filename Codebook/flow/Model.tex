@@ -6,14 +6,11 @@
         \item For each edge $(x, y, l, u)$, connect $x \rightarrow y$ with capacity $u - l$
         \item For each vertex $v$, denote $in(v)$ as the difference between the sum of incoming lower bounds and the sum of outgoing lower bounds
         \item If $in(v) > 0$, connect $S \rightarrow v$ with capacity $in(v)$, otherwise, connect $v \rightarrow T$ with capacity $-in(v)$
-        \item Connect $t \rightarrow s$ with capacity $\infty$, and let $f$ be the maximum flow from $S$ to $T$.
-        \item If $f \neq \sum_{v \in V, in(v) > 0}{in(v)}$, there's no solution
-        \item Otherwise, 
-            \begin{itemize}
-                \item Maximize: flow from $s$ to $t$.
-                \item Minimize: flow from $t$ to $s$.
-            \end{itemize}
-        \item the solution of each edge $e$ is $l_e + f_e$, where $f_e$ corresponds to the flow on the graph
+        \begin{itemize}
+            \item To maximize, connect $t \rightarrow s$ with capacity $\infty$, and let $f$ be the maximum flow from $S$ to $T$. If $f \neq \sum_{v \in V, in(v) > 0}{in(v)}$, there's no solution. Otherwise, the maximum flow from $s$ to $t$ is the answer.
+            \item To minimize, let $f$ be the maximum flow from $S$ to $T$. Connect $t \rightarrow s$ with capacity $\infty$ and let the flow from $S$ to $T$ be $f^\prime$. If $f + f^\prime \neq \sum_{v \in V, in(v) > 0}{in(v)}$, there's no solution. Otherwise, $f^\prime$ is the answer.
+        \end{itemize}
+        \item The solution of each edge $e$ is $l_e + f_e$, where $f_e$ corresponds to the flow on the graph
     \end{enumerate}
     \item Construct minimum vertex cover from maximum matching $M$ on bipartite graph $(X, Y)$
     \begin{enumerate}
