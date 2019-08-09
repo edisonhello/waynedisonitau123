@@ -1,43 +1,55 @@
 struct MaxClique {
-    int n, deg[maxn], ans;
-    bitset<maxn> adj[maxn];
+    // change to bitset for n > 64.
+    int n, deg[maxn];
+    uint64_t adj[maxn], ans;
     vector<pair<int, int>> edge;
-    void init(int _n) {
-        n = _n;
-        for (int i = 0; i < n; ++i) adj[i].reset();
-        for (int i = 0; i < n; ++i) deg[i] = 0;
+    void init(int n_) {
+        n = n_;
+        fill(adj, adj + n, 0ull);
+        fill(deg, deg + n, 0);
         edge.clear();
     }
-    void add_edge(int a, int b) {
-        edge.emplace_back(a, b);
-        ++deg[a]; ++deg[b];
+    void add_edge(int u, int v) {
+        edge.emplace_back(u, v);
+        ++deg[u], ++deg[v];
     }
-    int solve() {
-        vector<int> ord;
-        for (int i = 0; i < n; ++i) ord.push_back(i);
-        sort(ord.begin(), ord.end(), [&](const int &a, const int &b) { return deg[a] < deg[b]; });
+    vector<int> operator()() {
+        vector<int> ord(n);
+        iota(ord.begin(), ord.end(), 0);
+        sort(ord.begin(), ord.end(), [&](int u, int v) { return deg[u] < deg[v]; });
         vector<int> id(n);
         for (int i = 0; i < n; ++i) id[ord[i]] = i;
         for (auto e : edge) {
             int u = id[e.first], v = id[e.second];
-            adj[u][v] = adj[v][u] = true;
+            adj[u] |= (1ull << v);
+            adj[v] |= (1ull << u);
         }
-        bitset<maxn> r, p;
-        for (int i = 0; i < n; ++i) p[i] = true;
+        uint64_t r = 0, p = (1ull << n) - 1;
         ans = 0;
         dfs(r, p);
-        return ans;
+        vector<int> res;
+        for (int i = 0; i < n; ++i) {
+            if (ans >> i & 1) res.push_back(ord[i]);
+        }
+        return res;
     }
-    void dfs(bitset<maxn> r, bitset<maxn> p) {
-        if (p.count() == 0) return ans = max(ans, (int)r.count()), void();
-        if ((r | p).count() <= ans) return;
-        int now = p._Find_first();
-        bitset<maxn> cur = p & ~adj[now];
-        for (now = cur._Find_first(); now < n; now = cur._Find_next(now)) {
-            r[now] = true;
-            dfs(r, p & adj[now]);
-            r[now] = false;
-            p[now] = false;
+#define pcount __builtin_popcountll
+    void dfs(uint64_t r, uint64_t p) {
+        if (p == 0) {
+            if (pcount(r) > pcount(ans)) ans = r;
+            return;
+        }
+        if (pcount(r | p) <= pcount(ans)) return;
+        int x = __builtin_ctzll(p & -p);
+        uint64_t c = p & ~adj[x];
+        while (c > 0) {
+            // bitset._Find_first(); bitset._Fint
+            x = __builtin_ctzll(c & -c);
+            r |= (1ull << x);
+            dfs(r, p & adj[x]);
+            r &= ~(1ull << x);
+            p &= ~(1ull << x);
+            c ^= (1ull << x);
         }
     }
 };
