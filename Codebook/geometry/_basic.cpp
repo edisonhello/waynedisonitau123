@@ -27,3 +27,30 @@ Point intersect(Line la,Line lb){
     double bot=-la.a*lb.b+la.b*lb.a;
     return Point(-la.b*lb.c+la.c*lb.b,la.a*lb.c-la.c*lb.a)/bot;
 }
+
+bool intersect(Point p1, Point p2, Point p3, Point p4) {
+    if (max(p1.x, p2.x) < min(p3.x, p4.x) || max(p3.x, p4.x) < min(p1.x, p2.x)) return false;
+    if (max(p1.y, p2.y) < min(p3.y, p4.y) || max(p3.y, p4.y) < min(p1.y, p2.y)) return false;
+    return sign((p3 - p1) % (p4 - p1)) * sign((p3 - p2) % (p4 - p2)) <= 0 &&
+           sign((p1 - p3) % (p2 - p3)) * sign((p1 - p4) % (p2 - p4)) <= 0;
+}
+
+int contain(const vector<Point> &ps, Point p) {
+    // ps is not necessarily convex.
+    int n = (int)ps.size();
+    for (int i = 0; i < n; ++i) {
+        Point a = ps[i], b = ps[(i + 1) % n];
+        // on segment
+        if ((p - a) * (b - a) >= 0 && (p - b) * (a - b) >= 0 && (p - a) % (b - a) == 0) return 1;
+    }
+    // infinity
+    Point q = Point(1000000000, p.y);
+    int res = 0;
+    for (int i = 0; i < n; ++i) {
+        Point a = ps[i], b = ps[(i + 1) % n];
+        if (intersect(a, b, p, q) && p.y >= min(a.y, b.y) && p.y < max(a.y, b.y)) res ^= 1;
+    }
+    // ps contains p.
+    if (res == 1) return 2;
+    return 0;
+}
