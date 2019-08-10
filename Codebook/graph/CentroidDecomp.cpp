@@ -1,8 +1,3 @@
-vector<pair<int, int>> G[maxn];
-int sz[maxn], mx[maxn];
-bool v[maxn];
-vector<int> vtx;
-
 void get_center(int now) {
     v[now] = true; vtx.push_back(now);
     sz[now] = 1; mx[now] = 0;

@@ -1,15 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
-const int maxn = 1e5 + 5;
-int x[maxn], y[maxn], fa[maxn];
-pair<int, int> bit[maxn];
-vector<tuple<int, int, int>> ed;
-
-void add_edge(int u, int v) {
-    ed.emplace_back(u, v, abs(x[u] - x[v]) + abs(y[u] - y[v]));
-}
-
 void solve(int n) {
     init();
     vector<int> v(n), ds;
@@ -30,18 +18,7 @@ void solve(int n) {
     }
 }
 
-int find(int x) {
-    if (x == fa[x]) return x;
-    return fa[x] = find(fa[x]);
-}
-
-void merge(int x, int y) {
-    fa[find(x)] = find(y);
-}
-
-int main() {
-    int n; scanf("%d", &n);
-    for (int i = 0; i < n; ++i) scanf("%d %d", &x[i], &y[i]);
+void make_graph() {
     solve(n);
     for (int i = 0; i < n; ++i) swap(x[i], y[i]);
     solve(n);
@@ -49,17 +26,4 @@ int main() {
     solve(n);
     for (int i = 0; i < n; ++i) swap(x[i], y[i]);
     solve(n);
-    sort(ed.begin(), ed.end(), [](const tuple<int, int, int> &a, const tuple<int, int, int> &b) {
-        return get<2>(a) < get<2>(b);
-    });
-    for (int i = 0; i < n; ++i) fa[i] = i;
-    long long ans = 0;
-    for (int i = 0; i < ed.size(); ++i) {
-        int x, y, w; tie(x, y, w) = ed[i];
-        if (find(x) == find(y)) continue;
-        merge(x, y);
-        ans += w;
-    }
-    printf("%lld\n", ans);
-    return 0;
 }

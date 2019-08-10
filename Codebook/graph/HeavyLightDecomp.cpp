@@ -1,6 +1,3 @@
-vector<int> g[maxn];
-int dep[maxn], sz[maxn], to[maxn], fa[maxn], fr[maxn], dfn[maxn];
-
 void dfs(int x, int p) {
     dep[x] = ~p ? dep[p] + 1 : dep[x];
     sz[x] = 1;
