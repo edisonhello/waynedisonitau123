@@ -1,85 +1,79 @@
 namespace matching {
-int fa[maxn], match[maxn], aux[maxn], orig[maxn], v[maxn], tk;
+int fa[maxn], pre[maxn], match[maxn], s[maxn], v[maxn];
 vector<int> g[maxn];
 queue<int> q;
-void init() {
-    for (int i = 0; i < maxn; ++i) {
-        g[i].clear();
-        match[i] = -1;
-        fa[i] = -1;
-        aux[i] = 0;
-    }
-    tk = 0;
+void init(int n) {
+    for (int i = 0; i <= n; ++i) match[i] = pre[i] = n;
+    for (int i = 0; i < n; ++i) g[i].clear();
 }
-void add_edge(int x, int y) {
-    g[x].push_back(y);
-    g[y].push_back(x);
+void add_edge(int u, int v) {
+    g[u].push_back(v);
+    g[v].push_back(u);
 }
-void augment(int x, int y) {
-    int a = y, b = -1;
-    do {
-        a = fa[y], b = match[a];
-        match[y] = a, match[a] = y;
-        y = b;
-    } while (x != a);
+int find(int u) {
+    if (u == fa[u]) return u;
+    return fa[u] = find(fa[u]);
 }
-int lca(int x, int y) {
-    ++tk;
-    while (true) {
-        if (~x) {
-            if (aux[x] == tk) return x;
-            aux[x] = tk;
-            x = orig[fa[match[x]]];
+int lca(int x, int y, int n) {
+    static int tk = 0;
+    tk++;
+    x = find(x), y = find(y);
+    for (; ; swap(x, y)) {
+        if (x != n) {
+            if (v[x] == tk) return x;
+            v[x] = tk;
+            x = find(pre[match[x]]);
         }
-        swap(x, y);
     }
 }
-void blossom(int x, int y, int a) {
-    while (orig[x] != a) {
-        fa[x] = y, y = match[x];
-        if (v[y] == 1) q.push(y), v[y] = 0;
-        orig[x] = orig[y] = a;
-        x = fa[y];
+void blossom(int x, int y, int l) {
+    while (find(x) != l) {
+        pre[x] = y;
+        y = match[x];
+        if (s[y] == 1) {
+            q.push(y);
+            s[y] = 0;
+        }
+        if (fa[x] == x) fa[x] = l;
+        if (fa[y] == y) fa[y] = l;
+        x = pre[y];
     }
 }
-bool bfs(int s) {
-    for (int i = 0; i < maxn; ++i) {
-        v[i] = -1;
-        orig[i] = i;
+bool bfs(int r, int n) {
+    for (int i = 0; i <= n; ++i) {
+        fa[i] = i;
+        s[i] = -1;
     }
-    q = queue<int>();
-    q.push(s);
-    v[s] = 0;
-    while (q.size()) {
+    while (!q.empty()) q.pop();
+    q.push(r);
+    s[r] = 0;
+    while (!q.empty()) {
         int x = q.front(); q.pop();
-        for (const int &u : g[x]) {
-            if (v[u] == -1) {
-                fa[u] = x, v[u] = 1;
-                if (!~match[u]) return augment(s, u), true;
+        for (int u : g[x]) {
+            if (s[u] == -1) {
+                pre[u] = x;
+                s[u] = 1;
+                if (match[u] == n) {
+                    for (int a = u, b = x, last; b != n; a = last, b = pre[a])
+                        last = match[b], match[b] = a, match[a] = b;
+                    return true;
+                }
                 q.push(match[u]);
-                v[match[u]] = 0;
-            } else if (v[u] == 0 && orig[x] != orig[u]) {
-                int a = lca(orig[x], orig[u]);
-                blossom(u, x, a);
-                blossom(x, u, a);
+                s[match[u]] = 0;
+            } else if (!s[u] && find(u) != find(x)) {
+                int l = lca(u, x, n);
+                blossom(x, u, l);
+                blossom(u, x, l);
             }
         }
     }
     return false;
 }
 int solve(int n) {
-    int ans = 0;
-    vector<int> z(n);
-    iota(z.begin(), z.end(), 0);
-    random_shuffle(z.begin(), z.end());
-    for (int x : z) if (!~match[x]) {
-        for (int y : g[x]) if (!~match[y]) {
-            match[y] = x;
-            match[x] = y;
-            ++ans;
-            break;
-        }
+    int res = 0;
+    for (int x = 0; x < n; ++x) {
+        if (match[x] == n) res += bfs(x, n);
     }
-    for (int i = 0; i < n; ++i) if (!~match[i] && bfs(i)) ++ans;
-    return ans;
+    return res;
 }}
+
