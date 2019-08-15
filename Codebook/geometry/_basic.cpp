@@ -22,9 +22,9 @@ struct L{
     L(P pa, P pb) : a(pa.y - pb.y), b(pb.x - pa.x), c(pa ^ pb), o(atan2(-a, b)), pa(pa), pb(pb) {}
     P project(P p) { return pa + (pb - pa).unit() * ((pb - pa) * (p - pa) / (pb - pa).abs()); }
     P reflect(P p) { return p + (project(p) - p) * 2; }
+    double get_ratio(P p) { return (p - pa) * (pb - pa) / ((pb - pa).abs() * (pb - pa).abs()); }
 };
 
-P intersect(L x, L y) {
-    if (same(x.a * y.b, x.b * y.a)) throw;
-    return P(-x.b * y.c + x.c * y.b, x.a * y.c - x.c * y.a) / (-x.a * y.b + x.b * y.a);
-}
+bool parallel(L x, L y) { return same(x.a * y.b, x.b * y.a); }
+
+P intersect(L x, L y) { return P(-x.b * y.c + x.c * y.b, x.a * y.c - x.c * y.a) / (-x.a * y.b + x.b * y.a); }
