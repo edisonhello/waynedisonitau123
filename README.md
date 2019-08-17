@@ -78,3 +78,4 @@ codebook by waynetuinfor, WeaK, Tau
 | NEERC 2015, Moscow Subregional   | 2019/07/17    |   2  |     8/12     |   543   | A | . | C | D | E | . | G | H | I | . | K | . |
 | PtzWinterCamp Moscow SU 2013     | 2019/07/24    |   9  |     5/11     |   827   | A | . | C | D | . | F | . | . | . | J | . |
 | PtzWinterCamp Moscow SU 2009     | 2019/07/28    |   1  |     9/11     |   1188  | A | B | C | D | . | F | G | . | I | J | K |
+| NWERC 2016                       | 2019/08/17    |   4  |     9/11     |   1120  | A | B | C | D | E | F | . | H | I | J | . |
