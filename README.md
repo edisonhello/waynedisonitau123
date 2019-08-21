@@ -79,3 +79,4 @@ codebook by waynetuinfor, WeaK, Tau
 | PtzWinterCamp Moscow SU 2013     | 2019/07/24    |   9  |     5/11     |   827   | A | . | C | D | . | F | . | . | . | J | . |
 | PtzWinterCamp Moscow SU 2009     | 2019/07/28    |   1  |     9/11     |   1188  | A | B | C | D | . | F | G | . | I | J | K |
 | NWERC 2016                       | 2019/08/17    |   4  |     9/11     |   1120  | A | B | C | D | E | F | . | H | I | J | . |
+| ECL-Final 2017                   | 2019/08/21    |   1  |     12/13    |   1439  | A | B | C | D | E | F | G | H | . | J | K | L | M |
