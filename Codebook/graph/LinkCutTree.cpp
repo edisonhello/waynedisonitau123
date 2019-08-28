@@ -1,7 +1,7 @@
 struct node {
     node *ch[2], *fa, *pfa;
-    int sum, v, rev;
-    node(int s): v(s), sum(s), rev(0), fa(nullptr), pfa(nullptr) {
+    int sum, v, rev, id;
+    node(int s, int id): id(id), v(s), sum(s), rev(0), fa(nullptr), pfa(nullptr) {
         ch[0] = nullptr;
         ch[1] = nullptr;
     }
@@ -105,4 +105,15 @@ void modify(int u, int v) {
 int query(int u, int v) {
     sp[u]->evert(), sp[v]->access(), sp[v]->splay();
     return sp[v]->query();
+}
+int find(int u) {
+    sp[u]->access();
+    sp[u]->splay();
+    node *p = sp[u];
+    while (true) {
+        p->push();
+        if (p->ch[0]) p = p->ch[0];
+        else break;
+    }
+    return p->id;
 }} 
