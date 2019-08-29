@@ -53,7 +53,6 @@ struct NTT {
         vector<long long> c(sz);
         for (int i = 0; i < sz; ++i) c[i] = a[i] * b[i] % mod;
         intt(c, sz);
-        while (c.size() && c.back() == 0) c.pop_back();
         return c;
     }
 };

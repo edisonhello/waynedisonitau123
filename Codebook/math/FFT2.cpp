@@ -46,7 +46,8 @@ void ifft(vector<cplx> &v, int n) {
     reverse(v.begin() + 1, v.end());
     for (int i = 0; i < n; ++i) v[i] = v[i] * cplx(1. / n, 0);
 }
-vector<int> convolution(const vector<int> &a, const vector<int> &b) {
+vector<long long> convolution(const vector<int> &a, const vector<int> &b) {
+    // Should be able to handle N <= 10^5, C <= 10^4
     int sz = 1; 
     while (sz < a.size() + b.size() - 1) sz <<= 1;
     vector<cplx> v(sz);
@@ -63,9 +64,8 @@ vector<int> convolution(const vector<int> &a, const vector<int> &b) {
         v[i] = x;
     }
     ifft(v, sz);
-    vector<int> c(sz);
+    vector<long long> c(sz);
     for (int i = 0; i < sz; ++i) c[i] = round(v[i].re);
-    while (c.size() && c.back() == 0) c.pop_back();
     return c;
 }
 vector<int> convolution_mod(const vector<int> &a, const vector<int> &b, int p) {
