@@ -47,7 +47,7 @@ codebook by waynetuinfor, WeaK, Tau
 | ASC 43                           | 2019/01/10    |  19  |     7/12     |   1174  | . | B | . | . | E | . | . | H | I | J | K | L |
 | EC Final 2018                    | 2019/01/12    |  17  |     5/12     |   394   | . | . | . | D | . | F | . | . | I | J | . | L |
 | ASC 44                           | 2019/01/19    |  22  |     5/10     |   934   | . | B | C | . | E | . | . | H | I | . |
-| XIX Open Cup GP of Korea         | 2019/01/26    |  14  |     10/13    |   1281  | A | . | . | D | E | F | G | H | I | J | . | L | M |
+| XIX OpenCup GP of Korea          | 2019/01/26    |  14  |     10/13    |   1281  | A | . | . | D | E | F | G | H | I | J | . | L | M |
 | KAIST Run Spring 2018            | 2019/02/17    |   8  |     9/11     |   1473  | P | Q | R | S | T | . | V | W | . | Y | Z |
 | ASC 45                           | 2019/02/20    |  11  |     7/11     |   1281  | A | B | C | D | E | F | . | . | . | . | K |
 | CERC 2016                        | 2019/02/27    |   3  |     9/12     |   1782  | A | B | C | . | E | F | . | H | . | J | K | L |
@@ -60,20 +60,20 @@ codebook by waynetuinfor, WeaK, Tau
 | BSUIR Final 2016                 | 2019/04/07    |   4  |     7/10     |   653   | A | B | C | . | E | F | G | . | I | . |
 | ASC 47                           | 2019/04/10    |  11  |     5/10     |   826   | . | B | . | D | E | F | G | . | . | . |
 | CCPC Final 2018                  | 2019/04/24    |  14  |     6/12     |   570   | A | B | . | . | . | . | G | . | I | . | K | L |
-| XVI Open Cup GP of SPB           | 2019/04/28    |  31  |     8/12     |   1223  | A | . | . | D | E | . | G | H | I | J | K | . |
+| XVI OpenCup GP of SPB            | 2019/04/28    |  31  |     8/12     |   1223  | A | . | . | D | E | . | G | H | I | J | K | . |
 | Multi-Univ Nanjing 2018          | 2019/05/05    |  12  |     7/12     |   986   | A | B | C | D | E | . | G | . | . | J | . | . |
-| XVI Open Cup GP of Ekaterinburg  | 2019/05/12    |  32  |     8/11     |   910   | . | B | C | D | E | F | G | . | . | J | K |
-| XVI Open Cup GP of Ukraine       | 2019/05/15    |  18  |     11/13    |   1187  | A | B | C | D | E | F | G | . | . | J | K | L | M |
+| XVI OpenCup GP of Ekaterinburg   | 2019/05/12    |  32  |     8/11     |   910   | . | B | C | D | E | F | G | . | . | J | K |
+| XVI OpenCup GP of Ukraine        | 2019/05/15    |  18  |     11/13    |   1187  | A | B | C | D | E | F | G | . | . | J | K | L | M |
 | ANZAC 2019 Contest 3             | 2019/05/18    |   1  |     10/10    |   668   | A | B | C | D | E | F | G | H | I | J |
 | BSUIR Final 2015                 | 2019/05/22    |   2  |     7/10     |   745   | A | . | C | D | E | . | G | H | I | . |
-| XV Open Cup GP of Central Europe | 2019/05/26    |   5  |     10/11    |   1188  | A | B | C | D | E | F | G | . | I | J | K |
+| XV OpenCup GP of Central Europe  | 2019/05/26    |   5  |     10/11    |   1188  | A | B | C | D | E | F | G | . | I | J | K |
 | NEERC Southern 2013              | 2019/05/29    |   3  |     9/13     |   1148  | A | B | C | D | . | F | . | H | I | . | K | L | . |
 | China Multi-Provincial 2018      | 2019/06/05    |   1  |     11/13    |   1424  | A | B | C | D | E | F | G | H | I | . | K | . | M |
-| XIV Open Cup GP of Kharkiv       | 2019/06/09    |  15  |     8/12     |   1782  | A | B | C | . | E | F | G | H | I | . | . | . |
+| XIV OpenCup GP of Kharkiv        | 2019/06/09    |  15  |     8/12     |   1782  | A | B | C | . | E | F | G | H | I | . | . | . |
 | PtzWinterCamp Saratov 2017       | 2019/06/28    |  41  |     6/12     |   1225  | A | . | C | D | . | . | G | . | . | J | . | . |
 | Moscow PreFinal 2019, KAIST      | 2019/07/03    |  33  |     3/10     |   539   | A | . | . | . | . | F | . | H | . | . |
 | Multi-Univ Beihang 2017          | 2019/07/04    |   5  |     8/12     |   987   | A | B | C | . | . | F | . | H | I | . | K | L |
-| XIV Open Cup GP of Tatarstan     | 2019/07/10    |  29  |     8/12     |   1124  | A | B | C | . | E | F | G | . | . | . | K | L |
+| XIV OpenCup GP of Tatarstan      | 2019/07/10    |  29  |     8/12     |   1124  | A | B | C | . | E | F | G | . | . | . | K | L |
 | NEERC 2014                       | 2019/07/14    |   5  |     7/11     |   685   | A | B | C | . | . | F | . | . | I | J | K |
 | NEERC 2015, Moscow Subregional   | 2019/07/17    |   2  |     8/12     |   543   | A | . | C | D | E | . | G | H | I | . | K | . |
 | PtzWinterCamp Moscow SU 2013     | 2019/07/24    |   9  |     5/11     |   827   | A | . | C | D | . | F | . | . | . | J | . |
@@ -81,3 +81,4 @@ codebook by waynetuinfor, WeaK, Tau
 | NWERC 2016                       | 2019/08/17    |   4  |     9/11     |   1120  | A | B | C | D | E | F | . | H | I | J | . |
 | ECL-Final 2017                   | 2019/08/21    |   1  |     12/13    |   1439  | A | B | C | D | E | F | G | H | . | J | K | L | M |
 | JAG Spring Contest 2015          | 2019/08/24    |   3  |     6/12     |   1053  | A | . | . | D | E | F | G | . | . | . | . | L |
+| IX OpenCup II YandexSummerSchool | 2019/08/31    |   4  |     6/10     |   1221  | A | . | . | D | E | F | . | H | I | . |
