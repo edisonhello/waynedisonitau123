@@ -14,15 +14,22 @@ struct P {
     P unit() { return *this / abs(); }
 };
 
-struct L{
+struct L {
     // ax + by + c = 0
-    double a, b ,c, o;
+    double a, b, c, o;
     P pa, pb;
     L() : a(0), b(0), c(0), o(0), pa(), pb() {}
     L(P pa, P pb) : a(pa.y - pb.y), b(pb.x - pa.x), c(pa ^ pb), o(atan2(-a, b)), pa(pa), pb(pb) {}
     P project(P p) { return pa + (pb - pa).unit() * ((pb - pa) * (p - pa) / (pb - pa).abs()); }
     P reflect(P p) { return p + (project(p) - p) * 2; }
     double get_ratio(P p) { return (p - pa) * (pb - pa) / ((pb - pa).abs() * (pb - pa).abs()); }
+};
+
+struct C {
+    P c;
+    double r;
+    C() : r(0) {}
+    C(P c, double r) : c(c), r(r) {}
 };
 
 bool parallel(L x, L y) { return same(x.a * y.b, x.b * y.a); }
