@@ -11,14 +11,11 @@ vector<P> convex(vector<P> ps) {
         p.push_back(ps[i]);
     }
     int t = p.size();
-    cerr << "t = " << t << endl;
     for (int i = (int)ps.size() - 2; i >= 0; --i) {
-        cerr << "i = " << i << endl;
         while (p.size() > t && crx(p[p.size() - 2], ps[i], p[p.size() - 1]) >= 0) p.pop_back();
         p.push_back(ps[i]);
     }
     p.pop_back();
-    cerr << "p = " << p.size() << endl;
     return p;
 }
 
