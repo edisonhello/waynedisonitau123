@@ -12,6 +12,10 @@ struct P {
     double operator ^ (P b) { return x * b.y - y * b.x; }
     double abs() { return hypot(x, y); }
     P unit() { return *this / abs(); }
+    P spin(double o) {
+        double c = cos(o), s = sin(o);
+        return P(c * x - s * y, s * x + c * y);
+    }
 };
 
 struct L {

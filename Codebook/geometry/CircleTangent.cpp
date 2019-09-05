@@ -18,3 +18,18 @@ vector<L> tangent(C c1, C c2) {
     }
     return res;
 }
+
+vector<L> tangent(C c, P p) {
+    vector<L> res;
+    double d = (p - c.c).abs();
+    if (same(d, c.r)) {
+        P i = (p - c.c).spin(pi / 2);
+        res.emplace_back(p, p + i);
+    } else if (d > c.r) {
+        double o = acos(c.r / d);
+        P i = (p - c.c).unit(), j = i.spin(o) * c.r, k = i.spin(-o) * c.r;
+        res.emplace_back(c.c + j, p);
+        res.emplace_back(c.c + k, p);
+    }
+    return res;
+}
