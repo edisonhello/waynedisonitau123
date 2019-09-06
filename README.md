@@ -82,3 +82,4 @@ codebook by waynetuinfor, WeaK, Tau
 | ECL-Final 2017                   | 2019/08/21    |   1  |     12/13    |   1439  | A | B | C | D | E | F | G | H | . | J | K | L | M |
 | JAG Spring Contest 2015          | 2019/08/24    |   3  |     6/12     |   1053  | A | . | . | D | E | F | G | . | . | . | . | L |
 | IX OpenCup II YandexSummerSchool | 2019/08/31    |   4  |     6/10     |   1221  | A | . | . | D | E | F | . | H | I | . |
+| PtzWinterCamp Yandex 2019        | 2019/09/06    |  15  |     5/10     |   624   | A | . | C | . | . | . | . | H | I | J |
