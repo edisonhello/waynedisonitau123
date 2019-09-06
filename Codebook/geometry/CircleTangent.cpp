@@ -1,35 +1,35 @@
-vector<L> tangent(C c1, C c2) {
+vector<L> tangent(C a, C b) {
 #define Pij \
-    P i = (c2.c - c1.c).unit() * c1.r, j = P(i.y, -i.x);\
-    res.emplace_back(c1.c + i, c1.c + i + j);
+    P i = (b.c - a.c).unit() * a.r, j = P(i.y, -i.x);\
+    z.emplace_back(a.c + i, a.c + i + j);
 #define deo(I,J) \
-    double d = (c1.c - c2.c).abs(), e = c1.r I c2.r, o = acos(e / d);\
-    P i = (c2.c - c1.c).unit(), j = i.spin(o), k = i.spin(-o);\
-    res.emplace_back(c1.c + j * c1.r, c2.c J j * c2.r);\
-    res.emplace_back(c1.c + k * c1.r, c2.c J k * c2.r);
-    if (c1.r < c2.r) swap(c1, c2);
-    vector<L> res;
-    if ((c1.c - c2.c).abs() + c2.r < c1.r) return res;
-    else if (same((c1.c - c2.c).abs() + c2.r, c1.r)) { Pij; } 
+    double d = (a.c - b.c).abs(), e = a.r I b.r, o = acos(e / d);\
+    P i = (b.c - a.c).unit(), j = i.spin(o), k = i.spin(-o);\
+    z.emplace_back(a.c + j * a.r, b.c J j * b.r);\
+    z.emplace_back(a.c + k * a.r, b.c J k * b.r);
+    if (a.r < b.r) swap(a, b);
+    vector<L> z;
+    if ((a.c - b.c).abs() + b.r < a.r) return z;
+    else if (same((a.c - b.c).abs() + b.r, a.r)) { Pij; } 
     else {
         deo(-,+);
-        if (same(d, c1.r + c2.r)) { Pij; } 
-        else if (d > c1.r + c2.r) { deo(+,-); }
+        if (same(d, a.r + b.r)) { Pij; } 
+        else if (d > a.r + b.r) { deo(+,-); }
     }
-    return res;
+    return z;
 }
 
 vector<L> tangent(C c, P p) {
-    vector<L> res;
+    vector<L> z;
     double d = (p - c.c).abs();
     if (same(d, c.r)) {
         P i = (p - c.c).spin(pi / 2);
-        res.emplace_back(p, p + i);
+        z.emplace_back(p, p + i);
     } else if (d > c.r) {
         double o = acos(c.r / d);
         P i = (p - c.c).unit(), j = i.spin(o) * c.r, k = i.spin(-o) * c.r;
-        res.emplace_back(c.c + j, p);
-        res.emplace_back(c.c + k, p);
+        z.emplace_back(c.c + j, p);
+        z.emplace_back(c.c + k, p);
     }
-    return res;
+    return z;
 }

@@ -16,6 +16,7 @@ struct P {
         double c = cos(o), s = sin(o);
         return P(c * x - s * y, s * x + c * y);
     }
+    double angle() { return atan2(y, x); }
 };
 
 struct L {
@@ -29,20 +30,13 @@ struct L {
     double get_ratio(P p) { return (p - pa) * (pb - pa) / ((pb - pa).abs() * (pb - pa).abs()); }
 };
 
-struct C {
-    P c;
-    double r;
-    C() : r(0) {}
-    C(P c, double r) : c(c), r(r) {}
-};
-
-bool intersect(Point p1, Point p2, Point p3, Point p4) {
+bool SegmentIntersect(P p1, P p2, P p3, P p4) {
     if (max(p1.x, p2.x) < min(p3.x, p4.x) || max(p3.x, p4.x) < min(p1.x, p2.x)) return false;
     if (max(p1.y, p2.y) < min(p3.y, p4.y) || max(p3.y, p4.y) < min(p1.y, p2.y)) return false;
-    return sign((p3 - p1) % (p4 - p1)) * sign((p3 - p2) % (p4 - p2)) <= 0 &&
-           sign((p1 - p3) % (p2 - p3)) * sign((p1 - p4) % (p2 - p4)) <= 0;
+    return sign((p3 - p1) ^ (p4 - p1)) * sign((p3 - p2) ^ (p4 - p2)) <= 0 &&
+           sign((p1 - p3) ^ (p2 - p3)) * sign((p1 - p4) ^ (p2 - p4)) <= 0;
 }
 
 bool parallel(L x, L y) { return same(x.a * y.b, x.b * y.a); }
 
-P intersect(L x, L y) { return P(-x.b * y.c + x.c * y.b, x.a * y.c - x.c * y.a) / (-x.a * y.b + x.b * y.a); }
+P Intersect(L x, L y) { return P(-x.b * y.c + x.c * y.b, x.a * y.c - x.c * y.a) / (-x.a * y.b + x.b * y.a); }
