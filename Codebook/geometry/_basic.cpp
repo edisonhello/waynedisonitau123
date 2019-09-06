@@ -1,32 +1,40 @@
-bool same(const double a,const double b){ return abs(a-b)<1e-9; }
+bool same(double a, double b) { return abs(a - b) < eps; }
 
-struct Point{
-    double x,y;
-    Point():x(0),y(0){}
-    Point(double x,double y):x(x),y(y){}
-};
-Point operator+(const Point a,const Point b){ return Point(a.x+b.x,a.y+b.y); }
-Point operator-(const Point a,const Point b){ return Point(a.x-b.x,a.y-b.y); }
-Point operator*(const Point a,const double b){ return Point(a.x*b,a.y*b); }
-Point operator/(const Point a,const double b){ return Point(a.x/b,a.y/b); }
-double operator^(const Point a,const Point b){ return a.x*b.y-a.y*b.x; }
-double abs(const Point a){ return sqrt(a.x*a.x+a.y*a.y); }
-
-
-struct Line{
-    // ax+by+c=0
-    double a,b,c;
-    double angle;
-    Point pa,pb;
-    Line():a(0),b(0),c(0),angle(0),pa(),pb(){}
-    Line(Point pa,Point pb):a(pa.y-pb.y),b(pb.x-pa.x),c(pa^pb),angle(atan2(-a,b)),pa(pa),pb(pb){}
+struct P {
+    double x, y;
+    P() : x(0), y(0) {}
+    P(double x, double y) : x(x), y(y) {}
+    P operator + (P b) { return P(x + b.x, y + b.y); }
+    P operator - (P b) { return P(x - b.x, y - b.y); }
+    P operator * (double b) { return P(x * b, y * b); }
+    P operator / (double b) { return P(x / b, y / b); }
+    double operator * (P b) { return x * b.x + y * b.y; }
+    double operator ^ (P b) { return x * b.y - y * b.x; }
+    double abs() { return hypot(x, y); }
+    P unit() { return *this / abs(); }
+    P spin(double o) {
+        double c = cos(o), s = sin(o);
+        return P(c * x - s * y, s * x + c * y);
+    }
 };
 
-Point intersect(Line la,Line lb){
-    if(same(la.a*lb.b,la.b*lb.a))return Point(7122,7122);
-    double bot=-la.a*lb.b+la.b*lb.a;
-    return Point(-la.b*lb.c+la.c*lb.b,la.a*lb.c-la.c*lb.a)/bot;
-}
+struct L {
+    // ax + by + c = 0
+    double a, b, c, o;
+    P pa, pb;
+    L() : a(0), b(0), c(0), o(0), pa(), pb() {}
+    L(P pa, P pb) : a(pa.y - pb.y), b(pb.x - pa.x), c(pa ^ pb), o(atan2(-a, b)), pa(pa), pb(pb) {}
+    P project(P p) { return pa + (pb - pa).unit() * ((pb - pa) * (p - pa) / (pb - pa).abs()); }
+    P reflect(P p) { return p + (project(p) - p) * 2; }
+    double get_ratio(P p) { return (p - pa) * (pb - pa) / ((pb - pa).abs() * (pb - pa).abs()); }
+};
+
+struct C {
+    P c;
+    double r;
+    C() : r(0) {}
+    C(P c, double r) : c(c), r(r) {}
+};
 
 bool intersect(Point p1, Point p2, Point p3, Point p4) {
     if (max(p1.x, p2.x) < min(p3.x, p4.x) || max(p3.x, p4.x) < min(p1.x, p2.x)) return false;
@@ -35,22 +43,6 @@ bool intersect(Point p1, Point p2, Point p3, Point p4) {
            sign((p1 - p3) % (p2 - p3)) * sign((p1 - p4) % (p2 - p4)) <= 0;
 }
 
-int contain(const vector<Point> &ps, Point p) {
-    // ps is not necessarily convex.
-    int n = (int)ps.size();
-    for (int i = 0; i < n; ++i) {
-        Point a = ps[i], b = ps[(i + 1) % n];
-        // on segment
-        if ((p - a) * (b - a) >= 0 && (p - b) * (a - b) >= 0 && (p - a) % (b - a) == 0) return 1;
-    }
-    // infinity
-    Point q = Point(1000000000, p.y);
-    int res = 0;
-    for (int i = 0; i < n; ++i) {
-        Point a = ps[i], b = ps[(i + 1) % n];
-        if (intersect(a, b, p, q) && p.y >= min(a.y, b.y) && p.y < max(a.y, b.y)) res ^= 1;
-    }
-    // ps contains p.
-    if (res == 1) return 2;
-    return 0;
-}
+bool parallel(L x, L y) { return same(x.a * y.b, x.b * y.a); }
+
+P intersect(L x, L y) { return P(-x.b * y.c + x.c * y.b, x.a * y.c - x.c * y.a) / (-x.a * y.b + x.b * y.a); }
