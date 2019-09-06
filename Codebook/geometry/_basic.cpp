@@ -16,6 +16,7 @@ struct P {
         double c = cos(o), s = sin(o);
         return P(c * x - s * y, s * x + c * y);
     }
+    double angle() { return atan2(y, x); }
 };
 
 struct L {
@@ -27,13 +28,6 @@ struct L {
     P project(P p) { return pa + (pb - pa).unit() * ((pb - pa) * (p - pa) / (pb - pa).abs()); }
     P reflect(P p) { return p + (project(p) - p) * 2; }
     double get_ratio(P p) { return (p - pa) * (pb - pa) / ((pb - pa).abs() * (pb - pa).abs()); }
-};
-
-struct C {
-    P c;
-    double r;
-    C() : r(0) {}
-    C(P c, double r) : c(c), r(r) {}
 };
 
 bool parallel(L x, L y) { return same(x.a * y.b, x.b * y.a); }

@@ -36,30 +36,15 @@ void dfs(int pi,int now){
 void operator()(){
     if(n<4)return;
     if([&]()->int{
-        for(int i=1;i<n;++i){
-            if(abs(p[0]-p[i])>eps){
-                swap(p[1],p[i]);
-                return 0;
-            }
-        }
+        for(int i=1;i<n;++i)if(abs(p[0]-p[i])>eps)return swap(p[1],p[i]),0;
         return 1;
     }())return;
     if([&]()->int{
-        for(int i=2;i<n;++i){
-            if(abs((p[0]-p[i])^(p[1]-p[i]))>eps){
-                swap(p[2],p[i]);
-                return 0;
-            }
-        }
+        for(int i=2;i<n;++i)if(abs((p[0]-p[i])^(p[1]-p[i]))>eps)return swap(p[2],p[i]),0;
         return 1;
     }())return;
     if([&]()->int{
-        for(int i=3;i<n;++i){
-            if(abs(((p[1]-p[0])^(p[2]-p[0]))*(p[i]-p[0]))>eps){
-                swap(p[3],p[i]);
-                return 0;
-            }
-        }
+        for(int i=3;i<n;++i)if(abs(((p[1]-p[0])^(p[2]-p[0]))*(p[i]-p[0]))>eps)return swap(p[3],p[i]),0;
         return 1;
     }())return;
     for(int i=0;i<4;++i){
@@ -77,9 +62,7 @@ void operator()(){
         }
     }
     int mm=m; m=0;
-    for(int i=0;i<mm;++i){
-        if(f[i].res)f[m++]=f[i];
-    }
+    for(int i=0;i<mm;++i)if(f[i].res)f[m++]=f[i];
 }
 bool same(int i,int j){
     return !(absvol(p[f[i].a],p[f[i].b],p[f[i].c],p[f[j].a])>eps || absvol(p[f[i].a],p[f[i].b],p[f[i].c],p[f[j].b])>eps || absvol(p[f[i].a],p[f[i].b],p[f[i].c],p[f[j].c])>eps);
@@ -88,9 +71,7 @@ int faces(){
     int rt=0;
     for(int i=0;i<m;++i){
         int iden=1;
-        for(int j=0;j<i;++j){
-            if(same(i,j))iden=0;
-        }
+        for(int j=0;j<i;++j)if(same(i,j))iden=0;
         rt+=iden;
     }
     return rt;
