@@ -54,6 +54,7 @@ public class filename{
         System.out.println(Math.acos(-1));
 
         BigInteger bi = in.nextBigInteger(), bj = new BigInteger("-7122"), bk = BigInteger.valueOf(17171);
+        int sgn = bi.signum(); // -1 if bi is negative, 0 if bi is zero and 1 if bi is positive.
         bi = bi.add(bj);
         bi = bi.subtract(BigInteger.ONE);
         bi = bi.multiply(bj);
