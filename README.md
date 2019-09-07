@@ -12,7 +12,8 @@ codebook by waynetuinfor, WeaK, Tau
 | NTU Wild Card 2018          | 2018/10/20    |   4  |     6/10     |   498   | A | . | C | . | E | F | . | H | . | J |
 | Seoul 2018                  | 2018/11/03    |   5  |    10/12     |   1368  | A | B | C | D | E | F | G | . | . | J | K | L |
 | Taipei 2018                 | 2018/11/10    |   1  |     9/11     |   732   | A | B | C | D | E | . | G | . | I | J | K |
-| NTU Final 2018              | 2018/01/05    |   2  |     4/10     |   612   | A | B | . | . | E | . | . | . | I | . |
+| NTU Final 2018              | 2019/01/05    |   2  |     4/10     |   612   | A | B | . | . | E | . | . | . | I | . |
+| NTU Japan Ranking 2019      | 2019/09/07    |   1  |    10/10     |   1125  | A | B | C | D | E | F | G | H | I | J |
 
 
 ## Training
