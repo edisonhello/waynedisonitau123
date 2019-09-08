@@ -21,3 +21,8 @@ Let $D$ be a $n \times n$ matrix, where $d_{ij} = x_{ij}$ ($x_{ij}$ is chosen un
   \item Given a degree sequence $d_1, d_2, \ldots, d_n$ for each labeled vertices, there're $\frac{(n - 2)!}{(d_1 - 1)!(d_2 - 1)!\cdots(d_n - 1)!}$ spanning trees.
   \item Let $T_{n, k}$ be the number of labeled forests on $n$ vertices with $k$ components, such that vertex $1, 2, \ldots, k$ belong to different components. Then $T_{n, k} = kn^{n - k - 1}$.
 \end{itemize}
+
+\subsubsection{Erdős–Gallai theorem}
+A sequence of non-negative integers $d_1 \geq d_2 \geq \ldots \geq d_n$ can be represented as the degree sequence of a finite simple graph on $n$ vertices if and only if $d_1 + d_2 + \ldots + d_n$ is even and
+$$ \sum_{i = 1}^{k}d_i \leq k(k - 1) + \sum_{i = k + 1}^{n}\min(d_i, k) $$
+holds for all $1 \leq k \leq n$.

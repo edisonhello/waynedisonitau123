@@ -1,14 +1,3 @@
-
-vector<pair<int, int>> g[maxn];
-int low[maxn], tin[maxn], t;
-int bcc[maxn], sz;
-int a[maxn], b[maxn], deg[maxn];
-bool cut[maxn], ins[maxn];
-
-vector<int> ed[maxn];
-
-stack<int> st;
-
 void dfs(int x, int p) {
     tin[x] = low[x] = ++t;
     int ch = 0;

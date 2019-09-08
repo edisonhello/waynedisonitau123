@@ -1,11 +1,3 @@
-vector<pair<int, int>> g[maxn];
-int tin[maxn], low[maxn], t;
-int a[maxn], b[maxn];
-int bcc[maxn], sz;
-bool br[maxn];
-
-stack<int> st;
-
 void dfs(int x, int p) {
     tin[x] = low[x] = ++t;
     st.push(x);
