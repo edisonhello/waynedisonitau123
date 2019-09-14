@@ -4,13 +4,8 @@ using namespace std;
 
 const double eps = 1e-9;
 
-void guass(vector<vector<double>> &d, vector<double> &res) {
+void gauss(vector<vector<double>> &d, vector<double> &res) {
     int n = (int)d.size(), m = (int)d[0].size();
-    /* for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) printf("%.3lf ", d[i][j]);
-        puts("");
-    } */
-    // for (int i = 0; i < n; ++i) printf("%.3lf\n", res[i]);
     for (int i = 0; i < m; ++i) {
         int p = -1;
         for (int j = i; j < n; ++j) {
@@ -81,7 +76,10 @@ int main() {
                 if (j == i) continue;
                 if (ss[i][j]) ++cnt;
             }
-            if (cnt == 0) continue;
+            if (cnt == 0) {
+                coeff[i][i] = 1.0;
+                continue;
+            }
             double prob = 1.0 / cnt;
             for (int j = 0; j < n; ++j) {
                 if (j == i) continue;
@@ -91,13 +89,15 @@ int main() {
         } else {
             int cnt = 0;
             for (int j = 0; j < n; ++j) {
-                if (j == i) continue;
                 if (w[i][j] > 0) ++cnt;
             }
-            if (cnt == 0) continue;
+            if (cnt == 0) {
+                coeff[i][i] = 1.0;
+                continue;
+            }
             double prob = 1.0 / cnt;
             for (int j = 0; j < n; ++j) {
-                if (j == i) continue;
+                if (i == j) continue;
                 if (w[i][j] > 0) coeff[i][j] += prob, res[i] -= prob * w[i][j];
             }
             if (w[i][i] > 0) {
@@ -109,16 +109,12 @@ int main() {
         }
     }
 
-    guass(coeff, res);
-    /* for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) printf("%.3lf ", coeff[i][j]);
-        puts("");
-    } */
+    gauss(coeff, res);
     vector<double> x(n, 0.0);
     for (int i = n - 1; i >= 0; --i) {
         double sum = 0.0;
         for (int j = i + 1; j < n; ++j) sum += x[j] * coeff[i][j];
-        x[i] = (res[i] - sum) / coeff[i][i];
+        if (fabs(coeff[i][i]) > eps) x[i] = (res[i] - sum) / coeff[i][i];
     }
     printf("%.20Lf\n", x[s]);
 }

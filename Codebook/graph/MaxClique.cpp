@@ -43,7 +43,7 @@ struct MaxClique {
         int x = __builtin_ctzll(p & -p);
         uint64_t c = p & ~adj[x];
         while (c > 0) {
-            // bitset._Find_first(); bitset._Fint
+            // bitset._Find_first(); bitset._Find_next();
             x = __builtin_ctzll(c & -c);
             r |= (1ull << x);
             dfs(r, p & adj[x]);

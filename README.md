@@ -84,3 +84,4 @@ codebook by waynetuinfor, WeaK, Tau
 | JAG Spring Contest 2015          | 2019/08/24    |   3  |     6/12     |   1053  | A | . | . | D | E | F | G | . | . | . | . | L |
 | IX OpenCup II YandexSummerSchool | 2019/08/31    |   4  |     6/10     |   1221  | A | . | . | D | E | F | . | H | I | . |
 | PtzWinterCamp Yandex 2019        | 2019/09/06    |  15  |     5/10     |   624   | A | . | C | . | . | . | . | H | I | J |
+| Yokohama 2018                    | 2019/09/15    |   6  |     8/11     |   1223  | A | B | C | D | E | F | G | . | . | . | K |
