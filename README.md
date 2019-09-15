@@ -85,3 +85,4 @@ codebook by waynetuinfor, WeaK, Tau
 | IX OpenCup II YandexSummerSchool | 2019/08/31    |   4  |     6/10     |   1221  | A | . | . | D | E | F | . | H | I | . |
 | PtzWinterCamp Yandex 2019        | 2019/09/06    |  15  |     5/10     |   624   | A | . | C | . | . | . | . | H | I | J |
 | Yokohama 2018                    | 2019/09/15    |   6  |     8/11     |   1223  | A | B | C | D | E | F | G | . | . | . | K |
+| Nakhon Pathom 2018               | 2019/09/16    |   1  |     12/12    |   1114  | A | B | C | D | E | F | G | H | I | J | K | L |
