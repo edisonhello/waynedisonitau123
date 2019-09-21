@@ -7,7 +7,6 @@ void get_center(int now) {
         sz[now] += sz[u];
     }
 }
-
 void get_dis(int now, int d, int len) {
     dis[d][now] = cnt;
     v[now] = true;
@@ -15,7 +14,6 @@ void get_dis(int now, int d, int len) {
         get_dis(u, d, len + u.second);
     }
 }
-
 void dfs(int now, int fa, int d) {
     get_center(now);
     int c = -1;

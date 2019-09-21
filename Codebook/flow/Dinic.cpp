@@ -1,8 +1,8 @@
 struct dinic {
     static const int inf = 1e9;
     struct edge {
-        int dest, cap, rev;
-        edge(int d, int c, int r): dest(d), cap(c), rev(r) {}
+        int to, cap, rev;
+        edge(int d, int c, int r): to(d), cap(c), rev(r) {}
     };
     vector<edge> g[maxn];
     int qu[maxn], ql, qr;
@@ -22,9 +22,9 @@ struct dinic {
         qu[qr++] = s;
         while (ql < qr) {
             int x = qu[ql++];
-            for (edge &e : g[x]) if (lev[e.dest] == -1 && e.cap > 0) {
-                lev[e.dest] = lev[x] + 1;
-                qu[qr++] = e.dest;
+            for (edge &e : g[x]) if (lev[e.to] == -1 && e.cap > 0) {
+                lev[e.to] = lev[x] + 1;
+                qu[qr++] = e.to;
             }
         }
         return lev[t] != -1;
@@ -32,11 +32,11 @@ struct dinic {
     int dfs(int x, int t, int flow) {
         if (x == t) return flow;
         int res = 0;
-        for (edge &e : g[x]) if (e.cap > 0 && lev[e.dest] == lev[x] + 1) {
-            int f = dfs(e.dest, t, min(e.cap, flow - res));
+        for (edge &e : g[x]) if (e.cap > 0 && lev[e.to] == lev[x] + 1) {
+            int f = dfs(e.to, t, min(e.cap, flow - res));
             res += f;
             e.cap -= f;
-            g[e.dest][e.rev].cap += f;
+            g[e.to][e.rev].cap += f;
         }
         if (res == 0) lev[x] = -1;
         return res;

@@ -1,6 +1,5 @@
 int z[maxn];
-// z[i] = longest common prefix of suffix i and suffix 0
-
+// z[i] = LCP of suffix i and suffix 0
 void z_function(const string& s) {
     memset(z, 0, sizeof(z));
     z[0] = (int)s.length();

@@ -18,7 +18,6 @@ vector<int> inverse(const vector<int> &v, int n) {
     }
     return q;
 }
-
 vector<int> divide(const vector<int> &a, const vector<int> &b) {
     // leading zero should be trimmed
     int n = (int)a.size(), m = (int)b.size();

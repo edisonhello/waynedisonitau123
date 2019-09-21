@@ -46,4 +46,25 @@ struct AC {
         }
         for (int i = qr - 1; i >= 0; --i) cnt[f[q[i]]] += cnt[q[i]];
     }
+    long long solve(int n) {
+        build_fail();
+        vector<vector<long long>> dp(sz, vector<long long>(n + 1, 0));
+        for (int i = 0; i < sz; ++i) dp[i][0] = 1;
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 0; j < sz; ++j) {
+                for (int k = 0; k < 2; ++k) {
+                    if (ch[j][k] != -1) {
+                        if (!ed[ch[j][k]])
+                            dp[j][i] += dp[ch[j][k]][i - 1];
+                    } else {
+                        int z = f[j];
+                        while (z != root && ch[z][k] == -1) z = f[z];
+                        int p = ch[z][k] == -1 ? root : ch[z][k];
+                        if (ch[z][k] == -1 || !ed[ch[z][k]]) dp[j][i] += dp[p][i - 1];
+                    }
+                }
+            }
+        }
+        return dp[0][n];
+    }
 };

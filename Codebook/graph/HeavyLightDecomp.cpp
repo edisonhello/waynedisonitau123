@@ -10,7 +10,6 @@ void dfs(int x, int p) {
         if (to[x] == -1 || sz[to[x]] < sz[u]) to[x] = u;
     }
 }
-
 void hld(int x, int t) {
     static int tk = 0;
     fr[x] = t;
@@ -22,7 +21,6 @@ void hld(int x, int t) {
         hld(u, u);
     }
 }
-
 vector<pair<int, int>> get(int x, int y) {
     int fx = fr[x], fy = fr[y];
     vector<pair<int, int>> res;

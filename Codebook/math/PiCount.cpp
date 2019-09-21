@@ -14,9 +14,7 @@ void sieve() {
     for (int i = 1; i < pr.size(); ++i) prc[pr[i]] = 1;
     for (int i = 1; i < maxn; ++i) prc[i] += prc[i - 1];
 }
-
 long long p2(long long, long long);
-
 long long phi(long long m, long long n) {
     if (m < msz && n < nsz && phic[m][n] != -1) return phic[m][n];
     if (n == 0) return m;
@@ -25,13 +23,11 @@ long long phi(long long m, long long n) {
     if (m < msz && n < nsz) phic[m][n] = ret;
     return ret;
 }
-
 long long pi(long long m) {
     if (m < maxn) return prc[m];
     long long n = pi(cbrt(m));
     return phi(m, n) + n - 1 - p2(m, n);
 }
-
 long long p2(long long m, long long n) {
     long long ret = 0;
     long long lim = sqrt(m);

@@ -1,7 +1,6 @@
-long long f(long long x, long long n, int p) { return (fmul(x, x, n) + p) % n; }
-
 map<long long, int> cnt;
 
+long long f(long long x, long long n, int p) { return (fmul(x, x, n) + p) % n; }
 void pollard_rho(long long n) {
     if (n == 1) return;
     if (prime(n)) return ++cnt[n], void();        

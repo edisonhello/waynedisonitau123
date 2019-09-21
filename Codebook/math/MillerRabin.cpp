@@ -15,7 +15,6 @@ bool check(long long a, long long u, long long n, int t) {
     }
     return false;
 }
-
 bool is_prime(long long n) {
     if (n < 2) return false;
     if (n % 2 == 0) return n == 2;

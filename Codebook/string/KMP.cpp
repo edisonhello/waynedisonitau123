@@ -10,7 +10,6 @@ vector<int> kmp(const string &s) {
     }
     return f;
 }
-
 vector<int> search(const string &s, const string &t) {
     // return 0-indexed occurrence of t in s
     vector<int> f = kmp(t), res;

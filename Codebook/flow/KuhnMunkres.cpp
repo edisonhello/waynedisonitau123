@@ -1,7 +1,6 @@
 int w[maxn][maxn], lx[maxn], ly[maxn];
 int match[maxn], slack[maxn];
 bool vx[maxn], vy[maxn];
-
 bool dfs(int x) {
     vx[x] = true;
     for (int i = 0; i < n; ++i) {
@@ -18,7 +17,6 @@ bool dfs(int x) {
     }
     return false;
 }
-
 int solve() {
     fill_n(match, n, -1);
     fill_n(lx, n, -inf);
