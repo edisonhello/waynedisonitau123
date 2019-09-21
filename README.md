@@ -86,3 +86,4 @@ codebook by waynetuinfor, WeaK, Tau
 | PtzWinterCamp Yandex 2019        | 2019/09/06    |  15  |     5/10     |   624   | A | . | C | . | . | . | . | H | I | J |
 | Yokohama 2018                    | 2019/09/15    |   6  |     8/11     |   1223  | A | B | C | D | E | F | G | . | . | . | K |
 | Nakhon Pathom 2018               | 2019/09/16    |   1  |     12/12    |   1114  | A | B | C | D | E | F | G | H | I | J | K | L |
+| Hanoi 2018                       | 2019/09/21    |   1  |     8/12     |   816   | A | B | C | D | . | . | G | H | . | J | . | L |
