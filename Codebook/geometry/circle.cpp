@@ -28,7 +28,8 @@ double IntersectArea(C a, C b) {
 }
 // remove second level if to get points for line (defalut: segment)
 vector<P> CircleCrossLine(P a, P b, P o, double r) {
-    double x = b.x - a.x, y = b.y - a.y, A = sq(x) + sq(y), B = 2 * x * (a.x - o.x) + 2 * y * (a.y - o.y), C = sq(a.x - o.x) + sq(a.y - o.y) - sq(r), d = B * B - 4 * A * C;
+    double x = b.x - a.x, y = b.y - a.y, A = sq(x) + sq(y), B = 2 * x * (a.x - o.x) + 2 * y * (a.y - o.y);
+    double C = sq(a.x - o.x) + sq(a.y - o.y) - sq(r), d = B * B - 4 * A * C;
     vector<P> t;
     if (d >= -eps) {
         d = max(0., d);
