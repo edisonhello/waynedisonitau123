@@ -22,16 +22,13 @@ struct node {
     }
     void rotate() {
         if (fa->fa) fa->fa->push();
-        fa->push(), push();
-        swap(pfa, fa->pfa);
+        fa->push(), push(), swap(pfa, fa->pfa);
         int d = relation();
         node *t = fa;
         if (t->fa) t->fa->ch[t->relation()] = this;
-        fa = t->fa;
-        t->ch[d] = ch[d ^ 1];
+        fa = t->fa, t->ch[d] = ch[d ^ 1];
         if (ch[d ^ 1]) ch[d ^ 1]->fa = t;
-        ch[d ^ 1] = t;
-        t->fa = this;
+        ch[d ^ 1] = t, t->fa = this;
         t->pull(), pull();
     }
     void splay() {
@@ -45,37 +42,26 @@ struct node {
             else rotate(), rotate();
         }
     }
-    void evert() {
-        access();
-        splay();
-        rev ^= 1;
-    }
+    void evert() { access(), splay(), rev ^= 1; }
     void expose() {
         splay(), push();
         if (ch[1]) {
-            ch[1]->fa = nullptr;
-            ch[1]->pfa = this;
-            ch[1] = nullptr;
-            pull();
+            ch[1]->fa = nullptr, ch[1]->pfa = this;
+            ch[1] = nullptr, pull();
         }
     }
     bool splice() {
         splay();
         if (!pfa) return false;
-        pfa->expose();
-        pfa->ch[1] = this;
-        fa = pfa;
-        pfa = nullptr;
-        fa->pull();
+        pfa->expose(), pfa->ch[1] = this, fa = pfa;
+        pfa = nullptr, fa->pull();
         return true;
     }
     void access() {
         expose();
         while (splice());
     }
-    int query() {
-        return sum;
-    } 
+    int query() { return sum; } 
 };
 
 namespace lct {

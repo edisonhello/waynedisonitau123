@@ -1,4 +1,3 @@
-
 namespace dominator {
 vector<int> g[maxn], r[maxn], rdom[maxn];
 int dfn[maxn], rev[maxn], fa[maxn], sdom[maxn], dom[maxn], val[maxn], rp[maxn], tk;
@@ -40,6 +39,7 @@ int find(int x, int c = 0) {
 }
 vector<int> build(int s, int n) {
     // return the father of each node in the dominator tree
+    // p[i] = -2 if i is unreachable from s
     dfs(s);
     for (int i = tk - 1; i >= 0; --i) {
         for (int u : r[i]) sdom[i] = min(sdom[i], sdom[find(u)]);
@@ -51,7 +51,8 @@ vector<int> build(int s, int n) {
         }
         if (i) merge(i, rp[i]);
     }
-    vector<int> p(n, -1);
+    vector<int> p(n, -2);
+    p[s] = -1;
     for (int i = 1; i < tk; ++i) if (sdom[i] != dom[i]) dom[i] = dom[dom[i]];
     for (int i = 1; i < tk; ++i) p[rev[i]] = rev[dom[i]];
     return p;

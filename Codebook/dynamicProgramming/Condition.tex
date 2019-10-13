@@ -1,6 +1,11 @@
-\subsubsection{totally monotone (concave/convex)}
+\subsubsection{Totally Monotone (Concave/Convex)}
 $\forall i < i^\prime, j < j^\prime$, $B[i][j] \leq B[i^\prime][j] \implies B[i][j^\prime] \leq B[i^\prime][j^\prime]$ \\
 $\forall i < i^\prime, j < j^\prime$, $B[i][j] \geq B[i^\prime][j] \implies B[i][j^\prime] \geq B[i^\prime][j^\prime]$
-\subsubsection{monge condition (concave/convex)}
+\subsubsection{Monge Condition (Concave/Convex)}
 $\forall i < i^\prime, j < j^\prime$, $B[i][j] + B[i^\prime][j^\prime] \geq B[i][j^\prime] + B[i^\prime][j]$ \\
 $\forall i < i^\prime, j < j^\prime$, $B[i][j] + B[i^\prime][j^\prime] \leq B[i][j^\prime] + B[i^\prime][j]$
+\subsubsection{Optimal Split Point}
+If
+\[ B[i][j] + B[i + 1][j + 1] \geq B[i][j + 1] + B[i + 1][j] \]
+then
+\[ H_{i, j - 1} \leq H_{i, j} \leq H_{i + 1, j} \]
