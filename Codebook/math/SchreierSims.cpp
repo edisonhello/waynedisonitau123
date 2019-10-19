@@ -4,14 +4,12 @@ vector<vector<vector<int>>> bkts, binv;
 vector<vector<int>> lk;
 vector<int> operator*(const vector<int> &a, const vector<int> &b) {
     vector<int> res(a.size());
-    for (int i = 0; i < (int)a.size(); ++i)
-        res[i] = b[a[i]];
+    for (int i = 0; i < (int)a.size(); ++i) res[i] = b[a[i]];
     return res;
 }
 vector<int> inv(const vector<int> &a) {
     vector<int> res(a.size());
-    for (int i = 0; i < (int)a.size(); ++i)
-        res[a[i]] = i;
+    for (int i = 0; i < (int)a.size(); ++i) res[a[i]] = i;
     return res;
 }
 int filter(const vector<int> &g, bool add = true) {
@@ -32,9 +30,7 @@ int filter(const vector<int> &g, bool add = true) {
     }
     return -1;
 }
-bool inside(const vector<int> &g) {
-    return filter(g, false) == -1; 
-}
+bool inside(const vector<int> &g) { return filter(g, false) == -1; }
 void solve(const vector<vector<int>> &gen, int _n) {
     n = _n;
     bkts.clear(), bkts.resize(n);
@@ -48,8 +44,7 @@ void solve(const vector<vector<int>> &gen, int _n) {
         binv[i].push_back(iden);
         lk[i][i] = 0;
     }
-    for (int i = 0; i < (int)gen.size(); ++i)
-        filter(gen[i]);
+    for (int i = 0; i < (int)gen.size(); ++i) filter(gen[i]);
     queue<pair<pair<int, int>, pair<int, int>>> upd;
     for (int i = 0; i < n; ++i) {
         for (int j = i; j < n; ++j) {
@@ -68,17 +63,14 @@ void solve(const vector<vector<int>> &gen, int _n) {
         pair<int, int> pr = make_pair(res, (int)bkts[res].size() - 1);
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < (int)bkts[i].size(); ++j) {
-                if (i <= res)
-                    upd.emplace(make_pair(i, j), pr);
-                if (res <= i)
-                    upd.emplace(pr, make_pair(i, j));
+                if (i <= res) upd.emplace(make_pair(i, j), pr);
+                if (res <= i) upd.emplace(pr, make_pair(i, j));
             }
         }
     }
 }
 long long size() {
     long long res = 1;
-    for (int i = 0; i < n; ++i) 
-        res = res * bkts[i].size();
+    for (int i = 0; i < n; ++i) res = res * bkts[i].size();
     return res;
 }}

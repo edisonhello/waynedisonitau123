@@ -8,10 +8,8 @@ struct cplx {
     cplx operator*(const cplx &rhs) const { return cplx(re * rhs.re - im * rhs.im, re * rhs.im + im * rhs.re); }
     cplx conj() const { return cplx(re, -im); }
 }; 
-const int maxn = 262144;
 const double pi = acos(-1);
 cplx omega[maxn + 1];
-bool init;
 void prefft() {
     for (int i = 0; i <= maxn; ++i)
         omega[i] = cplx(cos(2 * pi * i / maxn), sin(2 * pi * i / maxn));
@@ -25,10 +23,6 @@ void bitrev(vector<cplx> &v, int n) {
     }
 }
 void fft(vector<cplx> &v, int n) {
-    if (!init) {
-        init = true;
-        prefft();
-    }
     bitrev(v, n);
     for (int s = 2; s <= n; s <<= 1) {
         int z = s >> 1;
@@ -72,14 +66,10 @@ vector<int> convolution_mod(const vector<int> &a, const vector<int> &b, int p) {
     int sz = 1;
     while (sz < (int)a.size() + (int)b.size() - 1) sz <<= 1;
     vector<cplx> fa(sz), fb(sz);
-    for (int i = 0; i < (int)a.size(); ++i) {
-        int x = (a[i] % p + p) % p;
-        fa[i] = cplx(x & ((1 << 15) - 1), x >> 15);
-    }
-    for (int i = 0; i < (int)b.size(); ++i) {
-        int x = (b[i] % p + p) % p;
-        fb[i] = cplx(x & ((1 << 15) - 1), x >> 15);
-    }
+    for (int i = 0; i < (int)a.size(); ++i)
+        fa[i] = cplx(a[i] & ((1 << 15) - 1), a[i] >> 15);
+    for (int i = 0; i < (int)b.size(); ++i) 
+        fb[i] = cplx(b[i] & ((1 << 15) - 1), b[i] >> 15);
     fft(fa, sz), fft(fb, sz);
     double r = 0.25 / sz;
     cplx r2(0, -1), r3(r, 0), r4(0, -r), r5(0, 1);

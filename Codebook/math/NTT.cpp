@@ -8,15 +8,6 @@ struct NTT {
         for (int i = 1; i <= maxn; ++i)
             omega[i] = omega[i - 1] * x % mod;
     }
-    long long fpow(long long a, long long n) {
-        (n += mod - 1) %= mod - 1;
-        long long r = 1;
-        for (; n; n >>= 1) {
-            if (n & 1) (r *= a) %= mod;
-            (a *= a) %= mod;
-        }
-        return r;
-    }
     void bitrev(vector<long long> &v, int n) {
         int z = __builtin_ctz(n) - 1;
         for (int i = 0; i < n; ++i) {
@@ -56,7 +47,6 @@ struct NTT {
         return c;
     }
 };
-
 vector<long long> convolution(vector<long long> a, vector<long long> b) {
     NTT<mod1, root1> conv1;
     NTT<mod2, root2> conv2;
