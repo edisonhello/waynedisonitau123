@@ -1,5 +1,6 @@
-void gauss(vector<vector<double>> &d) {
+double gauss(vector<vector<double>> &d) {
     int n = d.size(), m = d[0].size();
+    double det = 1;
     for (int i = 0; i < m; ++i) {
         int p = -1;
         for (int j = i; j < n; ++j) {
@@ -7,6 +8,7 @@ void gauss(vector<vector<double>> &d) {
             if (p == -1 || fabs(d[j][i]) > fabs(d[p][i])) p = j;
         } 
         if (p == -1) continue;
+        if (p != i) det *= -1;
         for (int j = 0; j < m; ++j) swap(d[p][j], d[i][j]);
         for (int j = 0; j < n; ++j) {
             if (i == j) continue;
@@ -14,5 +16,7 @@ void gauss(vector<vector<double>> &d) {
             for (int k = 0; k < m; ++k) d[j][k] -= z * d[i][k];
         }
     }
+    for (int i = 0; i < n; ++i) det *= d[i][i];
+    return det;
 } 
 
