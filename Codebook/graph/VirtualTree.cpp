@@ -3,9 +3,7 @@ void VirtualTree(vector<int> v) {
     int sz = 0;
     sort(v.begin(), v.end(), [&](int i, int j) { return dfn[i] < dfn[j]; });
     stk[sz++] = 0;
-    for (int i = 0; i < v.size(); ++i) {
-        int u = v[i];
-        ck[u] = true;
+    for (int u : v) {
         if (u == 0) continue;
         int p = LCA(u, stk[sz - 1]);
         if (p != stk[sz - 1]) {
