@@ -1,6 +1,6 @@
 
 bool jizz(L l1,L l2,L l3){
-    P p=intersect(l2,l3);
+    P p=Intersect(l2,l3);
     return ((l1.pb-l1.pa)^(p-l1.pa))<-eps;
 }
 
@@ -24,6 +24,6 @@ vector<P> HPI(vector<L> &ls){
     meow(dq.back(),dq[0],dq[1])dq.pop_front();
     if(dq.size()<3u)return vector<P>(); // no solution or solution is not a convex
     vector<P> rt;
-    for(int i=0;i<(int)dq.size();++i)rt.push_back(intersect(pls[dq[i]],pls[dq[(i+1)%dq.size()]]));
+    for(int i=0;i<(int)dq.size();++i)rt.push_back(Intersect(pls[dq[i]],pls[dq[(i+1)%dq.size()]]));
     return rt;
 }
