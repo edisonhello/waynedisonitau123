@@ -56,7 +56,7 @@ Region of triangle u: iterate each u.edge[i].tri,
 each points are u.p[(i+1)%3], u.p[(i+2)%3]
 calculation involves O(|V|^6) */
 const int N = 100000 + 5;
-const double inf = 1e9;
+const double inf = 1e12;
 // double eps = 1e-6; // 0 when integer
 // return p4 is in circumcircle of tri(p1,p2,p3)
 bool in_cc(P& p1, P& p2, P& p3, P& p4){
@@ -187,7 +187,6 @@ bool cmp(const L &a,const L &b){
     return same(a.o,b.o)?(((b.pb-b.pa)^(a.pb-b.pa))>eps):a.o<b.o;
 }
 
-// availble area for L l is (l.pb-l.pa)^(p-l.pa)>0
 vector<P> HPI(vector<L> &ls){
     sort(ls.begin(),ls.end(),cmp);
     vector<L> pls(1,ls[0]); 
@@ -206,6 +205,25 @@ vector<P> HPI(vector<L> &ls){
     for(int i=0;i<(int)dq.size();++i)rt.push_back(Intersect(pls[dq[i]],pls[dq[(i+1)%dq.size()]]));
     return rt;
 }
+
+#define crx(a, b, c) ((b - a) ^ (c - a))
+
+vector<P> convex(vector<P> ps) {
+    vector<P> p;
+    sort(ps.begin(), ps.end(), [&] (P a, P b) { return same(a.x, b.x) ? a.y < b.y : a.x < b.x; });
+    for (int i = 0; i < ps.size(); ++i) {
+        while (p.size() >= 2 && crx(p[p.size() - 2], ps[i], p[p.size() - 1]) > eps) p.pop_back();
+        p.push_back(ps[i]);
+    }
+    int t = p.size();
+    for (int i = (int)ps.size() - 2; i >= 0; --i) {
+        while (p.size() > t && crx(p[p.size() - 2], ps[i], p[p.size() - 1]) > eps) p.pop_back();
+        p.push_back(ps[i]);
+    }
+    p.pop_back();
+    return p;
+}
+
 
 P ps[N], ops[N];
 map<P, int> ptoid;
@@ -246,16 +264,15 @@ int main() {
 	build(n, ps);
 
 	for (auto *t : triang) {
-		// cout << "Triangle: " 
-		// 	<< "(" << t->p[0].x << ", " << t->p[0].y << ") "
-		// 	<< "(" << t->p[1].x << ", " << t->p[1].y << ") "
-		// 	<< "(" << t->p[2].x << ", " << t->p[2].y << ") " << endl;
 		int z[3] = {gid(t->p[0]), gid(t->p[1]), gid(t->p[2])};
-		for (int i = 0; i < 3; ++i) for (int j = 0; j < 3; ++j) if (i != j && z[i] != -1) {
-			L l(ops[z[i]], ops[z[j]]);
-			ls[z[i]].push_back(make_line(ops[z[i]], l));
+		for (int i = 0; i < 3; ++i) for (int j = 0; j < 3; ++j) if (i != j && z[i] != -1 && z[j] != -1) {
+			L l(t->p[i], t->p[j]);
+			ls[z[i]].push_back(make_line(t->p[i], l));
 		}
 	}
+
+	vector<P> tb = convex(vector<P>(ps, ps + n));
+	for (auto &p : tb) isinf[gid(p)] = true;
 
 	for (int i = 0; i < n; ++i) {
 		if (isinf[i]) cout << -1 << '\n';
