@@ -56,10 +56,25 @@ Region of triangle u: iterate each u.edge[i].tri,
 each points are u.p[(i+1)%3], u.p[(i+2)%3]
 calculation involves O(|V|^6) */
 const int N = 100000 + 5;
-const double inf = 1e12;
+const double inf = 1e14;
 // double eps = 1e-6; // 0 when integer
 // return p4 is in circumcircle of tri(p1,p2,p3)
 bool in_cc(P& p1, P& p2, P& p3, P& p4){
+  int o1 = (abs(p1.x) >= inf * 0.99 || abs(p1.y) >= inf * 0.99);
+  int o2 = (abs(p2.x) >= inf * 0.99 || abs(p2.y) >= inf * 0.99);
+  int o3 = (abs(p3.x) >= inf * 0.99 || abs(p3.y) >= inf * 0.99);
+  int rtrue = o1 + o2 + o3; 
+  int rfalse = abs(p4.x) >= inf * 0.99 || abs(p4.y) >= inf * 0.99;
+  if (rtrue == 3) return true;
+  if (rtrue) {
+	P in(0, 0), out(0, 0);
+	if (o1) out = out + p1; else in = in + p1;
+	if (o2) out = out + p2; else in = in + p2;
+	if (o3) out = out + p3; else in = in + p3;
+	return (p4 - in) * (out - in) > 0;
+  }
+  if (rfalse) return false;
+  // ^ = ? part
   double u11 = p1.x - p4.x, u12 = p1.y - p4.y;
   double u21 = p2.x - p4.x, u22 = p2.y - p4.y;
   double u31 = p3.x - p4.x, u32 = p3.y - p4.y;
@@ -112,6 +127,7 @@ struct Trig { // Triangulation
   Tri *the_root;
   static Tri *find(Tri *root, P& p) {
     while (true) {
+	  // cerr << "here" << endl;
       if (!root->has_chd()) return root;
       for(int i = 0; i < 3 && root->chd[i]; ++i)
         if (root->chd[i]->contains(p)) {
@@ -121,26 +137,37 @@ struct Trig { // Triangulation
     }
     assert( false ); // "point not found"
   }
+  set<pair<Tri *, int>> vis;
   void add_point(Tri *root, P& p) {
+	cerr << "add_point" << endl;
     Tri *tab,*tbc,*tca;
     /* split it into three triangles */
     tab=new(tris++) Tri(root->p[0],root->p[1],p);
     tbc=new(tris++) Tri(root->p[1],root->p[2],p);
     tca=new(tris++) Tri(root->p[2],root->p[0],p);
+	cerr << "a" << endl;
     edge(Edge(tab,0), Edge(tbc,1));
     edge(Edge(tbc,0), Edge(tca,1));
     edge(Edge(tca,0), Edge(tab,1));
     edge(Edge(tab,2), root->edge[2]);
     edge(Edge(tbc,2), root->edge[0]);
     edge(Edge(tca,2), root->edge[1]);
+	cerr << "b" << endl;
     root->chd[0] = tab;
     root->chd[1] = tbc;
     root->chd[2] = tca;
+	vis.clear();
     flip(tab,2);
+	vis.clear();
     flip(tbc,2);
+	vis.clear();
     flip(tca,2);
+	cerr << "c" << endl;
   }
   void flip(Tri *tri, int pi) {
+	cerr << "fli " << tri << ' ' << pi << endl;
+	if (vis.count(make_pair(tri, pi))) return;
+	// vis.insert(make_pair(tri, pi));
     Tri *trj = tri->edge[pi].tri;
     int pj = tri->edge[pi].side;
     if (!trj) return;
@@ -163,6 +190,7 @@ vector<Tri *> triang;
 set<Tri *> vst;
 void go(Tri *now) {
   if (vst.find(now) != vst.end()) return;
+  cerr << "go" << endl;
   vst.insert(now);
   if (!now->has_chd()) {
     triang.push_back(now);
@@ -174,7 +202,7 @@ void build(int n, P *ps) {
   tris = pool;
   random_shuffle(ps, ps + n);
   Trig tri;
-  for(int i = 0; i < n; ++i) tri.add_point(ps[i]);
+  for(int i = 0; i < n; ++i) cerr << "i = " << i << endl, tri.add_point(ps[i]), cerr << "i = " << i << endl;
   go(tri.the_root);
 }
 
@@ -265,6 +293,13 @@ int main() {
 
 	for (auto *t : triang) {
 		int z[3] = {gid(t->p[0]), gid(t->p[1]), gid(t->p[2])};
+		if (z[0] == 18 || z[1] == 18 || z[2] == 18) {
+			cerr << fixed;
+			cerr << "Triangle: " << z[0] << ' ' << z[1] << ' ' << z[2] << ": ";
+			cerr << "(" << t->p[0].x << ", " << t->p[0].y << ") ";
+			cerr << "(" << t->p[1].x << ", " << t->p[1].y << ") ";
+			cerr << "(" << t->p[2].x << ", " << t->p[2].y << ") " << endl;
+		}
 		for (int i = 0; i < 3; ++i) for (int j = 0; j < 3; ++j) if (i != j && z[i] != -1 && z[j] != -1) {
 			L l(t->p[i], t->p[j]);
 			ls[z[i]].push_back(make_line(t->p[i], l));
