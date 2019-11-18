@@ -1,45 +1,51 @@
-int w[maxn][maxn], lx[maxn], ly[maxn];
-int match[maxn], slack[maxn];
-bool vx[maxn], vy[maxn];
-bool dfs(int x) {
-    vx[x] = true;
-    for (int i = 0; i < n; ++i) {
-        if (vy[i]) continue;
-        if (lx[x] + ly[i] > w[x][i]) {
-            slack[i] = min(slack[i], lx[x] + ly[i] - w[x][i]);
-            continue;
-        }
-        vy[i] = true;
-        if (match[i] == -1 || dfs(match[i])) {
-            match[i] = x;
-            return true;
-        }
-    }
+namespace km {
+int w[kN][kN], hl[kN], hr[kN], slk[kN];
+int fl[kN], fr[kN], pre[kN], qu[kN], ql, qr;
+bool vl[kN], vr[kN];
+bool Check(int x) {
+    if (vl[x] = true, fl[x] != -1) return vr[qu[qr++] = fl[x]] = true;
+    while (x != -1) swap(x, fr[fl[x] = pre[x]]);
     return false;
 }
-int solve() {
-    fill_n(match, n, -1);
-    fill_n(lx, n, -inf);
-    fill_n(ly, n, 0);
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < n; ++j) lx[i] = max(lx[i], w[i][j]);
-    }
-    for (int i = 0; i < n; ++i) {
-        fill_n(slack, n, inf);
-        while (true) {
-            fill_n(vx, n, false);
-            fill_n(vy, n, false);
-            if (dfs(i)) break;
-            int dlt = inf;
-            for (int j = 0; j < n; ++j) if (!vy[j]) dlt = min(dlt, slack[j]);
-            for (int j = 0; j < n; ++j) {
-                if (vx[j]) lx[j] -= dlt;
-                if (vy[j]) ly[j] += dlt;
-                else slack[j] -= dlt;
+void Bfs(int s, int n) {
+    fill(slk, slk + n, kInf);
+    fill(vl, vl + n, false);
+    fill(vr, vr + n, false);
+    ql = qr = 0;
+    qu[qr++] = s;
+    vr[s] = true;
+    while (true) {
+        int d;
+        while (ql < qr) {
+            for (int x = 0, y = qu[ql++]; x < n; ++x) {
+                if (!vl[x] && slk[x] >= (d = hl[x] + hr[y] - w[x][y])) {
+                    if (pre[x] = y, d) slk[x] = d;
+                    else if (!Check(x)) return;
+                }
             }
         }
+        d = kInf;
+        for (int x = 0; x < n; ++x) {
+            if (!vl[x] && d > slk[x]) d = slk[x];
+        }
+        for (int x = 0; x < n; ++x) {
+            if (vl[x]) hl[x] += d;
+            else slk[x] -= d;
+            if (vr[x]) hr[x] -= d;
+        }
+        for (int x = 0; x < n; ++x) {
+            if (!vl[x] && !slk[x] && !Check(x)) return;
+        }
     }
-    int res = 0;
-    for (int i = 0; i < n; ++i) res += w[match[i]][i];
-    return res;
 }
+long long Solve(int n) {
+    fill(fl, fl + n, -1);
+    fill(fr, fr + n, -1);
+    fill(hr, hr + n, 0);
+    for (int i = 0; i < n; ++i) hl[i] = *max_element(w[i], w[i] + n);
+    for (int i = 0; i < n; ++i) Bfs(i, n);
+    long long res = 0;
+    for (int i = 0; i < n; ++i) res += w[i][fl[i]];
+    return res;
+}}
+
