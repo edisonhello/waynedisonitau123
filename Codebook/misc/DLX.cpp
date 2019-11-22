@@ -28,18 +28,14 @@ void insert(int r, const vector<int> &col) {
 void remove(int c) {
     lt[rg[c]] = lt[c], rg[lt[c]] = rg[c];
     for (int i = dn[c]; i != c; i = dn[i]) {
-        for (int j = rg[i]; j != i; j = rg[j]) {
-            up[dn[j]] = up[j], dn[up[j]] = dn[j];
-            --s[cl[j]];
-        }
+        for (int j = rg[i]; j != i; j = rg[j])
+            up[dn[j]] = up[j], dn[up[j]] = dn[j], --s[cl[j]];
     }
 }
 void restore(int c) {
     for (int i = up[c]; i != c; i = up[i]) {
-        for (int j = lt[i]; j != i; j = lt[j]) {
-            ++s[cl[j]];
-            up[dn[j]] = j, dn[up[j]] = j;
-        }
+        for (int j = lt[i]; j != i; j = lt[j])
+            ++s[cl[j]], up[dn[j]] = j, dn[up[j]] = j;
     }
     lt[rg[c]] = c, rg[lt[c]] = c;
 }
@@ -54,9 +50,7 @@ void dfs(int dep) {
     if (dn[rg[head]] == rg[head]) return;
     int c = rg[head];
     int w = c;
-    for (int x = c; x != head; x = rg[x]) {
-        if (s[x] < s[w]) w = x;
-    }
+    for (int x = c; x != head; x = rg[x]) if (s[x] < s[w]) w = x;
     remove(w);
     for (int i = dn[w]; i != w; i = dn[i]) {
         for (int j = rg[i]; j != i; j = rg[j]) remove(cl[j]);

@@ -16,17 +16,17 @@ struct PalindromicTree {
         int cur = sf, z = s[pos] - 'a';
         while (pos - 1 - len[cur] < 0 || s[pos - 1 - len[cur]] != s[pos]) cur = link[cur];
         if (nxt[cur][z] != -1) {
-          sf = nxt[cur][z];
+            sf = nxt[cur][z];
         } else {
-          int ch = gnode(len[cur] + 2);
-          nxt[cur][z] = sf = ch;
-          if (len[ch] == 1) {
-            link[ch] = 1;
-          } else {
-            cur = link[cur];
-            while (pos - 1 - len[cur] < 0 || s[pos - 1 - len[cur]] != s[pos]) cur = link[cur];
-            link[ch] = nxt[cur][z];
-          }
+            int ch = gnode(len[cur] + 2);
+            nxt[cur][z] = sf = ch;
+            if (len[ch] == 1) {
+                link[ch] = 1;
+            } else {
+                cur = link[cur];
+                while (pos - 1 - len[cur] < 0 || s[pos - 1 - len[cur]] != s[pos]) cur = link[cur];
+                link[ch] = nxt[cur][z];
+            }
         }
         dp[sf] += 1;
     }

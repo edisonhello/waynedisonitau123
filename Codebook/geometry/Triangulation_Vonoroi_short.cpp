@@ -1,8 +1,3 @@
-P ps[N], ops[N];
-map<P, int> ptoid;
-vector<L> ls[N];
-bool isinf[N];
-double ans[N];
 int gid(P &p) {
     auto it = ptoid.find(p);
     if (it == ptoid.end()) return -1;

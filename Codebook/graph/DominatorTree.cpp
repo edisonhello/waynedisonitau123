@@ -11,12 +11,13 @@ void init(int n) {
     fill(rp, rp + n, -1);
     fill(dom, dom + n, -1);
     tk = 0;
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < n; ++i) {
         g[i].clear();
+        r[i].clear();
+        rdom[i].clear();
+    }
 }
-void add_edge(int x, int y) {
-    g[x].push_back(y);
-}
+void add_edge(int x, int y) { g[x].push_back(y); }
 void dfs(int x) {
     rev[dfn[x] = tk] = x;
     fa[tk] = sdom[tk] = val[tk] = tk;
@@ -26,9 +27,7 @@ void dfs(int x) {
         r[dfn[u]].push_back(dfn[x]);
     } 
 }
-void merge(int x, int y) {
-    fa[x] = y;
-}
+void merge(int x, int y) { fa[x] = y; }
 int find(int x, int c = 0) {
     if (fa[x] == x) return c ? -1 : x;
     int p = find(fa[x], 1);
@@ -51,8 +50,7 @@ vector<int> build(int s, int n) {
         }
         if (i) merge(i, rp[i]);
     }
-    vector<int> p(n, -2);
-    p[s] = -1;
+    vector<int> p(n, -2); p[s] = -1;
     for (int i = 1; i < tk; ++i) if (sdom[i] != dom[i]) dom[i] = dom[dom[i]];
     for (int i = 1; i < tk; ++i) p[rev[i]] = rev[dom[i]];
     return p;

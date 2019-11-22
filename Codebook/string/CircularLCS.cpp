@@ -7,20 +7,11 @@ void reroot(int px) {
     while (py <= m && nxt[px][py] != 2) py++;
     nxt[px][py] = 1;
     while (px < 2 * n && py < m) {
-        if (nxt[px + 1][py] == 3) {
-            px++;
-            nxt[px][py] = 1;
-        } else if (nxt[px + 1][py + 1] == 2) {
-            px++;
-            py++;
-            nxt[px][py] = 1;
-        } else
-            py++;
+        if (nxt[px + 1][py] == 3) px++, nxt[px][py] = 1;
+        else if (nxt[px + 1][py + 1] == 2) px++, py++, nxt[px][py] = 1;
+        else py++;
     }
-    while (px < 2 * n && nxt[px + 1][py] == 3) {
-        px++;
-        nxt[px][py] = 1;
-    }
+    while (px < 2 * n && nxt[px + 1][py] == 3) px++, nxt[px][py] = 1;
 }
 int track(int x, int y, int e) {  // use this routine to find LCS as string
     int ret = 0;
@@ -33,36 +24,18 @@ int track(int x, int y, int e) {  // use this routine to find LCS as string
 }
 int solve(string a, string b) {
     n = a.size(), m = b.size();
-    s1 = "#" + a + a;
-    s1 = '#' + b;
+    s1 = "#" + a + a, s1 = '#' + b;
     for (int i = 0; i <= 2 * n; i++) {
         for (int j = 0; j <= m; j++) {
-            if (j == 0) {
-                nxt[i][j] = 3;
-                continue;
-            }
-            if (i == 0) {
-                nxt[i][j] = 1;
-                continue;
-            }
+            if (j == 0) { nxt[i][j] = 3; continue; }
+            if (i == 0) { nxt[i][j] = 1; continue; }
             dp[i][j] = -1;
-            if (dp[i][j] < dp[i][j - 1]) {
-                dp[i][j] = dp[i][j - 1];
-                nxt[i][j] = 1;
-            }
-            if (dp[i][j] < dp[i - 1][j - 1] + (s1[i] == s2[j])) {
-                dp[i][j] = dp[i - 1][j - 1] + (s1[i] == s2[j]);
-                nxt[i][j] = 2;
-            }
-            if (dp[i][j] < dp[i - 1][j]) {
-                dp[i][j] = dp[i - 1][j];
-                nxt[i][j] = 3;
-            }
+            if (dp[i][j] < dp[i][j - 1]) dp[i][j] = dp[i][j - 1], nxt[i][j] = 1;
+            if (dp[i][j] < dp[i - 1][j - 1] + (s1[i] == s2[j])) dp[i][j] = dp[i - 1][j - 1] + (s1[i] == s2[j]), nxt[i][j] = 2;
+            if (dp[i][j] < dp[i - 1][j]) dp[i][j] = dp[i - 1][j], nxt[i][j] = 3;
         }
     }
     int ret = dp[n][m];
-    for (int i = 1; i < n; i++) {
-        reroot(i), ret = max(ret, track(n + i, m, i));
-    }
+    for (int i = 1; i < n; i++) reroot(i), ret = max(ret, track(n + i, m, i));
     return ret;
 }

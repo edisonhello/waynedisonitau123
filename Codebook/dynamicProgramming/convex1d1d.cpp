@@ -1,13 +1,8 @@
 struct segment {
     int i, l, r;
-    segment() {}
     segment(int a, int b, int c): i(a), l(b), r(c) {}
 };
-
-inline long long f(int l, int r) {
-    return dp[l] + w(l + 1, r); 
-}
-
+inline long long f(int l, int r) { return dp[l] + w(l + 1, r); }
 void solve() {
     dp[0] = 0ll;
     deque<segment> deq; deq.push_back(segment(0, 1, n));

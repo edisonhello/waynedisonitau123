@@ -13,12 +13,8 @@ struct WeightGraph {
     int flo_from[maxn * 2][maxn + 1], S[maxn * 2], vis[maxn * 2];
     vector<int> flo[maxn * 2];
     queue<int> q;
-    int e_delta(const edge &e) {
-        return lab[e.u] + lab[e.v] - g[e.u][e.v].w * 2;
-    }
-    void update_slack(int u, int x) {
-        if (!slack[x] || e_delta(g[u][x]) < e_delta(g[slack[x]][x])) slack[x] = u;
-    }
+    int e_delta(const edge &e) { return lab[e.u] + lab[e.v] - g[e.u][e.v].w * 2; }
+    void update_slack(int u, int x) { if (!slack[x] || e_delta(g[u][x]) < e_delta(g[slack[x]][x])) slack[x] = u; }
     void set_slack(int x) {
         slack[x] = 0;
         for (int u = 1; u <= n; ++u)
@@ -193,13 +189,11 @@ struct WeightGraph {
                 tot_weight += g[u][match[u]].w;
         return make_pair(tot_weight, n_matches);
     }
-    void add_edge(int ui, int vi, int wi) {
-        g[ui][vi].w = g[vi][ui].w = wi;
-    }
+    void add_edge(int ui, int vi, int wi) { g[ui][vi].w = g[vi][ui].w = wi; }
     void init(int _n) {
         n = _n;
         for (int u = 1; u <= n; ++u)
-            for (int v=1; v <= n; ++v)
+            for (int v = 1; v <= n; ++v)
                 g[u][v] = edge(u, v, 0);
     }
 };
