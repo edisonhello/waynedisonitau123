@@ -37,4 +37,10 @@
         \item For $v \in G$, connect it with sink $v \rightarrow t$ with capacity $K + 2T - (\sum_{e \in E(v)}{w(e)}) - 2w(v)$
         \item $T$ is a valid answer if the maximum flow $f < K \lvert V \rvert$
     \end{enumerate}
+    \item Minimum weight edge cover
+    \begin{enumerate}
+      \item For each $v \in V$ create a copy $v^\prime$, connected $u^\prime \to v^\prime$ with weight $w((u, v))$.
+      \item Connect $v \to v^\prime$ with weight $2\mu(v)$, where $\mu(v)$ is the cost of the cheapest edge incident to $v$.
+      \item The minimum weight perfect matching on the resulting graph is equivalent to the minimum weight edge cover of $G$ by changing each $(v, v^\prime)$ to the cheapest edge of $v$.
+    \end{enumerate}
 \end{itemize}
