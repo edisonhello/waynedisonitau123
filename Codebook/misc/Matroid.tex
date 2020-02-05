@@ -8,4 +8,4 @@ If there exists $x \in Y_1 \cap Y_2$, insert $x$ into $S$. Otherwise for each $x
   \item $x \to y$ if $S - \{x\} \cup \{y\} \in I_1$.
   \item $y \to x$ if $S - \{x\} \cup \{y\} \in I_2$.
 \end{itemize}
-Find a \textit{shortest} path (with BFS) starting from a vertex in $Y_1$ and ending at a vertex in $Y_2$ which doesn't pass through any other vertices in $Y_2$, and alternate the path. The size of $S$ will be incremented by 1 in each iteration.
+Find a \textit{shortest} path (with BFS) starting from a vertex in $Y_1$ and ending at a vertex in $Y_2$ which doesn't pass through any other vertices in $Y_2$, and alternate the path. The size of $S$ will be incremented by 1 in each iteration. For the weighted case, assign weight $w(x)$ to vertex $x$ if $x \in S$ and $-w(x)$ if $x \not\in S$. Find the path with the minimum number of edges among all minimum length paths.
