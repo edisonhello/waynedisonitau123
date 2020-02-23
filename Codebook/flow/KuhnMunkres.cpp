@@ -14,8 +14,7 @@ void Bfs(int s, int n) {
     ql = qr = 0;
     qu[qr++] = s;
     vr[s] = true;
-    while (true) {
-        int d;
+    for (int d; ; ) {
         while (ql < qr) {
             for (int x = 0, y = qu[ql++]; x < n; ++x) {
                 if (!vl[x] && slk[x] >= (d = hl[x] + hr[y] - w[x][y])) {

@@ -1,0 +1,55 @@
+\newcommand{\contest}[2]{
+	\def\@contestname{#1}
+	\def\@contestdate{#2}
+}
+
+\newcommand{\team}[2]{
+	\def\@teamname{#1}
+	\def\@teammembers{#2}
+}
+
+\newcommand{\university}[3]{
+	\def\@unishort{#1}
+	\def\@unilong{#2}
+	\def\@unilogo{#3}
+}
+
+\newcommand{\code}[2]{
+  \subsection{#1}
+  \vspace{-1em}
+  \lstinputlisting{#2}
+  \vspace{-2em}
+}
+
+\newcommand{\tex}[2]{
+  \subsection{#1}
+  \input{#2}
+  \vspace{-2em}
+}
+
+\newcommand{\maketeampage}{
+  \onecolumn
+	\pagestyle{empty}
+	\begin{center}
+		\strut % Magic
+		\vspace{3cm}\\
+
+		%\begin{adjustwidth}{8.7cm}{0cm}
+    \includegraphics[width=10cm]{\@unilogo}\\
+		%\end{adjustwidth}
+		\vspace{0.5cm}
+		{\Huge \@unilong\\}
+		{\fontsize{50}{50}\selectfont \@teamname\\}
+		\vspace{0.5cm}
+		{\Large \@teammembers\\}
+		\vfill
+		{\huge \@contestname}\\
+		\vspace{0.5cm}
+		{\Large \@contestdate}\\
+		\vspace{1cm}
+	\end{center}
+	\clearpage
+	\pagestyle{fancy}
+	\setcounter{page}{1}
+  \twocolumn
+}

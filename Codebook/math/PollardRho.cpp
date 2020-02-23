@@ -1,15 +1,14 @@
 map<long long, int> cnt;
-
-long long f(long long x, long long n, int p) { return (fmul(x, x, n) + p) % n; }
-void pollard_rho(long long n) {
+void PollardRho(long long n) {
     if (n == 1) return;
     if (prime(n)) return ++cnt[n], void();        
-    if (n % 2 == 0) return pollard_rho(n / 2), ++cnt[2], void();
+    if (n % 2 == 0) return PollardRho(n / 2), ++cnt[2], void();
     long long x = 2, y = 2, d = 1, p = 1;
+    auto f = [&](auto x, auto n, int p) { return (fmul(x, x, n) + p) % n; }
     while (true) {
         if (d != n && d != 1) {
-            pollard_rho(n / d);
-            pollard_rho(d);
+            PollardRho(n / d);
+            PollardRho(d);
             return;
         }
         if (d == n) ++p;

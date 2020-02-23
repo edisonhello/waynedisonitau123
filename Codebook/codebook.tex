@@ -13,8 +13,10 @@
 \usepackage{fancyhdr}								%設定頁首頁尾
 \usepackage{graphicx}								%Graphic
 \usepackage{enumerate}
+\usepackage{changepage}
 \usepackage{titlesec}
 \usepackage{amsmath}
+\usepackage{codebook}
 \usepackage[CheckSingle, CJKmath]{xeCJK}
 % \usepackage{CJKulem}
 
@@ -76,9 +78,15 @@ stringstyle=\itshape\color{Green4},
 literate={\ \ }{{\ }}1
 }
 
+
+\university{waynedisonitau123}{National Taiwan University}{ntu}
+\team{waynedisonitau123}{Ta-Wei Tu, Kuan-Yu Chen, Jung-Tao Cheng}
+\contest{ICPC World Finals}{June 25, 2020}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
+\maketeampage
 \pagestyle{fancy}
 \fancyfoot{}
 %\fancyfoot[R]{\includegraphics[width=20pt]{ironwood.jpg}}
@@ -86,7 +94,6 @@ literate={\ \ }{{\ }}1
 \fancyhead[R]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\contentsname}{Contents} 
-
 \scriptsize
 \begingroup
 \let\clearpage\relax
@@ -95,252 +102,119 @@ literate={\ \ }{{\ }}1
 % \tableofcontents
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % \newpage
-%\section{Data Structure}
-%\subsection{Treap}
-%\lstinputlisting{/vimrc}
+
 \section{Basic}
-\subsection{vimrc}
-\lstinputlisting{basic/vimrc}
-% \subsection{Compilation Argument}
-% \lstinputlisting{basic/compilationArgument.txt}
-% \subsection{Checker}
-% \lstinputlisting{basic/check.sh}
-\subsection{Fast Integer Input}
-\lstinputlisting{basic/rit.cpp}
-\subsection{Increase stack size}
-\lstinputlisting{basic/IncStack.cpp}
-\subsection{Pragma optimization}
-\lstinputlisting{basic/Pragma.cpp}
-% \subsection{Java}
-% \lstinputlisting{basic/filename.java}
-\section{Flow, Matching}
-\subsection{Dinic's Algorithm}
-\lstinputlisting{flow/Dinic.cpp}
-% \subsection{ISAP}
-% \lstinputlisting{flow/ISAP.cpp}
-\subsection{Minimum-cost flow}
-\lstinputlisting{flow/MincostMaxflow.cpp}
-\subsection{Gomory-Hu Tree}
-\lstinputlisting{flow/GomoryHu.cpp}
-\subsection{Stoer–Wagner Minimum Cut}
-\lstinputlisting{flow/SW.cpp}
-\subsection{Kuhn–Munkres Algorithm}
-\lstinputlisting{flow/KuhnMunkres.cpp}
-\subsection{Maximum Matching on General Graph}
-\lstinputlisting{graph/MaximumGeneralGraphMatching.cpp}
-\subsection{Maximum Weighted Matching on General Graph}
-\lstinputlisting{graph/MaximumWeightedMatching.cpp}
-\subsection{Flow Model}
-\input{flow/Model.tex}
+\code{vimrc}{basic/vimrc}
+\code{Fast Integer Input}{basic/rit.cpp}
+\code{Increase stack size}{basic/IncStack.cpp}
+\code{Pragma optimization}{basic/Pragma.cpp}
+
+\section{Flows, Matching}
+\code{Dinic's Algorithm}{flow/Dinic.cpp}
+\code{Minimum-cost flow}{flow/MincostMaxflow.cpp}
+\code{Gomory-Hu Tree}{flow/GomoryHu.cpp}
+\code{Stoer–Wagner Minimum Cut}{flow/SW.cpp}
+\code{Kuhn–Munkres Algorithm}{flow/KuhnMunkres.cpp}
+\code{Maximum Matching on General Graph}{graph/MaximumGeneralGraphMatching.cpp}
+\code{Maximum Weighted Matching on General Graph}{graph/MaximumWeightedMatching.cpp}
+\code{Minimum Cost Circulation}{flow/MinCostCirculation.cpp}
+\tex{Flow Model}{flow/Model.tex}
+
 \section{Data Structure}
-% \subsection{Disjoint Set}
-% \lstinputlisting{dataStructure/DisjointSet.cpp}
-\subsection{<ext/pbds>}
-\lstinputlisting{dataStructure/darkMagic.cpp}
-\subsection{Li Chao Tree}
-\lstinputlisting{dataStructure/LiChaoTree.cpp}
-\subsection{Link-Cut Tree}
-\lstinputlisting{dataStructure/LinkCutTree.cpp}
+\code{<ext/pbds>}{dataStructure/darkMagic.cpp}
+\code{Li Chao Tree}{dataStructure/LiChaoTree.cpp}
+\code{Link-Cut Tree}{dataStructure/LinkCutTree.cpp}
+
 \section{Graph}
-\subsection{Heavy-Light Decomposition}
-\lstinputlisting{graph/HeavyLightDecomp.cpp}
-\subsection{Centroid Decomposition}
-\lstinputlisting{graph/CentroidDecomp.cpp}
-\subsection{Minimum Mean Cycle}
-\lstinputlisting{graph/MinMeanWeightCycle.cpp}
-\subsection{Minimum Steiner Tree}
-\lstinputlisting{graph/MinimumSteinerTree.cpp}
-\subsection{Directed Minimum Spanning Tree}
-\lstinputlisting{graph/DirectedMST.cpp}
-\subsection{Maximum Clique}
-\lstinputlisting{graph/MaxClique.cpp}
-\subsection{Tarjan's Algorithm}
-\lstinputlisting{graph/Tarjan.cpp}
-\subsection{Dominator Tree}
-\lstinputlisting{graph/DominatorTree.cpp}
-\subsection{Virtual Tree}
-\lstinputlisting{graph/VirtualTree.cpp}
-\subsection{Vizing's Theorem}
-\lstinputlisting{graph/Vizing.cpp}
-% \subsection{2-Satisfiability}
-% \lstinputlisting{graph/TwoSat.cpp}
-\subsection{System of Difference Constraints}
-\input{graph/SystemOfDifferenceConstraints.tex}
+\code{Heavy-Light Decomposition}{graph/HeavyLightDecomp.cpp}
+\code{Centroid Decomposition}{graph/CentroidDecomp.cpp}
+\code{Minimum Mean Cycle}{graph/MinMeanWeightCycle.cpp}
+\code{Minimum Steiner Tree}{graph/MinimumSteinerTree.cpp}
+\code{Directed Minimum Spanning Tree}{graph/DirectedMST.cpp}
+\code{Maximum Clique}{graph/MaxClique.cpp}
+\code{Tarjan's Algorithm}{graph/Tarjan.cpp}
+\code{Dominator Tree}{graph/DominatorTree.cpp}
+\code{Virtual Tree}{graph/VirtualTree.cpp}
+\code{Vizing's Theorem}{graph/Vizing.cpp}
+\tex{System of Difference Constraints}{graph/SystemOfDifferenceConstraints.tex}
+
 \section{String}
-\subsection{Knuth–Morris–Pratt Algorithm}
-\lstinputlisting{string/KMP.cpp}
-\subsection{Z Algorithm}
-\lstinputlisting{string/Z.cpp}
-\subsection{Manacher's Algorithm}
-\lstinputlisting{string/Manacher.cpp}
-\subsection{Aho-Corasick Automaton}
-\lstinputlisting{string/AhoCorasick.cpp}
-\subsection{Suffix Automaton}
-\lstinputlisting{string/SAM.cpp}
-\subsection{Suffix Array}
-\lstinputlisting{string/SAIS2.cpp}
-\subsection{Palindromic Tree}
-\lstinputlisting{string/PalindromicTree.cpp}
-\subsection{Circular LCS}
-\lstinputlisting{string/CircularLCS.cpp}
-% \subsection{SAIS}
-% \lstinputlisting{string/SAIS.cpp}
-% \subsection{DC3}
-% \lstinputlisting{string/DC3.cpp}
-\subsection{Lexicographically Smallest Rotation}
-\lstinputlisting{string/SmallestRotation.cpp}
+\code{Knuth–Morris–Pratt Algorithm}{string/KMP.cpp}
+\code{Z Algorithm}{string/Z.cpp}
+\code{Manacher's Algorithm}{string/Manacher.cpp}
+\code{Aho-Corasick Automaton}{string/AhoCorasick.cpp}
+\code{Suffix Automaton}{string/SAM.cpp}
+\code{Suffix Array}{string/SAIS2.cpp}
+\code{Palindromic Tree}{string/PalindromicTree.cpp}
+\code{Circular LCS}{string/CircularLCS.cpp}
+\code{Lexicographically Smallest Rotation}{string/SmallestRotation.cpp}
+
 \section{Math}
-\subsection{Fast Fourier Transform}
-\lstinputlisting{math/FFT2.cpp}
-\subsection{Number Theoretic Transform}
-\lstinputlisting{math/NTT.cpp}
-\subsubsection{NTT Prime List}
-\input{math/NTTprime.tex}
-\subsection{Polynomial Division}
-\lstinputlisting{math/PolynomialDivision.cpp}
-\subsection{Polynomial Square Root}
-\lstinputlisting{math/PolynomialSqrt.cpp}
-\subsection{Multipoint Evaluation}
-\lstinputlisting{math/MultiEval.cpp}
-\subsection{Polynomial Interpolation}
-\lstinputlisting{math/Interpolation.cpp}
-\subsection{Fast Walsh-Hadamard Transform}
-% \lstinputlisting{math/FWT.cpp}
-\input{math/FWT.tex}
-\subsection{Simplex Algorithm}
-\lstinputlisting{math/Simplex.cpp}
+\code{Fast Fourier Transform}{math/FFT2.cpp}
+\code{Number Theoretic Transform}{math/NTT.cpp}
+\tex{NTT Prime List}{math/NTTprime.tex}
+\code{Polynomial Division}{math/PolynomialDivision.cpp}
+\code{Polynomial Square Root}{math/PolynomialSqrt.cpp}
+\code{Multipoint Evaluation}{math/MultiEval.cpp}
+\code{Polynomial Interpolation}{math/Interpolation.cpp}
+\tex{Fast Walsh-Hadamard Transform}{math/FWT.tex}
+\code{Simplex Algorithm}{math/Simplex.cpp}
 \subsubsection{Construction}
 \input{math/SimplexConstruction.tex}
-\subsection{Schreier–Sims Algorithm}
-\lstinputlisting{math/SchreierSims.cpp}
-\subsection{Berlekamp-Massey Algorithm}
-\lstinputlisting{math/BerlekampMassey.cpp}
-\subsection{Fast Linear Recurrence}
-\lstinputlisting{math/LinearRec.cpp}
-% \subsection{Lagrange Interpolation}
-% \lstinputlisting{math/LagrangeInterpolation.cpp}
-\subsection{Miller Rabin}
-\lstinputlisting{math/MillerRabin.cpp}
-\subsection{Pollard's Rho}
-\lstinputlisting{math/PollardRho.cpp}
-\subsection{Meissel–Lehmer Algorithm}
-\lstinputlisting{math/PiCount.cpp}
-\subsection{Discrete Logarithm}
-\lstinputlisting{math/DiscreteLog2.cpp}
-\subsection{Quadratic Residue}
-\lstinputlisting{math/QuadraticResidue.cpp}
-\subsection{Gaussian Elimination}
-\lstinputlisting{math/GaussElimination.cpp}
-% \subsection{Linear Equations (full pivoting)}
-% \lstinputlisting{math/LinearEquation.cpp}
-\subsection{$\mu$ function}
-\lstinputlisting{math/Mu.cpp}
-\subsection{Partition Function}
-\lstinputlisting{math/Partition.cpp}
-\subsection{$\lfloor \frac{n}{i} \rfloor$ Enumeration}
-\input{math/ReciprocalEnum.tex}
-\subsection{De Bruijn Sequence}
-\lstinputlisting{math/DeBruijn.cpp}
-\subsection{Extended GCD}
-\lstinputlisting{math/extGcd.cpp}
-\subsection{Euclidean Algorithms}
-\input{math/Euclidean.tex}
-\subsection{Chinese Remainder Theorem}
-\lstinputlisting{math/CRT.cpp}
-% \subsection{Lucas's Theorem}
-% \input{math/LucasTheorem.tex}
-% \subsection{Kirchhoff's Theorem}
-% \input{math/Kirchhoff.tex}
-% \subsection{Tutte Matrix}
-% \input{math/Tutte.tex}
-\subsection{Theorem}
-\input{math/Theorem.tex}
-\subsection{Primes}
-\input{math/Primes.tex}
+\vspace{-2em}
+\code{Schreier–Sims Algorithm}{math/SchreierSims.cpp}
+\code{Berlekamp-Massey Algorithm}{math/BerlekampMassey.cpp}
+\code{Fast Linear Recurrence}{math/LinearRec.cpp}
+\code{Miller Rabin}{math/MillerRabin.cpp}
+\code{Pollard's Rho}{math/PollardRho.cpp}
+\code{Meissel–Lehmer Algorithm}{math/PiCount.cpp}
+\code{Discrete Logarithm}{math/DiscreteLog2.cpp}
+\code{Quadratic Residue}{math/QuadraticResidue.cpp}
+\code{Gaussian Elimination}{math/GaussElimination.cpp}
+\code{$\mu$ function}{math/Mu.cpp}
+\code{Partition Function}{math/Partition.cpp}
+\tex{$\lfloor \frac{n}{i} \rfloor$ Enumeration}{math/ReciprocalEnum.tex}
+\code{De Bruijn Sequence}{math/DeBruijn.cpp}
+\code{Extended GCD}{math/extGcd.cpp}
+\tex{Euclidean Algorithms}{math/Euclidean.tex}
+\code{Chinese Remainder Theorem}{math/CRT.cpp}
+\tex{Theorem}{math/Theorem.tex}
+\tex{Primes}{math/Primes.tex}
+
 \section{Dynamic Programming}
-% \subsection{Convex Hull (monotone)}
-% \lstinputlisting{dynamicProgramming/convexHullMonotone.cpp}
-\subsection{Dynamic Convex Hull}
-\lstinputlisting{dynamicProgramming/DynamicConvexHull.cpp}
-\subsection{$1D/1D$ Convex Optimization}
-\lstinputlisting{dynamicProgramming/convex1d1d.cpp}
-\subsection{Conditon}
-\input{dynamicProgramming/Condition.tex}
+\code{Dynamic Convex Hull}{dynamicProgramming/DynamicConvexHull.cpp}
+\code{$1D/1D$ Convex Optimization}{dynamicProgramming/convex1d1d.cpp}
+\tex{Conditon}{dynamicProgramming/Condition.tex}
+
 \section{Geometry}
-\subsection{Basic}
-\lstinputlisting{geometry/_basic.cpp}
-\subsection{KD Tree}
-\lstinputlisting{geometry/KDTree.cpp}
-\subsection{Delaunay Triangulation}
-\lstinputlisting{geometry/Triangulation.cpp}
-\subsection{Voronoi Diagram}
-\lstinputlisting{geometry/Triangulation_Vonoroi_short.cpp}
-\subsection{Sector Area}
-\lstinputlisting{geometry/sectorArea.cpp}
-% \subsection{Polygon Area}
-% \lstinputlisting{geometry/area.cpp}
-\subsection{Half Plane Intersection}
-\lstinputlisting{geometry/halfPlaneIntersect.cpp}
-\subsection{Rotating Sweep Line}
-\lstinputlisting{geometry/rotatingSweepLine.cpp}
-\subsection{Triangle Center}
-\lstinputlisting{geometry/triangleCenter.cpp}
-\subsection{Polygon Center}
-\lstinputlisting{geometry/center.cpp}
-\subsection{Maximum Triangle}
-\lstinputlisting{geometry/maxTriangleOfConvex.cpp}
-\subsection{Point in Polygon}
-\lstinputlisting{geometry/pointInPolygon.cpp}
-% \subsection{Circle-Line Intersection}
-% \lstinputlisting{geometry/circleXline.cpp}
-% \subsection{Circle-Triangle Intersection}
-% \lstinputlisting{geometry/circleXtriangle.cpp}
-% \subsection{Circle-Circle Intersection}
-% \lstinputlisting{geometry/circleXcircle.cpp}
-\subsection{Circle}
-\lstinputlisting{geometry/circle.cpp}
-\subsection{Tangent of Circles and Points to Circle}
-\lstinputlisting{geometry/CircleTangent.cpp}
-\subsection{Area of Union of Circles}
-\lstinputlisting{geometry/circleOrArea.cpp}
-% \subsection{Tangent from Point to Circle}
-% \lstinputlisting{geometry/tangentToCircleFromPoint.cpp}
-% \subsection{Polygon Diameter}
-% \lstinputlisting{geometry/diameterOfConvex.cpp}
-\subsection{Minimun Distance of 2 Polygons}
-\lstinputlisting{geometry/minDistOfTwoConvex.cpp}
-\subsection{2D Convex Hull}
-\lstinputlisting{geometry/convexHull.cpp}
-\subsection{3D Convex Hull}
-\lstinputlisting{geometry/convex3D.cpp}
-% \subsection{Rotating Caliper}
-% \lstinputlisting{geometry/RotatingCaliper.cpp}
-\subsection{Minimum Enclosing Circle}
-\lstinputlisting{geometry/MinimumEnclosingCircle.cpp}
-\subsection{Closest Pair}
-\lstinputlisting{geometry/ClosestPair.cpp}
+\code{Basic}{geometry/_basic.cpp}
+\code{KD Tree}{geometry/KDTree.cpp}
+\code{Delaunay Triangulation}{geometry/Triangulation.cpp}
+\code{Voronoi Diagram}{geometry/Triangulation_Vonoroi_short.cpp}
+\code{Sector Area}{geometry/sectorArea.cpp}
+\code{Half Plane Intersection}{geometry/halfPlaneIntersect.cpp}
+\code{Rotating Sweep Line}{geometry/rotatingSweepLine.cpp}
+\code{Triangle Center}{geometry/triangleCenter.cpp}
+\code{Polygon Center}{geometry/center.cpp}
+\code{Maximum Triangle}{geometry/maxTriangleOfConvex.cpp}
+\code{Point in Polygon}{geometry/pointInPolygon.cpp}
+\code{Circle}{geometry/circle.cpp}
+\code{Tangent of Circles and Points to Circle}{geometry/CircleTangent.cpp}
+\code{Area of Union of Circles}{geometry/circleOrArea.cpp}
+\code{Minimun Distance of 2 Polygons}{geometry/minDistOfTwoConvex.cpp}
+\code{2D Convex Hull}{geometry/convexHull.cpp}
+\code{3D Convex Hull}{geometry/convex3D.cpp}
+\code{Minimum Enclosing Circle}{geometry/MinimumEnclosingCircle.cpp}
+\code{Closest Pair}{geometry/ClosestPair.cpp}
+
 \section{Miscellaneous}
-\subsection{Bitwise Hack}
-\lstinputlisting{misc/Bitwise.cpp}
-\subsection{Hilbert's Curve (faster Mo's algorithm)}
-\lstinputlisting{misc/HilbertCurve.cpp}
-\subsection{Java}
-\lstinputlisting{misc/filename.java}
-\subsection{Dancing Links}
-\lstinputlisting{misc/DLX.cpp}
-\subsection{Offline Dynamic MST}
-\lstinputlisting{misc/DynamicMST.cpp}
-\subsection{Manhattan Distance MST}
-\lstinputlisting{misc/ManhattanMST.cpp}
-% \subsection{"Dynamic" Kth Element (parallel binary search)}
-% \lstinputlisting{misc/DynamicKth_bs.cpp}
-% \subsection{Dynamic Kth Element (persistent segment tree)}
-% \lstinputlisting{misc/DynamicKth_st.cpp}
-\subsection{IOI 2016 Alien trick}
-\lstinputlisting{misc/Alien.cpp}
-\subsection{Matroid Intersection}
-\input{misc/Matroid.tex}
-% \section{Problems}
-% \subsection{Hilbert's Curve (faster Mo's algorithm)}
-% \lstinputlisting{problem/HilbertCurve.cpp}
+\code{Bitwise Hack}{misc/Bitwise.cpp}
+\code{Hilbert's Curve (faster Mo's algorithm)}{misc/HilbertCurve.cpp}
+\code{Java}{misc/filename.java}
+\code{Dancing Links}{misc/DLX.cpp}
+\code{Offline Dynamic MST}{misc/DynamicMST.cpp}
+\code{Manhattan Distance MST}{misc/ManhattanMST.cpp}
+\code{IOI 2016 Aliens Trick}{misc/Alien.cpp}
+\tex{Matroid Intersection}{misc/Matroid.tex}
+
 \end{document}

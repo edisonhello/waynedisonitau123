@@ -1,7 +1,7 @@
 template <int P>
 int LinearRec(const vector<int> &s, const vector<int> &coeff, int k) {
     int n = s.size();
-    auto Combine = [&](const vector<int> &a, const vector<int> &b) {
+    auto Combine = [&](const auto &a, const auto &b) {
         vector<int> res(n * 2 + 1);
         for (int i = 0; i <= n; ++i) {
             for (int j = 0; j <= n; ++j)

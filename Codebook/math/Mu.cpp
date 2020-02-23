@@ -1,16 +1,14 @@
-int mu[maxn], pi[maxn];
+int mu[kC], dv[kC];
 vector<int> prime;
-
-void sieve() {
-    mu[1] = pi[1] = 1;
-    for (int i = 2; i < maxn; ++i) {
-        if (!pi[i]) {
-            pi[i] = i;
+void Sieve() {
+    mu[1] = dv[1] = 1;
+    for (int i = 2; i < kC; ++i) {
+        if (!dv[i]) {
+            dv[i] = i, mu[i] = -1;
             prime.push_back(i);
-            mu[i] = -1;
         }
-        for (int j = 0; i * prime[j] < maxn; ++j) {
-            pi[i * prime[j]] = prime[j];
+        for (int j = 0; i * prime[j] < kC; ++j) {
+            dv[i * prime[j]] = prime[j];
             mu[i * prime[j]] = -mu[i];
             if (i % prime[j] == 0) {
                 mu[i * prime[j]] = 0;
