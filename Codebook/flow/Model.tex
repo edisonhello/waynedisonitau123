@@ -55,4 +55,22 @@
       \item Connect $v \to v^\prime$ with weight $2\mu(v)$, where $\mu(v)$ is the cost of the cheapest edge incident to $v$.
       \item Find the minimum weight perfect matching on $G^\prime$.
     \end{enumerate}
+    \item Project selection problem
+    \vspace{-1em}
+    \begin{enumerate}
+      \itemsep-0.3em
+      \item If $p_v > 0$, create edge $(s, v)$ with capacity $p_v$; otherwise, create edge $(v, t)$ with capacity $-p_v$.
+      \item Create edge $(u, v)$ with capacity $w$ with $w$ being the cost of choosing $u$ without choosing $v$.
+      \item The mincut is equivalent to the maximum profit of a subset of projects.
+    \end{enumerate}
+    \item 0/1 quadratic programming
+    \vspace{-1em}
+    \[ \sum_x{c_xx} + \sum_y{c_y\bar{y}} + \sum_{xy}c_{xy}x\bar{y} + \sum_{xyx^\prime y^\prime}c_{xyx^\prime y^\prime}(x\bar{y} + x^\prime\bar{y^\prime}) \]
+    can be minimized by the mincut of the following graph:
+    \begin{enumerate}
+      \itemsep-0.3em
+      \item Create edge $(x, t)$ with capacity $c_x$ and create edge $(s, y)$ with capacity $c_y$.
+      \item Create edge $(x, y)$ with capacity $c_{xy}$.
+      \item Create edge $(x, y)$ and edge $(x^\prime, y^\prime)$ with capacity $c_{xyx^\prime y^\prime}$.
+    \end{enumerate}
 \end{itemize}
