@@ -1,23 +1,26 @@
-long long bsgs(long long a, long long b, long long p) {
-    // return L such that a^L = b (mod p)
-    // p must be prime number
-	if (p % a == 0) return -1;
-	long long m = ceil(sqrt(p));
-	long long l = b;
-    map<long long, int> mp;
-	mp[l] = 1;
-	for (int i = 1; i <= m; i++) {
-		(l *= a) %= p;
-		mp[l] = i + 1;
-	}
-	l = fpow(a, m, p);
-    long long r = l;
-	for (int i = 1; i <= m; i++) {
-		if (mp.find(r) != mp.end()) {
-		    long long ans = i * m - mp[r] + 1;
-			return ans;
-		}
-		(r *= l) %= p;
-	}
-	return -1;
+int DiscreteLog(int s, int x, int y, int m) {
+    constexpr int kStep = 32000;
+    unordered_map<int, int> p;
+    int b = 1;
+    for (int i = 0; i < kStep; ++i) {
+        p[y] = i;
+        y = 1LL * y * x % m;
+        b = 1LL * b * x % m;
+    }
+    for (int i = 0; i < m + 10; i += kStep) {
+        s = 1LL * s * b % m;
+        if (p.find(s) != p.end()) return i + kStep - p[s];
+    }
+    return -1;
+}
+int DiscreteLog(int x, int y, int m) {
+    if (m == 1) return 0;
+    int s = 1;
+    for (int i = 0; i < 100; ++i) {
+        if (s == y) return i;
+        s = 1LL * s * x % m;
+    }
+    int p = 100 + DiscreteLog(s, x, y, m);
+    if (fpow(x, p, m) != y) return -1;
+    return p;
 }

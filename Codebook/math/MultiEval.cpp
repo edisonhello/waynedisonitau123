@@ -26,7 +26,7 @@ struct MultiEval {
             }
             return;
         }
-        auto pol = Modulo(poly, ml);
+        auto pol = Modulo(poly, ml); // remove trailing zeros
         int m = (l + r) >> 1;
         lc->Query(pol, res, l, m), rc->Query(pol, res, m, r);
     }

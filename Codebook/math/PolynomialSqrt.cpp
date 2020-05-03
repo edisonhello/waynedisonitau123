@@ -1,4 +1,3 @@
-// Find G(x) such that G^2(x) = F(x) (mod x^{N+1})
 vector<int> solve(vector<int> b, int n) {
     if (n == 1) return {sqr[b[0]]};
     vector<int> h = solve(b, n >> 1); h.resize(n);

@@ -1,7 +1,3 @@
-namespace simplex {
-// maximize c^Tx under Ax <= B
-// return vector<double>(n, -inf) if the solution doesn't exist
-// return vector<double>(n, +inf) if the solution is unbounded
 const double eps = 1e-9;
 const double inf = 1e+9;
 int n, m;
@@ -61,4 +57,4 @@ vector<double> solve(const vector<vector<double>> &a, const vector<double> &b, c
     vector<double> x(n);
     for (int i = 0; i < m; ++i) if (p[i] < n) x[p[i]] = d[i][n + 1];
     return x;
-}}
+}

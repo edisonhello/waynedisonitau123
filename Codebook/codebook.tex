@@ -86,7 +86,7 @@ literate={\ \ }{{\ }}1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\maketeampage
+% \maketeampage % cover page
 \pagestyle{fancy}
 \fancyfoot{}
 %\fancyfoot[R]{\includegraphics[width=20pt]{ironwood.jpg}}
@@ -118,7 +118,7 @@ literate={\ \ }{{\ }}1
 \code{Maximum Matching on General Graph}{graph/MaximumGeneralGraphMatching.cpp}
 \code{Maximum Weighted Matching on General Graph}{graph/MaximumWeightedMatching.cpp}
 \code{Minimum Cost Circulation}{flow/MinCostCirculation.cpp}
-\tex{Flow Model}{flow/Model.tex}
+\tex{Flow Models}{flow/Model.tex}
 
 \section{Data Structure}
 \code{<ext/pbds>}{data-structure/darkMagic.cpp}
@@ -154,11 +154,12 @@ literate={\ \ }{{\ }}1
 \code{Number Theoretic Transform}{math/NTT.cpp}
 \tex{NTT Prime List}{math/NTTprime.tex}
 \code{Polynomial Division}{math/PolynomialDivision.cpp}
-\code{Polynomial Square Root}{math/PolynomialSqrt.cpp}
+\codewithtext{Polynomial Square Root}{math/PolynomialSqrt.cpp}{Find $G(x)$ such that $G^2(x) \equiv F(x) \pmod {x^{N+1}}$}
 \code{Multipoint Evaluation}{math/MultiEval.cpp}
 \code{Polynomial Interpolation}{math/Interpolation.cpp}
 \tex{Fast Walsh-Hadamard Transform}{math/FWT.tex}
-\code{Simplex Algorithm}{math/Simplex.cpp}
+\codewithtext{Simplex Algorithm}{math/Simplex.cpp}{maximize $\mathbf{c}^T\mathbf{x}$ subject to $A\mathbf{x} \leq \mathbf{b}$ and $\mathbf{x} \geq 0$. Returns $-\infty$ if infeasible and $\infty$ if unbounded.}
+\codewithtext{Subset Convolution}{math/SubsetConv.cpp}{$h(s) = \sum_{s^\prime \subseteq s}f(s^\prime)g(s\setminus s^\prime)$}
 \subsubsection{Construction}
 \input{math/SimplexConstruction.tex}
 \vspace{-2em}
@@ -168,7 +169,7 @@ literate={\ \ }{{\ }}1
 \code{Miller Rabin}{math/MillerRabin.cpp}
 \code{Pollard's Rho}{math/PollardRho.cpp}
 \code{Meissel–Lehmer Algorithm}{math/PiCount.cpp}
-\code{Discrete Logarithm}{math/DiscreteLog2.cpp}
+\codewithtext{Discrete Logarithm}{math/DiscreteLog.cpp}{to find $x$ such that $x^a \equiv b \pmod p$, let $g$ be the primitive root of $p$, find $k$ such that $g^k \equiv b \pmod p$ and $x$ can be found by $g^d$ where $ad \equiv k \pmod {p - 1}$.}
 \code{Quadratic Residue}{math/QuadraticResidue.cpp}
 \code{Gaussian Elimination}{math/GaussElimination.cpp}
 \code{$\mu$ function}{math/Mu.cpp}
@@ -210,6 +211,7 @@ literate={\ \ }{{\ }}1
 \section{Miscellaneous}
 \code{Bitwise Hack}{misc/Bitwise.cpp}
 \code{Hilbert's Curve (faster Mo's algorithm)}{misc/HilbertCurve.cpp}
+\code{Mo's Algorithm on Tree}{misc/MoOnTree.cpp}
 \code{Java}{misc/filename.java}
 \code{Dancing Links}{misc/DLX.cpp}
 \code{Offline Dynamic MST}{misc/DynamicMST.cpp}

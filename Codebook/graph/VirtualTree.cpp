@@ -1,24 +1,27 @@
 void VirtualTree(vector<int> v) {
-    static int stk[kN];
-    int sz = 0;
+    v.push_back(0);
     sort(v.begin(), v.end(), [&](int i, int j) { return dfn[i] < dfn[j]; });
-    stk[sz++] = 0;
+    v.resize(unique(v.begin(), v.end()) - v.begin());
+    vector<int> stk;
     for (int u : v) {
-        if (u == 0) continue;
-        int p = LCA(u, stk[sz - 1]);
-        if (p != stk[sz - 1]) {
-            while (sz >= 2 && dfn[p] < dfn[stk[sz - 2]]) {
-                AddEdge(stk[sz - 2], stk[sz - 1]);
-                --sz;
+        if (stk.empty()) {
+            stk.push_back(u);
+            continue;
+        }
+        int p = GetLCA(u, stk.back());
+        if (p != stk.back()) {
+            while (stk.size() >= 2 && dep[p] <= dep[stk[stk.size() - 2]]) {
+                int x = stk.back();
+                stk.pop_back();
+                AddEdge(x, stk.back());
             }
-            if (sz >= 2 && dfn[p] > dfn[stk[sz - 2]]) {
-                AddEdge(p, stk[sz - 1]);
-                stk[sz - 1] = p;
-            } else {
-                AddEdge(p, stk[--sz]);
+            if (stk.back() != p) {
+                AddEdge(stk.back(), p);
+                stk.pop_back();
+                stk.push_back(p);
             }
         }
-        stk[sz++] = u;
+        stk.push_back(u);
     }
-    for (int i = 0; i < sz - 1; ++i) AddEdge(stk[i], stk[i + 1]);
+    for (int i = 0; i + 1 < stk.size(); ++i) AddEdge(stk[i], stk[i + 1]);
 }

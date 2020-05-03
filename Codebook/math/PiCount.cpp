@@ -1,36 +1,46 @@
-int prc[maxn];
-long long phic[msz][nsz];
-
-void sieve() {
-    bitset<maxn> v;
-    pr.push_back(0);
-    for (int i = 2; i < maxn; ++i) {
-        if (!v[i]) pr.push_back(i);
-        for (int j = 1; i * pr[j] < maxn; ++j) {
-            v[i * pr[j]] = true;
-            if (i % pr[j] == 0) break;
+int64_t PrimeCount(int64_t n) {
+    if (n <= 1) return 0;
+    const int v = sqrt(n);
+    vector<int> smalls(v + 1);
+    for (int i = 2; i <= v; ++i) smalls[i] = (i + 1) / 2;
+    int s = (v + 1) / 2;
+    vector<int> roughs(s);
+    for (int i = 0; i < s; ++i) roughs[i] = 2 * i + 1;
+    vector<int64_t> larges(s);
+    for (int i = 0; i < s; ++i) larges[i] = (n / (2 * i + 1) + 1) / 2;
+    vector<bool> skip(v + 1);
+    int pc = 0;
+    for (int p = 3; p <= v; ++p) {
+        if (smalls[p] > smalls[p - 1]) {
+            int q = p * p;
+            pc++;
+            if (1LL * q * q > n) break;
+            skip[p] = true;
+            for (int i = q; i <= v; i += 2 * p) skip[i] = true;
+            int ns = 0;
+            for (int k = 0; k < s; ++k) {
+                int i = roughs[k];
+                if (skip[i]) continue;
+                int64_t d = 1LL * i * p;
+                larges[ns] = larges[k] - (d <= v ? larges[smalls[d] - pc] : smalls[n / d]) + pc;
+                roughs[ns++] = i;
+            }
+            s = ns;
+            for (int j = v / p; j >= p; --j) {
+                int c = smalls[j] - pc;
+                for (int i = j * p, e = min(i + p, v + 1); i < e; ++i) smalls[i] -= c;
+            }
         }
     }
-    for (int i = 1; i < pr.size(); ++i) prc[pr[i]] = 1;
-    for (int i = 1; i < maxn; ++i) prc[i] += prc[i - 1];
-}
-long long p2(long long, long long);
-long long phi(long long m, long long n) {
-    if (m < msz && n < nsz && phic[m][n] != -1) return phic[m][n];
-    if (n == 0) return m;
-    if (pr[n] >= m) return 1;
-    long long ret = phi(m, n - 1) - phi(m / pr[n], n - 1);
-    if (m < msz && n < nsz) phic[m][n] = ret;
-    return ret;
-}
-long long pi(long long m) {
-    if (m < maxn) return prc[m];
-    long long n = pi(cbrt(m));
-    return phi(m, n) + n - 1 - p2(m, n);
-}
-long long p2(long long m, long long n) {
-    long long ret = 0;
-    long long lim = sqrt(m);
-    for (int i = n + 1; pr[i] <= lim; ++i) ret += pi(m / pr[i]) - pi(pr[i]) + 1;
-    return ret;
+    for (int k = 1; k < s; ++k) {
+        const int64_t m = n / roughs[k];
+        int64_t s = larges[k] - (pc + k - 1);
+        for (int l = 1; l < k; ++l) {
+            int p = roughs[l];
+            if (1LL * p * p > m) break;
+            s -= smalls[m / p] - (pc + l - 1);
+        }
+        larges[0] -= s;
+    }
+    return larges[0];
 }

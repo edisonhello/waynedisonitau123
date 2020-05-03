@@ -1,4 +1,4 @@
-namespace sfxarray {
+namespace sfx {
 bool t[maxn * 2];
 int hi[maxn], rev[maxn];
 int _s[maxn * 2], sa[maxn * 2], c[maxn * 2], x[maxn], p[maxn], q[maxn * 2];    
