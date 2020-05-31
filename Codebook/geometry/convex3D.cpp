@@ -1,9 +1,8 @@
 
-double absvol(const P a,const P b,const P c,const P d){
+double absvol(const P a,const P b,const P c,const P d) {
     return abs(((b-a)^(c-a))*(d-a))/6;
 }
-
-struct convex3D{
+struct convex3D {
 static const int maxn=1010;
 struct T{
     int a,b,c;
@@ -19,9 +18,9 @@ bool on(T &t,P &q){
     return ((p[t.c]-p[t.b])^(p[t.a]-p[t.b]))*(q-p[t.a])>eps;
 }
 void meow(int q,int a,int b){
-    int f2=id[a][b];
-    if(f[f2].res){
-        if(on(f[f2],p[q]))dfs(q,f2);
+    int g=id[a][b];
+    if(f[g].res){
+        if(on(f[g],p[q]))dfs(q,g);
         else{
             id[q][b]=id[a][q]=id[b][a]=m;
             f[m++]=T(b,a,q,1);
@@ -30,21 +29,19 @@ void meow(int q,int a,int b){
 }
 void dfs(int p,int i){
     f[i].res=0;
-    meow(p,f[i].b,f[now].a);
-    meow(p,f[i].c,f[now].b);
-    meow(p,f[i].a,f[now].c);
+    meow(p,f[i].b,f[i].a);
+    meow(p,f[i].c,f[i].b);
+    meow(p,f[i].a,f[i].c);
 }
 void operator()(){
     if(n<4)return;
-    if([&]()->int{
+    if([&](){
         for(int i=1;i<n;++i)if(abs(p[0]-p[i])>eps)return swap(p[1],p[i]),0;
         return 1;
-    }())return;
-    if([&]()->int{
+    }() || [&](){
         for(int i=2;i<n;++i)if(abs((p[0]-p[i])^(p[1]-p[i]))>eps)return swap(p[2],p[i]),0;
         return 1;
-    }())return;
-    if([&]()->int{
+    }() || [&](){
         for(int i=3;i<n;++i)if(abs(((p[1]-p[0])^(p[2]-p[0]))*(p[i]-p[0]))>eps)return swap(p[3],p[i]),0;
         return 1;
     }())return;
