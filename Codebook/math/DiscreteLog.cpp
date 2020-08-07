@@ -20,6 +20,7 @@ int DiscreteLog(int x, int y, int m) {
         if (s == y) return i;
         s = 1LL * s * x % m;
     }
+    if (s == y) return 100;
     int p = 100 + DiscreteLog(s, x, y, m);
     if (fpow(x, p, m) != y) return -1;
     return p;
