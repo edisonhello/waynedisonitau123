@@ -1,76 +1,52 @@
+#pragma GCC optimize("O3")
 #include <bits/stdc++.h>
 using namespace std;
-#define x first
-#define y second
-
-double eps = 1e-9;
-bool same(double a, double b) {
-  return abs(a - b) < eps;
-}
-
-struct cmp {
-  bool operator() (const pair<double, double> &a, const pair<double, double> &b) const {
-    return same(a.first, b.first) ? same(a.second, b.second) ? 0 : a.second < b.second : a.first < b.first;
-  }
-};
 
 pair<int, int> ps[2505]; 
 
-int main() {
-  int n; cin >> n;
-  for (int i = 0; i < n; ++i) cin >> ps[i].first >> ps[i].second;
+int32_t main() {
+	int n; cin >> n;
+	for (int i = 0; i < n; ++i) cin >> ps[i].first >> ps[i].second;
 
-  map<pair<double, double>, int, cmp> mp;
+	if (n == 1) {
+		cout << 1 << endl;
+		exit(0);
+	}
 
-  for (int i = 0; i < n; ++i) {
-    for (int j = i + 1; j < n; ++j) {
-      double a = ps[i].y - ps[j].y;
-      double b = ps[j].x - ps[i].x;
-      double c = ps[i].x * ps[j].y - ps[i].y * ps[j].x;
+	int mx = 2;
+	vector<pair<int, int>> po;
+	vector<pair<int, int>> d;
+	for (int i = 0; i < n; ++i) {
+		po.clear();
+		d.clear();
 
-      if (same(c, 0)) {
-        if (same(b, 0)) {
-          a = 1;
-          b = 0;
-        } else {
-          a /= b;
-          b /= b;
-          if (b < 0) {
-            a *= -1;
-            b *= -1;
-          }
-        }
-      } else {
-        a /= c;
-        b /= c;
-        c /= c;
-        if (c < 0) {
-          a *= -1;
-          b *= -1;
-          c *= -1;
-        }
-      }
+		for (int j = 0; j < n; ++j) if (j != i) po.push_back(ps[j]);
 
-      ++mp[make_pair(a, b)];
-    }
-  }
+		auto [x, y] = ps[i];
+		for (auto [nx, ny] : po) {
+			int dx = nx - x;
+			int dy = ny - y;
+			if (dy < 0) {
+				dy = -dy;
+				dx = -dx;
+			} else if (dy == 0 && dx < 0) {
+				dx = -dx;
+			}
 
-  if (n <= 2) {
-    cout << n << endl;
-    exit(0);
-  }
+			int g = __gcd(dx, dy);
+			dx /= g;
+			dy /= g;
+			d.emplace_back(dx, dy);
+		}
 
-  int mx = 0;
-  for (auto &p : mp) mx = max(mx, p.second);
-  for (int i = 3; i <= n; ++i) {
-    if (mx == i * (i - 1) / 2) {
-      cout << i << endl;
-      exit(0);
-    }
-  }
+		sort(d.begin(), d.end());
+		for (int i = 0, j; i < (int)d.size(); i = j) {
+			for (j = i; j < (int)d.size(); ++j) {
+				if (d[i] != d[j]) break;
+			}
+			mx = max(mx, j - i + 1);
+		}
+	}
 
-  exit(1);
-
-
-
+	cout << mx << endl;
 }
