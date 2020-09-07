@@ -1,50 +1,49 @@
-namespace km {
-int w[kN][kN], hl[kN], hr[kN], slk[kN];
-int fl[kN], fr[kN], pre[kN], qu[kN], ql, qr;
-bool vl[kN], vr[kN];
-bool Check(int x) {
-    if (vl[x] = true, fl[x] != -1) return vr[qu[qr++] = fl[x]] = true;
-    while (x != -1) swap(x, fr[fl[x] = pre[x]]);
-    return false;
-}
-void Bfs(int s, int n) {
-    fill(slk, slk + n, kInf);
-    fill(vl, vl + n, false);
-    fill(vr, vr + n, false);
-    ql = qr = 0;
-    qu[qr++] = s;
-    vr[s] = true;
-    for (int d; ; ) {
-        while (ql < qr) {
-            for (int x = 0, y = qu[ql++]; x < n; ++x) {
-                if (!vl[x] && slk[x] >= (d = hl[x] + hr[y] - w[x][y])) {
-                    if (pre[x] = y, d) slk[x] = d;
-                    else if (!Check(x)) return;
+int64_t KuhnMunkres(vector<vector<int>> W) {
+    int N = W.size();
+    vector<int> fl(N, -1), fr(N, -1), hr(N), hl(N);
+    for (int i = 0; i < N; ++i) {
+        hl[i] = *max_element(W[i].begin(), W[i].end());
+    }
+    auto Bfs = [&](int s) {
+        vector<int> slk(N, kInf), pre(N);
+        vector<bool> vl(N, false), vr(N, false);
+        queue<int> que;
+        que.push(s);
+        vr[s] = true;
+        auto Check = [&](int x) -> bool {
+            if (vl[x] = true, fl[x] != -1) {
+                que.push(fl[x]);
+                return vr[fl[x]] = true;
+            }
+            while (x != -1) swap(x, fr[fl[x] = pre[x]]);
+            return false;
+        };
+        while (true) {
+            while (!que.empty()) {
+                int y = que.front(); que.pop();
+                for (int x = 0, d = 0; x < N; ++x) {
+                    if (!vl[x] && slk[x] >= (d = hl[x] + hr[y] - W[x][y])) {
+                        if (pre[x] = y, d) slk[x] = d;
+                        else if (!Check(x)) return;
+                    }
                 }
             }
+            int d = kInf;
+            for (int x = 0; x < N; ++x) {
+                if (!vl[x] && d > slk[x]) d = slk[x];
+            }
+            for (int x = 0; x < N; ++x) {
+                if (vl[x]) hl[x] += d;
+                else slk[x] -= d;
+                if (vr[x]) hr[x] -= d;
+            }
+            for (int x = 0; x < N; ++x) {
+                if (!vl[x] && !slk[x] && !Check(x)) return;
+            }
         }
-        d = kInf;
-        for (int x = 0; x < n; ++x) {
-            if (!vl[x] && d > slk[x]) d = slk[x];
-        }
-        for (int x = 0; x < n; ++x) {
-            if (vl[x]) hl[x] += d;
-            else slk[x] -= d;
-            if (vr[x]) hr[x] -= d;
-        }
-        for (int x = 0; x < n; ++x) {
-            if (!vl[x] && !slk[x] && !Check(x)) return;
-        }
-    }
-}
-long long Solve(int n) {
-    fill(fl, fl + n, -1);
-    fill(fr, fr + n, -1);
-    fill(hr, hr + n, 0);
-    for (int i = 0; i < n; ++i) hl[i] = *max_element(w[i], w[i] + n);
-    for (int i = 0; i < n; ++i) Bfs(i, n);
-    long long res = 0;
-    for (int i = 0; i < n; ++i) res += w[i][fl[i]];
+    };
+    for (int i = 0; i < N; ++i) Bfs(i);
+    int64_t res = 0;
+    for (int i = 0; i < N; ++i) res += W[i][fl[i]];
     return res;
-}}
-
+}
