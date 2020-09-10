@@ -5,25 +5,25 @@
     \vspace{-1em}
     \begin{enumerate}
         \itemsep-0.3em
-        \item Construct super source $S$ and sink $T$
-        \item For each edge $(x, y, l, u)$, connect $x \rightarrow y$ with capacity $u - l$
-        \item For each vertex $v$, denote $in(v)$ as the difference between the sum of incoming lower bounds and the sum of outgoing lower bounds
-        \item If $in(v) > 0$, connect $S \rightarrow v$ with capacity $in(v)$, otherwise, connect $v \rightarrow T$ with capacity $-in(v)$
+        \item Construct super source $S$ and sink $T$.
+        \item For each edge $(x, y, l, u)$, connect $x \rightarrow y$ with capacity $u - l$.
+        \item For each vertex $v$, denote by $in(v)$ the difference between the sum of incoming lower bounds and the sum of outgoing lower bounds.
+        \item If $in(v) > 0$, connect $S \rightarrow v$ with capacity $in(v)$, otherwise, connect $v \rightarrow T$ with capacity $-in(v)$.
         \begin{itemize}
             \itemsep-0.2em
             \item To maximize, connect $t \rightarrow s$ with capacity $\infty$ (skip this in circulation problem), and let $f$ be the maximum flow from $S$ to $T$. If $f \neq \sum_{v \in V, in(v) > 0}{in(v)}$, there's no solution. Otherwise, the maximum flow from $s$ to $t$ is the answer.
             \item To minimize, let $f$ be the maximum flow from $S$ to $T$. Connect $t \rightarrow s$ with capacity $\infty$ and let the flow from $S$ to $T$ be $f^\prime$. If $f + f^\prime \neq \sum_{v \in V, in(v) > 0}{in(v)}$, there's no solution. Otherwise, $f^\prime$ is the answer.
         \end{itemize}
-        \item The solution of each edge $e$ is $l_e + f_e$, where $f_e$ corresponds to the flow on the graph
+        \item The solution of each edge $e$ is $l_e + f_e$, where $f_e$ corresponds to the flow of edge $e$ on the graph.
     \end{enumerate}
     \item Construct minimum vertex cover from maximum matching $M$ on bipartite graph $(X, Y)$
     \vspace{-1em}
     \begin{enumerate}
         \itemsep-0.3em
-        \item Redirect every edge ($y \rightarrow x$ if $(x, y) \in M$, $x \rightarrow y$ otherwise)
-        \item DFS from unmatched vertices in $X$ 
-        \item $x \in X$ is chosen iff $x$ is unvisited
-        \item $y \in Y$ is chosen iff $y$ is visited
+        \item Redirect every edge: $y \rightarrow x$ if $(x, y) \in M$, $x \rightarrow y$ otherwise.
+        \item DFS from unmatched vertices in $X$.
+        \item $x \in X$ is chosen iff $x$ is unvisited.
+        \item $y \in Y$ is chosen iff $y$ is visited.
     \end{enumerate}
     % \item Minimum cost cyclic flow
     % \vspace{-0.5em}
