@@ -1,7 +1,7 @@
 waynedisonitau123
 ================
 
-codebook by waynetuinfor, WeaK, Tau
+ICPC team reference document of team waynedisonitau123 from National Taiwan University, authored by waynetuinfor, WeaK and Tau.
 
 ## Onsite Contest
 | Contest                     | Date          | Rank | Solved/Total | Penalty | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O |
@@ -22,7 +22,7 @@ codebook by waynetuinfor, WeaK, Tau
 
 
 ## Training
-(Ranking is calculated based on onsite contestants)
+(Rankings are calculated based on the performance of onsite contestants)
 
 | Contest                               | Date          | Rank | Solved/Total | Penalty | A | B | C | D | E | F | G | H | I | J | K | L | M | N |
 |---------------------------------------|:-------------:|:----:|:------------:|:-------:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
