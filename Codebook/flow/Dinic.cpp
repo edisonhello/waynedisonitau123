@@ -1,49 +1,41 @@
-struct dinic {
-    static const int inf = 1e9;
-    struct edge {
-        int to, cap, rev;
-        edge(int d, int c, int r): to(d), cap(c), rev(r) {}
-    };
-    vector<edge> g[maxn];
-    int qu[maxn], ql, qr;
-    int lev[maxn];
-    void init() {
-        for (int i = 0; i < maxn; ++i)
-            g[i].clear();
-    }
-    void add_edge(int a, int b, int c) {
-        g[a].emplace_back(b, c, g[b].size() - 0);
-        g[b].emplace_back(a, 0, g[a].size() - 1);
-    }
-    bool bfs(int s, int t) {
-        memset(lev, -1, sizeof(lev));
+struct Edge {
+    int to, cap, rev;
+    Edge(int t, int c, int r) : to(t), cap(c), rev(r) {}
+};
+int Flow(vector<vector<Edge>> g, int s, int t) {
+    int n = g.size(), res = 0;
+    vector<int> lev(n, -1), iter(n);
+    while (true) {
+        vector<int> que(1, s);
+        fill(lev.begin(), lev.end(), -1);
+        fill(iter.begin(), iter.end(), 0);
         lev[s] = 0;
-        ql = qr = 0;
-        qu[qr++] = s;
-        while (ql < qr) {
-            int x = qu[ql++];
-            for (edge &e : g[x]) if (lev[e.to] == -1 && e.cap > 0) {
-                lev[e.to] = lev[x] + 1;
-                qu[qr++] = e.to;
+        for (int it = 0; it < que.size(); ++it) {
+            int x = que[it];
+            for (Edge &e : g[x]) {
+                if (e.cap > 0 && lev[e.to] == -1) {
+                    lev[e.to] = lev[x] + 1;
+                    que.push_back(e.to);
+                }
             }
         }
-        return lev[t] != -1;
+        if (lev[t] == -1) break;
+        auto Dfs = [&](auto dfs, int x, int f = 1000000000) {
+            if (x == t) return f;
+            int res = 0;
+            for (int &it = iter[x]; it < g[x].size(); ++it) {
+                Edge &e = g[x][it];
+                if (e.cap > 0 && lev[e.to] == lev[x] + 1) {
+                    int p = dfs(dfs, e.to, min(f - res, e.cap));
+                    res += p;
+                    e.cap -= p;
+                    g[e.to][e.rev].cap += p;
+                }
+            }
+            if (res == 0) lev[x] = -1;
+            return res;
+        };
+        res += Dfs(Dfs, s);
     }
-    int dfs(int x, int t, int flow) {
-        if (x == t) return flow;
-        int res = 0;
-        for (edge &e : g[x]) if (e.cap > 0 && lev[e.to] == lev[x] + 1) {
-            int f = dfs(e.to, t, min(e.cap, flow - res));
-            res += f;
-            e.cap -= f;
-            g[e.to][e.rev].cap += f;
-        }
-        if (res == 0) lev[x] = -1;
-        return res;
-    }
-    int operator()(int s, int t) {
-        int flow = 0;
-        for (; bfs(s, t); flow += dfs(s, t, inf));
-        return flow;
-    }
-};
+    return res;
+}
