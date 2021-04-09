@@ -1,55 +1,45 @@
-struct mincost {
-    struct edge {
-        int dest, cap, w, rev;
-        edge(int a, int b, int c, int d): dest(a), cap(b), w(c), rev(d) {}
-    };
-    vector<edge> g[maxn];
-    int d[maxn], p[maxn], ed[maxn];
-    bool inq[maxn];
-    void init() {
-        for (int i = 0; i < maxn; ++i) g[i].clear();
-    }
-    void add_edge(int a, int b, int c, int d) {
-        g[a].emplace_back(b, c, +d, g[b].size() - 0);
-        g[b].emplace_back(a, 0, -d, g[a].size() - 1);
-    }
-    bool spfa(int s, int t, int &f, int &c) {
-        for (int i = 0; i < maxn; ++i) {
-            d[i] = inf;
-            p[i] = ed[i] = -1;
-            inq[i] = false;
-        }
-        d[s] = 0;
-        queue<int> q;
-        q.push(s);
-        while (q.size()) {
-            int x = q.front(); q.pop();
-            inq[x] = false;
+struct Edge {
+    int to, cap, rev, w;
+    Edge(int t, int c, int r, int w) : to(t), cap(c), rev(r), w(w) {}
+};
+pair<int, int> Flow(vector<vector<Edge>> g, int s, int t) {
+    int N = g.size();
+    vector<int> dist(N), ed(N), pv(N);
+    vector<bool> inque(N);
+    int flow = 0, cost = 0;
+    while (true) {
+        dist.assign(N, kInf);
+        inque.assign(N, false);
+        pv.assign(N, -1);
+        dist[s] = 0;
+        queue<int> que;
+        que.push(s);
+        while (!que.empty()) {
+            int x = que.front(); que.pop();
+            inque[x] = false;
             for (int i = 0; i < g[x].size(); ++i) {
-                edge &e = g[x][i];
-                if (e.cap > 0 && d[e.dest] > d[x] + e.w) {
-                    d[e.dest] = d[x] + e.w;
-                    p[e.dest] = x;
-                    ed[e.dest] = i;
-                    if (!inq[e.dest]) q.push(e.dest), inq[e.dest] = true;
+                Edge &e = g[x][i];
+                if (e.cap > 0 && dist[e.to] > dist[x] + e.w) {
+                    dist[e.to] = dist[x] + e.w;
+                    pv[e.to] = x;
+                    ed[e.to] = i;
+                    if (!inque[e.to]) {
+                        inque[e.to] = true;
+                        que.push(e.to);
+                    }
                 }
             }
         }
-        if (d[t] == inf) return false;
-        int dlt = inf;
-        for (int x = t; x != s; x = p[x]) dlt = min(dlt, g[p[x]][ed[x]].cap);
-        for (int x = t; x != s; x = p[x]) {
-            edge &e = g[p[x]][ed[x]];
-            e.cap -= dlt;
-            g[e.dest][e.rev].cap += dlt;
+        if (dist[t] == kInf) break;
+        int f = kInf;
+        for (int x = t; x != s; x = pv[x]) f = min(f, g[pv[x]][ed[x]].cap);
+        for (int x = t; x != s; x = pv[x]) {
+            Edge &e = g[pv[x]][ed[x]];
+            e.cap -= f;
+            g[e.to][e.rev].cap += f;
         }
-        f += dlt; c += d[t] * dlt;
-        return true;
+        flow += f;
+        cost += f * dist[t];
     }
-    pair<int, int> operator()(int s, int t) {
-        int f = 0, c = 0;
-        while (spfa(s, t, f, c));
-        return make_pair(f, c);
-    }
-};
-
+    return make_pair(flow, cost);
+}
