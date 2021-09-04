@@ -1,5 +1,6 @@
-se nu rnu bs=2 ru mouse=a cin et ts=4 sw=4 sts=4
+se nu rnu bs=2 ru mouse=a cin et ts=2 sw=2 sts=2
 syn on
 colo desert
 filetype indent on
 inoremap {<CR> {<CR>}<Esc>O
+" setxkbmap -option ctrl:nocaps
