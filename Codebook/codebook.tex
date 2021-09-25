@@ -194,8 +194,8 @@ literate={\ \ }{{\ }}1
 \section{Geometry}
 \code{Basic}{geometry/_basic.cpp}
 \code{KD Tree}{geometry/KDTree.cpp}
-\code{Delaunay Triangulation}{geometry/Triangulation.cpp}
-\code{Voronoi Diagram}{geometry/Triangulation_Vonoroi_short.cpp}
+\codewithtext{Delaunay Triangulation}{geometry/Triangulation.cpp}{Fast Delaunay triangulation assuming no duplicates and not all points collinear (in latter case, result will be empty). Should work for doubles as well, though there may be precision issues in 'circ'.  Returns triangles in ccw order. Each circumcircle will contain none of the input points. If coordinates are ints at most $B$ then \texttt{T} should be large enough to support ints on the order of $B^4$. We don't need \texttt{double} in \texttt{Point} if the coordinates are integers.}
+\codewithtext{Voronoi Diagram}{geometry/Triangulation_Vonoroi_short.cpp}{Vertices in Voronoi Diagram are circumcenters of triangles in the Delaunay Triangulation.}
 \code{Sector Area}{geometry/sectorArea.cpp}
 \code{Half Plane Intersection}{geometry/halfPlaneIntersect.cpp}
 \code{Rotating Sweep Line}{geometry/rotatingSweepLine.cpp}
