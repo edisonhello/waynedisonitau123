@@ -61,12 +61,12 @@ struct CH {
         }
         return isLL(a, b, p[l % n], p[(l + 1) % n]);
     }
-    vector<P> getIS(P a, P b) {
-        int X = findFarest((b - a).spin(pi / 2));
-        int Y = findFarest((a - b).spin(pi / 2));
+    vector<P> getLineIntersect(P a, P b) {
+        int X = findFarest((b - a).rot(pi / 2));
+        int Y = findFarest((a - b).rot(pi / 2));
         if (X > Y) swap(X, Y);
         if (sgn(crx(a, b, p[X])) * sgn(crx(a, b, p[Y])) < 0) return {get(X, Y, a, b), get(Y, X + n, a, b)};
-        return {};
+        return {}; // tangent case falls here
     }
     void update_tangent(P q, int i, int &a, int &b) {
         if (sgn(crx(q, p[a], p[i])) > 0) a = i;

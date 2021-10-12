@@ -19,7 +19,7 @@ struct P {
     double operator ^ (P b) const { return x * b.y - y * b.x; }
     double abs() { return hypot(x, y); }
     P unit() { return *this / abs(); }
-    P spin(double o) {
+    P rot(double o) {
         double c = cos(o), s = sin(o);
         return P(c * x - s * y, s * x + c * y);
     }
@@ -266,7 +266,7 @@ int gid(P &p) {
 }
 
 L make_line(P p, L l) {
-	P d = l.pb - l.pa; d = d.spin(pi / 2);
+	P d = l.pb - l.pa; d = d.rot(pi / 2);
 	P m = (l.pa + l.pb) / 2;
 	l = L(m, m + d);
 	if (((l.pb - l.pa) ^ (p - l.pa)) < 0) l = L(m + d, m);

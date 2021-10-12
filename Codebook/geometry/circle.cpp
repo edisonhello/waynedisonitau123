@@ -12,8 +12,8 @@ vector<P> Intersect(C a, C b) {
     else if (a.r + b.r > d && d + a.r >= b.r) {
         double o = acos((sq(a.r) + sq(d) - sq(b.r)) / (2 * a.r * d));
         P i = (b.c - a.c).unit();
-        p.push_back(a.c + i.spin(o) * a.r);
-        p.push_back(a.c + i.spin(-o) * a.r);
+        p.push_back(a.c + i.rot(o) * a.r);
+        p.push_back(a.c + i.rot(-o) * a.r);
     }
     return p;
 }

@@ -4,7 +4,7 @@ vector<L> tangent(C a, C b) {
     z.emplace_back(a.c + i, a.c + i + j);
 #define deo(I,J) \
     double d = (a.c - b.c).abs(), e = a.r I b.r, o = acos(e / d);\
-    P i = (b.c - a.c).unit(), j = i.spin(o), k = i.spin(-o);\
+    P i = (b.c - a.c).unit(), j = i.rot(o), k = i.rot(-o);\
     z.emplace_back(a.c + j * a.r, b.c J j * b.r);\
     z.emplace_back(a.c + k * a.r, b.c J k * b.r);
     if (a.r < b.r) swap(a, b);
@@ -23,11 +23,11 @@ vector<L> tangent(C c, P p) {
     vector<L> z;
     double d = (p - c.c).abs();
     if (same(d, c.r)) {
-        P i = (p - c.c).spin(pi / 2);
+        P i = (p - c.c).rot(pi / 2);
         z.emplace_back(p, p + i);
     } else if (d > c.r) {
         double o = acos(c.r / d);
-        P i = (p - c.c).unit(), j = i.spin(o) * c.r, k = i.spin(-o) * c.r;
+        P i = (p - c.c).unit(), j = i.rot(o) * c.r, k = i.rot(-o) * c.r;
         z.emplace_back(c.c + j, p);
         z.emplace_back(c.c + k, p);
     }

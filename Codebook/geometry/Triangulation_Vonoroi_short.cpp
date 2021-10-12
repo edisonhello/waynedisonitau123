@@ -4,7 +4,7 @@ int gid(P &p) {
     return it->second;
 }
 L make_line(P p, L l) {
-    P d = l.pb - l.pa; d = d.spin(pi / 2);
+    P d = l.pb - l.pa; d = d.rot(pi / 2);
     P m = (l.pa + l.pb) / 2;
     l = L(m, m + d);
     if (((l.pb - l.pa) ^ (p - l.pa)) < 0) l = L(m + d, m);
