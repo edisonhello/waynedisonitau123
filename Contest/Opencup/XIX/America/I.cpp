@@ -20,7 +20,7 @@ vector<int> SuffixArray(const string& s) {
 
     auto Get = [&](int x) {
       int a = ornk[x];
-      int b = x + k / 2 < N ? ornk[x + k / 2] : -1;
+      int b = x + (1 << (k - 1)) < N ? ornk[x + (1 << (k - 1))] : -1;
       return make_pair(a, b);
     };
 
@@ -132,5 +132,3 @@ int main() {
     cout << ans << "\n";
   }
 }
-
-

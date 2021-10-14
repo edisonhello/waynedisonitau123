@@ -59,7 +59,7 @@ int main() {
 
   auto AddEdge = [&](int from, int to, int cap) {
     g[from].emplace_back(to, cap, g[to].size());
-    g[to].emplace_back(from, cap, g[from].size() - 1);
+    g[to].emplace_back(from, 0, g[from].size() - 1);
   };
 
   vector<pair<int, int>> edges;
@@ -143,4 +143,3 @@ int main() {
   }
   cout << "\n";
 }
-

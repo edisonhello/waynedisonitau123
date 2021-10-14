@@ -54,17 +54,26 @@ int main() {
       // }
     }
     vector<int> sum(N);
+    vector<int> bad(N);
     for (int j = 0; j < N; ++j) {
       if (pos[j] <= i) {
         sum[j] = dp[i][j];
+      } else {
+        bad[j] = dp[i][j];
       }
-      if (j > 0) (sum[j] += sum[j - 1]) %= kP;
+      if (j > 0) {
+        (sum[j] += sum[j - 1]) %= kP;
+      }
+    }
+    for (int j = N - 2; j >= 0; --j) {
+      (bad[j] += bad[j + 1]) %= kP;
     }
     for (int u : left[i + 1]) {
       if (u > 0) (dp[i + 1][u] += sum[u - 1]) %= kP;
     }
     for (int u : right[i + 1]) {
-      if (u > 0) (dp[i + 1][u] += sum[u - 1]) %= kP;
+      (dp[i + 1][u] += sum.back()) %= kP;
+      if (u + 1 < N) (dp[i + 1][u] += bad[u + 1]) %= kP;
     }
   }
   // for (int i = 0; i < N; ++i) {
@@ -78,4 +87,3 @@ int main() {
   }
   cout << ans << "\n";
 }
-
