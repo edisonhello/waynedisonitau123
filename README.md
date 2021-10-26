@@ -1,7 +1,7 @@
 waynedisonitau123
 ================
 
-ICPC team reference document of team [waynedisonitau123](https://codeforces.com/team/47344) from National Taiwan University.
+ICPC team reference document used and maintained by team [waynedisonitau123](https://codeforces.com/team/47344) from National Taiwan University.
 
 ## Onsite Contest
 | Contest                     | Date          | Rank | Solved/Total | Penalty | A | B | C | D | E | F | G | H | I | J | K | L | M | N | O |
@@ -24,6 +24,7 @@ ICPC team reference document of team [waynedisonitau123](https://codeforces.com/
 | NCPC 2020                   | 2020/10/09    |   1  |     10/14    |   894   | 2/43 | 1/3 | 1/84 | 2/24 | 4/- | 1/204 | 1/48 | -/- | 2/97 | 1/54 | -/- | 1/21 | 4/196 | -/- |
 | Taipei 2020                 | 2020/11/08    |   1  |     10/13    |   1214  | 1/2 | 1/14 | 1/221 | 6/- | 3/179 | 1/126 | 4/189 | 1/34 | 1/24 | -/- | 7/200 | -/- | 1/5 |
 | World Finals Moscow 2020    | 2021/10/05    |  18  |     8/15     |   1214  | 3/131 | -/- | 1/49 | 2/61 | 1/36 | 13/- | 4/174 | -/- | -/- | 2/209 | -/- | -/- | 2/182 | -/- | 3/64 |
+| TOPC 2021                   | 2021/10/23    |   1  |     10/10    |   409   | 1/3 | 1/6 | 1/8 | 1/13 | 1/84 | 1/27 | 1/41 | 1/72 | 2/130 | 1/5 |
 
 
 ## Training
