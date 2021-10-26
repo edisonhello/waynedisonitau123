@@ -1,33 +1,55 @@
+#pragma GCC optimize("O3")
 #include <bits/stdc++.h>
 using namespace std;
 
 int main() {
   ios_base::sync_with_stdio(false);
+  cin.tie(0);
   int N, M;
   cin >> N >> M;
-  vector<int> uf(N);
-  iota(uf.begin(), uf.end(), 0);
+  vector<set<pair<int, int>>> tree(N * 4);
 
-  function<int(int)> Find = [&](int x) {
-    if (x == uf[x]) return x;
-    return uf[x] = Find(uf[x]);
+  auto Insert = [&](int p, int v, int w) {
+    // cout << "Insert l = " << w << " r = " << v << endl;
+    auto dfs = [&](auto dfs, int l, int r, int o = 0) -> void {
+      tree[o].insert(make_pair(v, w));
+      if (r - l == 1) {
+        return;
+      }
+      int m = (l + r) >> 1;
+      if (p < m) dfs(dfs, l, m, o * 2 + 1);
+      else dfs(dfs, m, r, o * 2 + 2);
+    };
+
+    return dfs(dfs, 0, N);
   };
 
-  vector<int> nxt(N);
-  for (int i = 0; i < N; ++i) nxt[i] = i;
-  vector<int> tree(N * 4, -1);
+  auto Erase = [&](int p, int v, int w) {
+    // cout << "Erase l = " << w << " r = " << v << endl;
+    auto dfs = [&](auto dfs, int l, int r, int o = 0) -> void {
+      tree[o].erase(make_pair(v, w));
+      if (r - l == 1) {
+        return;
+      }
+      int m = (l + r) >> 1;
+      if (p < m) dfs(dfs, l, m, o * 2 + 1);
+      else dfs(dfs, m, r, o * 2 + 2);
+    };
 
-  vector<set<int>> vc(N);
-  for (int i = 0; i < N; ++i) {
-    vc[i].insert(i);
-  }
+    return dfs(dfs, 0, N);
+  };
 
-  auto Update = [&](int ql, int qr, int v) -> void {
-    // cout << "Update ql = " << ql << " qr = " << qr << " v = " << v << endl;
+  vector<int> points;
+
+  auto Query = [&](int ql, int qr, int lb, int ub) {
     auto dfs = [&](auto dfs, int l, int r, int o = 0) -> void {
       if (l >= qr || ql >= r) return;
       if (l >= ql && r <= qr) {
-        tree[o] = max(tree[o], v);
+        auto iter = tree[o].lower_bound(make_pair(lb, -1));
+        while (iter != tree[o].end() && iter->first < ub) {
+          points.push_back(iter->second);
+          iter++;
+        }
         return;
       }
       int m = (l + r) >> 1;
@@ -38,84 +60,74 @@ int main() {
     return dfs(dfs, 0, N);
   };
 
-  auto Query = [&](int p) {
-    auto dfs = [&](auto dfs, int l, int r, int o = 0) -> int {
-      if (r - l == 1) {
-        return tree[o];
-      }
-      int m = (l + r) >> 1;
-      if (p < m) {
-        return max(tree[o], dfs(dfs, l, m, o * 2 + 1));
-      } else {
-        return max(tree[o], dfs(dfs, m, r, o * 2 + 2));
-      }
-    };
+  vector<int> uf(N);
+  iota(uf.begin(), uf.end(), 0);
 
-    return dfs(dfs, 0, N);
+  function<int(int)> Find = [&](int x) {
+    if (x == uf[x]) return x;
+    return uf[x] = Find(uf[x]);
   };
 
   auto Merge = [&](int x, int y) {
     // cout << "Merge x = " << x << " y = " << y << endl;
     x = Find(x);
     y = Find(y);
-    if (x == y) {
-      return;
-    }
-    if (vc[x].size() > vc[y].size()) {
-      swap(x, y);
-    }
-    for (int p : vc[x]) {
-      auto iter = vc[y].lower_bound(p); 
-      if (iter != vc[y].end()) {
-        if (p + 1 <= *iter - 1) {
-          Update(p + 1, *iter, p);
-        }
-      }
-      if (iter != vc[y].begin()) {
-        if (*prev(iter) + 1 <= p - 1) {
-          Update(*prev(iter) + 1, p, *prev(iter));
-        }
-      }
-      vc[y].insert(p);
-    }
-    if (vc[y].size() > 2) {
-      int a = *vc[y].begin(), b = *vc[y].rbegin();
-      if (b + 1 <= a + N - 1) {
-        Update(b + 1, N, b);
-        Update(0, a, b);
-      }
-    }
     uf[x] = y;
   };
 
-  for (int i = 0; i < M; ++i) {
+  vector<int> nxt(N);
+  for (int i = 0; i < N; ++i) {
+    nxt[i] = i;
+  }
+
+  while (M--) {
     int e, u, v;
     cin >> e >> u >> v;
     u--;
     v--;
-    if (u > v) {
-      swap(u, v);
-    }
     if (e == 1) {
-      vector<int> vec;
-      int x = v;
-      while (true) {
-        int p = Query(x);
-        if (p == -1) break;
-        vec.push_back(p);
-        x = p;
+      if (u > v) swap(u, v);
+      if (Find(u) == Find(v)) {
+        continue;
       }
-      x = u;
-      while (true) {
-        int p = Query(x);
-        if (p == -1) break;
-        vec.push_back(p);
-        x = p;
-      }
-      for (int x : vec) {
-        Merge(u, x);
-      }
+      points.clear();
+      Query(u + 1, v, v + 1, u + N);
+      Query(v + 1, N, u + N + 1, v + N);
+      Query(0, u, u + 1, v);
       Merge(u, v);
+      for (int p : points) {
+        Merge(u, p);
+      }
+      points.push_back(u);
+      points.push_back(v);
+      int K = points.size();
+      for (int i = 0; i < K; ++i) {
+        // cout << "p = " << points[i] << endl;
+        assert(points[i] < N);
+        if (nxt[points[i]] != points[i]) {
+          points.push_back(nxt[points[i]] % N);
+        }
+      }
+      sort(points.begin(), points.end());
+      points.resize(unique(points.begin(), points.end()) - points.begin());
+      for (int i = 0; i + 1 < points.size(); ++i) {
+        if (nxt[points[i]] == points[i] || nxt[points[i]] > points[i + 1]) {
+          if (nxt[points[i]] != points[i]) {
+            Erase(points[i], nxt[points[i]], points[i]);
+          }
+          nxt[points[i]] = points[i + 1];
+          Insert(points[i], nxt[points[i]], points[i]);
+        }
+      }
+      if (points.size() >= 2) {
+        if (nxt[points.back()] == points.back() || nxt[points.back()] > points[0] + N) {
+          if (nxt[points.back()] != points.back()) {
+            Erase(points.back(), nxt[points.back()], points.back());
+          }
+          nxt[points.back()] = points[0] + N;
+          Insert(points.back(), nxt[points.back()], points.back());
+        }
+      }
     } else {
       cout << (Find(u) == Find(v));
     }
